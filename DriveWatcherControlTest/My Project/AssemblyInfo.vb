@@ -11,10 +11,5 @@
 <Assembly: Reflection.AssemblyCopyright("Copyright © 2026 Andreas Sauer")>
 <Assembly: Reflection.AssemblyTrademark("SchlumpfSoft")>
 <Assembly: Runtime.InteropServices.ComVisible(False)>
-<<<<<<< HEAD
-<Assembly: Reflection.AssemblyVersion("1.2026.0614.0")>
-<Assembly: Reflection.AssemblyFileVersion("1.2026.0614.0")>
-=======
-<Assembly: Reflection.AssemblyVersion("1.2026.0523.0")>
-<Assembly: Reflection.AssemblyFileVersion("1.2026.0523.0")>
->>>>>>> e6ffa7f75181219a44eb955b96a366c3ea1779c3
+<Assembly: Reflection.AssemblyVersion("1.2026.0614.4")>
+<Assembly: Reflection.AssemblyFileVersion("1.2026.0614.4")>
