@@ -14,7 +14,11 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+<<<<<<< HEAD
     <AssemblyVersion>1.2026.0614.0</AssemblyVersion>
+=======
+    <AssemblyVersion>1.2026.0523.0</AssemblyVersion>
+>>>>>>> e6ffa7f75181219a44eb955b96a366c3ea1779c3
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
