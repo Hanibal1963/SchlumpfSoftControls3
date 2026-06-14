@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "AniGifControlTest",
+    "Projects": [
+      {
+        "Path": "AniGifControlTest\\AniGifControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "ColorProgressBarControlTest",
+    "Projects": [
+      {
+        "Path": "ColorProgressBarControlTest\\ColorProgressBarControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "DriveWatcherControlTest",
+    "Projects": [
+      {
+        "Path": "DriveWatcherControlTest\\DriveWatcherControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "ExtendedRTFControlTest",
+    "Projects": [
+      {
+        "Path": "ExtendedRTFControlTest\\ExtendedRTFControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

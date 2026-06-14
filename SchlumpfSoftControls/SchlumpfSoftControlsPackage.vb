@@ -1,50 +1,50 @@
-﻿
-Imports System
-Imports System.Runtime.InteropServices
-Imports System.Threading
-Imports Microsoft.VisualBasic
-Imports Microsoft.VisualStudio.Shell
-Imports Task = System.Threading.Tasks.Task
+﻿' --------------------------------------------------------------------------------------------------------
+' Datei: SchlumpfSoftControlsPackage.vb
+' Author: Andreas Sauer
+' Datum: 14.06.2026
+' --------------------------------------------------------------------------------------------------------
 
 ''' <summary>
-''' This is the class that implements the package exposed by this assembly.
+''' Dies ist die Klasse, die das von dieser Assembly bereitgestellte Paket implementiert.
 ''' </summary>
 ''' <remarks>
 ''' <para>
-''' The minimum requirement for a class to be considered a valid package for Visual Studio
-''' Is to implement the IVsPackage interface And register itself with the shell.
-''' This package uses the helper classes defined inside the Managed Package Framework (MPF)
-''' to do it: it derives from the Package Class that provides the implementation Of the 
-''' IVsPackage interface And uses the registration attributes defined in the framework to 
-''' register itself And its components with the shell. These attributes tell the pkgdef creation
-''' utility what data to put into .pkgdef file.
+''' Die Mindestanforderung, damit eine Klasse als gültiges Paket für Visual Studio gilt,
+''' ist die Implementierung der IVsPackage-Schnittstelle sowie die Registrierung bei der Shell.
+''' Dieses Paket verwendet dazu die Hilfsklassen, die im Managed Package Framework (MPF)
+''' definiert sind: Es leitet von der Package-Klasse ab, die die Implementierung der
+''' IVsPackage-Schnittstelle bereitstellt, und verwendet die im Framework definierten
+''' Registrierungsattribute, um sich selbst und seine Komponenten bei der Shell zu
+''' registrieren. Diese Attribute teilen dem pkgdef-Erstellungsprogramm mit,
+''' welche Daten in die .pkgdef-Datei geschrieben werden sollen.
 ''' </para>
 ''' <para>
-''' To get loaded into VS, the package must be referred by &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; in .vsixmanifest file.
+''' Damit das Paket in VS geladen wird, muss es in der Datei .vsixmanifest über
+''' &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; referenziert werden.
 ''' </para>
 ''' </remarks>
-<PackageRegistration(UseManagedResourcesOnly:=True, AllowsBackgroundLoading:=True)>
-<Guid(SchlumpfSoftControlsPackage.PackageGuidString)>
+<Microsoft.VisualStudio.Shell.PackageRegistration(UseManagedResourcesOnly:=True, AllowsBackgroundLoading:=True)>
+<System.Runtime.InteropServices.Guid(SchlumpfSoftControlsPackage.PackageGuidString)>
 Public NotInheritable Class SchlumpfSoftControlsPackage
-    Inherits AsyncPackage
+    Inherits Microsoft.VisualStudio.Shell.AsyncPackage
 
     ''' <summary>
-    ''' Package guid
+    ''' Paket-GUID
     ''' </summary>
     Public Const PackageGuidString As String = "44cc5e59-1bb1-4a68-91f8-9001571baf29"
 
 #Region "Package Members"
 
     ''' <summary>
-    ''' Initialization of the package; this method is called right after the package is sited, so this is the place
-    ''' where you can put all the initialization code that rely on services provided by VisualStudio.
+    ''' Initialisierung des Pakets; diese Methode wird direkt aufgerufen, nachdem das Paket eingebunden wurde.
+    ''' Hier können Sie den gesamten Initialisierungscode platzieren, der auf von Visual Studio bereitgestellte Dienste zugreift.
     ''' </summary>
-    ''' <param name="cancellationToken">A cancellation token to monitor for initialization cancellation, which can occur when VS is shutting down.</param>
-    ''' <param name="progress">A provider for progress updates.</param>
-    ''' <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
-    Protected Overrides Async Function InitializeAsync(cancellationToken As CancellationToken, progress As IProgress(Of ServiceProgressData)) As Task
-        ' When initialized asynchronously, the current thread may be a background thread at this point.
-        ' Do any initialization that requires the UI thread after switching to the UI thread.
+    ''' <param name="cancellationToken">Ein Abbruchtoken zur Überwachung eines Abbruchs der Initialisierung, der beim Herunterfahren von VS auftreten kann.</param>
+    ''' <param name="progress">Ein Anbieter für Fortschrittsaktualisierungen.</param>
+    ''' <returns>Eine Aufgabe, die die asynchrone Initialisierungsarbeit des Pakets repräsentiert, oder eine bereits abgeschlossene Aufgabe, falls keine Arbeit anfällt. Diese Methode darf nicht null zurückgeben.</returns>
+    Protected Overrides Async Function InitializeAsync(cancellationToken As System.Threading.CancellationToken, progress As System.IProgress(Of Microsoft.VisualStudio.Shell.ServiceProgressData)) As System.Threading.Tasks.Task
+        ' Bei asynchroner Initialisierung kann der aktuelle Thread an dieser Stelle ein Hintergrundthread sein.
+        ' Führen Sie alle Initialisierungen, die den UI-Thread erfordern, erst nach dem Wechsel auf den UI-Thread aus.
         Await Me.JoinableTaskFactory.SwitchToMainThreadAsync()
     End Function
 

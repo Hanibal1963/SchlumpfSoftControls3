@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="1.0" Language="de-DE" Publisher="Andreas Sauer" />
+        <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="1.2026.0614" Language="de-DE" Publisher="Andreas Sauer" />
         <DisplayName>SchlumpfSoftControls</DisplayName>
-        <Description xml:space="preserve">Empty VSIX Project.</Description>
+        <Description xml:space="preserve">Eine Sammlung verschiedener Controls.Eine Sammlung verschiedener Controls.</Description>
+        <MoreInfo>https://github.com/Hanibal1963/SchlumpfSoftControls3</MoreInfo>
+        <License>License.txt</License>
+        <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
+        <Icon>Icon.png</Icon>
+        <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
@@ -23,6 +28,9 @@
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Assets>
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="AniGifControl" Path="|AniGifControl;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ColorProgressBarControl" Path="|ColorProgressBarControl;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="DriveWatcherControl" Path="|DriveWatcherControl;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ExtendedRTFControl" Path="|ExtendedRTFControl;PkgdefProjectOutputGroup|" />
     </Assets>
 </PackageManifest>

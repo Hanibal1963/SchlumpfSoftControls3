@@ -1,18 +1,16 @@
-Imports System.Resources
+' --------------------------------------------------------------------------------------------------------
+' Datei: AssemblyInfo.vb
+' Author: Andreas Sauer
+' Datum: 14.06.2026
+' --------------------------------------------------------------------------------------------------------
 
-Imports System.Reflection
-Imports System.Runtime.CompilerServices
-Imports System.Runtime.InteropServices
-Imports Microsoft.VisualBasic
-
-<Assembly: AssemblyTitle("SchlumpfSoftControls")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("Andreas Sauer")>
-<Assembly: AssemblyProduct("SchlumpfSoftControls")>
-<Assembly: AssemblyCopyright("")>
-<Assembly: AssemblyTrademark("SchlumpfSoft")>
-<Assembly: AssemblyCulture("")>
-<Assembly: ComVisible(False)>
-<Assembly: AssemblyVersion("1.2026.0614.0")>
-<Assembly: AssemblyFileVersion("1.2026.0614.0")>
-<Assembly: NeutralResourcesLanguage("de-DE")>
+<Assembly: System.Reflection.AssemblyTitle("SchlumpfSoftControls")>
+<Assembly: System.Reflection.AssemblyDescription("Eine Sammlung verschiedener Controls")>
+<Assembly: System.Reflection.AssemblyCompany("Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyProduct("SchlumpfSoftControls")>
+<Assembly: System.Reflection.AssemblyCopyright("Copyright � 2026 by Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyTrademark("SchlumpfSoft")>
+<Assembly: System.Runtime.InteropServices.ComVisible(False)>
+<Assembly: System.Reflection.AssemblyVersion("1.2026.0614.5")>
+<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0614.5")>
+<Assembly: System.Resources.NeutralResourcesLanguage("de-DE")>

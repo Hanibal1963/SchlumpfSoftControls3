@@ -1,0 +1,7 @@
+﻿Versionsverlauf
+
+14.06.2024 Version 1.2026.0614
+- AniGifControl hinzugefügt
+- ColorProgressBarControl hinzugefügt
+- DriveWatcherControl hinzugefügt
+- ExtendedRTFControl hinzugefügt
