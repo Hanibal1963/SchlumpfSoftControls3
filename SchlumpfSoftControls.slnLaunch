@@ -34,5 +34,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "WizardControlTest",
+    "Projects": [
+      {
+        "Path": "WizardControlTest\\WizardControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]

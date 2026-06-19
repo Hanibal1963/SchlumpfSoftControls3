@@ -1,5 +1,8 @@
 ﻿Versionsverlauf
 
+19.06.2026 version 1.2026.0619
+- WizardControl hinzugefügt
+
 14.06.2024 Version 1.2026.0614
 - AniGifControl hinzugefügt
 - ColorProgressBarControl hinzugefügt
