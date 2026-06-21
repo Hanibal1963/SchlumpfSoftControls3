@@ -43,5 +43,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "TransparentLabelControlTest",
+    "Projects": [
+      {
+        "Path": "TransparentLabelControlTest\\TransparentLabelControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]

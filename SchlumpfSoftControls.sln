@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SchlumpfSoftControls", "SchlumpfSoftControls\SchlumpfSoftControls.vbproj", "{DE4CAEAC-9D2B-40B1-AE07-E1C1EC1EF991}"
 	ProjectSection(ProjectDependencies) = postProject
 		{045BE5B3-7D5E-4507-B73E-6357D52F4C9A} = {045BE5B3-7D5E-4507-B73E-6357D52F4C9A}
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF} = {810FBA80-4993-41C5-91A6-7AA1BFC88EFF}
 		{A49C9868-C802-4512-B2E0-6460EF8B7680} = {A49C9868-C802-4512-B2E0-6460EF8B7680}
 		{FED967C8-52DB-4989-BB22-B2B0C1C8FA89} = {FED967C8-52DB-4989-BB22-B2B0C1C8FA89}
 	EndProjectSection
@@ -38,6 +39,10 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WizardControl", "WizardControl\WizardControl.vbproj", "{0AC43B86-C654-4061-BE31-8CD92111E62E}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WizardControlTest", "WizardControlTest\WizardControlTest.vbproj", "{14DF56FD-2892-4440-950A-FCE3C979D826}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TransparentLabelControl", "TransparentLabelControl\TransparentLabelControl.vbproj", "{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TransparentLabelControlTest", "TransparentLabelControlTest\TransparentLabelControlTest.vbproj", "{116A8AD5-2B13-486A-830F-57C216BBD95C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -181,6 +186,30 @@ Global
 		{14DF56FD-2892-4440-950A-FCE3C979D826}.Release|arm64.Build.0 = Release|Any CPU
 		{14DF56FD-2892-4440-950A-FCE3C979D826}.Release|x86.ActiveCfg = Release|Any CPU
 		{14DF56FD-2892-4440-950A-FCE3C979D826}.Release|x86.Build.0 = Release|Any CPU
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Debug|arm64.ActiveCfg = Debug|arm64
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Debug|arm64.Build.0 = Debug|arm64
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Debug|x86.ActiveCfg = Debug|x86
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Debug|x86.Build.0 = Debug|x86
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Release|arm64.ActiveCfg = Release|arm64
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Release|arm64.Build.0 = Release|arm64
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Release|x86.ActiveCfg = Release|x86
+		{810FBA80-4993-41C5-91A6-7AA1BFC88EFF}.Release|x86.Build.0 = Release|x86
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Debug|arm64.Build.0 = Debug|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Debug|x86.Build.0 = Debug|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Release|arm64.ActiveCfg = Release|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Release|arm64.Build.0 = Release|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Release|x86.ActiveCfg = Release|Any CPU
+		{116A8AD5-2B13-486A-830F-57C216BBD95C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
