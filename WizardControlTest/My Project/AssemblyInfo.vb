@@ -12,6 +12,6 @@
 <Assembly: System.Reflection.AssemblyTrademark("SchlumpfSoft")>
 <Assembly: System.Runtime.InteropServices.ComVisible(False)>
 <Assembly: System.Runtime.InteropServices.Guid("4ea453c9-6870-4a29-be8d-17e37214d54b")>
-<Assembly: System.Reflection.AssemblyVersion("1.2026.0619.0")>
-<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0619.0")>
+<Assembly: System.Reflection.AssemblyVersion("1.2026.0621.0")>
+<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0621.0")>
 <Assembly: System.Resources.NeutralResourcesLanguage("de-DE")>

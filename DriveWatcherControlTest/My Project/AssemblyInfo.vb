@@ -11,5 +11,5 @@
 <Assembly: Reflection.AssemblyCopyright("Copyright © 2026 Andreas Sauer")>
 <Assembly: Reflection.AssemblyTrademark("SchlumpfSoft")>
 <Assembly: Runtime.InteropServices.ComVisible(False)>
-<Assembly: Reflection.AssemblyVersion("1.2026.0614.4")>
-<Assembly: Reflection.AssemblyFileVersion("1.2026.0614.4")>
+<Assembly: Reflection.AssemblyVersion("1.2026.0621.0")>
+<Assembly: Reflection.AssemblyFileVersion("1.2026.0621.0")>
