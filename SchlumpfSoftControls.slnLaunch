@@ -61,5 +61,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "NotifyFormControlTest",
+    "Projects": [
+      {
+        "Path": "NotifyFormControlTest\\NotifyFormControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
