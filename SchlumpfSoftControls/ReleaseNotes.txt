@@ -2,6 +2,7 @@
 
 21.06.2026 Version 1.2026.0621
 -TransparentLabelControl hinzugefügt
+-ShapeControl hinzugefügt
 
 19.06.2026 version 1.2026.0619
 - WizardControl hinzugefügt

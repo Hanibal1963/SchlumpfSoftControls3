@@ -52,5 +52,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "ShapeControlTest",
+    "Projects": [
+      {
+        "Path": "ShapeControlTest\\ShapeControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
