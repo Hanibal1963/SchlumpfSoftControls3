@@ -1,0 +1,16 @@
+' --------------------------------------------------------------------------------------------------------
+' Datei: AssemblyInfo.vb
+' Author: Andreas Sauer
+' Datum: 06.05.2026
+' --------------------------------------------------------------------------------------------------------
+
+<Assembly: System.Reflection.AssemblyTitle("SevenSegmentControl")>
+<Assembly: System.Reflection.AssemblyDescription("Zwei Controls zur Darstellung einer Siebensegmentanzeige.")>
+<Assembly: System.Reflection.AssemblyCompany("Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyProduct("SevenSegmentControl")>
+<Assembly: System.Reflection.AssemblyCopyright("Copyright © 2026 by Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyTrademark("SchlumpfSoft")>
+<Assembly: System.Runtime.InteropServices.ComVisible(False)>
+<Assembly: System.Reflection.AssemblyVersion("1.2026.0623.2")>
+<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0623.2")>
+<Assembly: System.Resources.NeutralResourcesLanguage("de-DE")>
