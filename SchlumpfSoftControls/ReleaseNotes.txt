@@ -1,5 +1,9 @@
 ﻿Versionsverlauf
 
+23.06.2026 Version 1.2026.0623
+- FileListControl hinzugefügt
+- SvenSegmentControl hinzugefügt
+
 21.06.2026 Version 1.2026.0621
 -TransparentLabelControl hinzugefügt
 -ShapeControl hinzugefügt

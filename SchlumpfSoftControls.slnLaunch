@@ -70,5 +70,23 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "SevenSegmentControlTest",
+    "Projects": [
+      {
+        "Path": "SevenSegmentControlTest\\SevenSegmentControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "FileListControlTest",
+    "Projects": [
+      {
+        "Path": "FileListControlTest\\FileListControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
