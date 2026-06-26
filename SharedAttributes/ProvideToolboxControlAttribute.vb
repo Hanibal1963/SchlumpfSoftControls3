@@ -18,7 +18,7 @@ Option Compare Binary
 ''' </remarks>
 <AttributeUsage(AttributeTargets.Class, AllowMultiple:=False, Inherited:=True)>
 <System.Runtime.InteropServices.ComVisibleAttribute(False)>
-Public NotInheritable Class ProvideToolboxControlAttribute
+Public Class ProvideToolboxControlAttribute
 
     Inherits Microsoft.VisualStudio.Shell.RegistrationAttribute
 
