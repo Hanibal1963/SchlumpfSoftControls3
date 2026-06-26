@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <AssemblyVersion>1.2026.0626.6</AssemblyVersion>
+    <AssemblyVersion>1.2026.0626.8</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -74,7 +74,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="NodeHelpers.vb" />
-    <Compile Include="ProvideToolboxControlAttribute.vb" />
     <Compile Include="SelectedPathChangedEventArgs.vb" />
     <Compile Include="SpecialFolderNode.vb" />
   </ItemGroup>
@@ -163,6 +162,10 @@
     <ProjectReference Include="..\DriveWatcherControl\DriveWatcherControl.vbproj">
       <Project>{045be5b3-7d5e-4507-b73e-6357d52f4c9a}</Project>
       <Name>DriveWatcherControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedAttributes\SharedAttributes.vbproj">
+      <Project>{de3061c5-f6a9-4b01-9d04-ee0366af091e}</Project>
+      <Name>SharedAttributes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

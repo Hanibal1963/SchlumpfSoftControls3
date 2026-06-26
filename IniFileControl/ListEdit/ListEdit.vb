@@ -19,7 +19,7 @@ Namespace IniFileControl
     ''' cref="ItemAdd"/>, <see cref="ItemRename"/>, <see cref="ItemRemove"/> ), die vom Host verarbeitet
     ''' werden.</description> </item> </list>
     ''' </remarks>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Steuerelement zum Anzeigen und Bearbeiten der Abschnitts- oder Eintrags- Liste einer INI - Datei.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(ListEdit), "IniFileControl.ListEdit.bmp")>

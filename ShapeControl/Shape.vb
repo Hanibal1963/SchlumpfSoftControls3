@@ -9,7 +9,7 @@ Namespace ShapeControl
     ''' <summary>
     ''' Steuerelement zum Darstellen von Linien, Rechtecken und Ellipsen (gefüllt oder ungefüllt).
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Steuerelement zum Darstellen von Linien, Rechtecken und Ellipsen (gefüllt oder ungefüllt).")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(Shape), "ShapeControl.Shape.bmp")>

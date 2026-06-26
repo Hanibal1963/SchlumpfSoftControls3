@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <AssemblyVersion>1.2026.0626.0</AssemblyVersion>
+    <AssemblyVersion>1.2026.0626.2</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -95,7 +95,6 @@
     <Compile Include="PageWelcome.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProvideToolboxControlAttribute.vb" />
     <Compile Include="Wizard.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +151,12 @@
     <None Include="Resources\WizardHeaderImage.jpg" />
     <None Include="Resources\WizardWelcomeImage.jpg" />
     <EmbeddedResource Include="WizardControl.Wizard.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedAttributes\SharedAttributes.vbproj">
+      <Project>{de3061c5-f6a9-4b01-9d04-ee0366af091e}</Project>
+      <Name>SharedAttributes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

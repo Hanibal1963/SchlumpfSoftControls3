@@ -9,7 +9,7 @@ Namespace WizardControl
     ''' <summary>
     ''' Ein Control zum Erstellen eines Assistenten.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Ein Control zum erstellen eines Assistenen")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(Wizard), "WizardControl.Wizard.bmp")>

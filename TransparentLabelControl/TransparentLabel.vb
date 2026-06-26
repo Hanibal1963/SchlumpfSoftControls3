@@ -9,7 +9,7 @@ Namespace TransparentLabelControl
     ''' <summary>
     ''' Ein Steuerelement zum Anzeigen eines Textes mit durchscheinendem Hintergrund.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Ein Steuerelement zum Anzeigen eines Textes mit durchscheinendem Hintergrund.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(TransparentLabel), "TransparentLabelControl.TransparentLabel.bmp")>

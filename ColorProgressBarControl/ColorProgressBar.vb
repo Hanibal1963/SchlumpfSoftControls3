@@ -7,10 +7,10 @@
 Namespace ColorProgressBarControl
 
     ''' <summary>
-    ''' Ein benutzerdefiniertes Windows Forms-Steuerelement zur Anzeige eines farbigen Fortschrittsbalkens mit optionalem
-    ''' Rahmen und Glanzeffekt.
+    ''' Ein benutzerdefiniertes Windows Forms-Steuerelement zur Anzeige eines farbigen Fortschrittsbalkens mit
+    ''' optionalem Rahmen und Glanzeffekt.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Control zum Anzeigen eines farbigen Fortschrittbalkens.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(ColorProgressBar), "ColorProgressBarControl.ColorProgressBar.bmp")>
@@ -41,7 +41,8 @@ Namespace ColorProgressBarControl
 #Region "Definition der öffentlichen Eigenschaften"
 
         ''' <summary>
-        ''' Gibt den aktuellen Fortschrittswert zurück oder legt diesen fest (Bereich: 0 bis <see cref="ProgressMaximumValue"/>).
+        ''' Gibt den aktuellen Fortschrittswert zurück oder legt diesen fest (Bereich: 0 bis
+        ''' <see cref="ProgressMaximumValue"/> ).
         ''' </summary>
         <System.ComponentModel.Browsable(True)>
         <System.ComponentModel.Category("Behavior")>
@@ -354,7 +355,8 @@ Namespace ColorProgressBarControl
         End Sub
 
         ''' <summary>
-        ''' Leitet Klicks von inneren Panels an das Steuerelement weiter, damit ein einheitliches Click-Ereignis entsteht.
+        ''' Leitet Klicks von inneren Panels an das Steuerelement weiter, damit ein einheitliches Click-Ereignis
+        ''' entsteht.
         ''' </summary>
         Private Sub Panelt_Click(sender As Object, e As System.EventArgs) Handles GlossLeft.Click, GlossRight.Click, ProgressFull.Click, ProgressEmpty.Click
             Me.OnClick(e)

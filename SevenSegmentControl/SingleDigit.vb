@@ -10,7 +10,7 @@ Namespace SevenSegmentControl
     ''' <para>Dieses Steuerelement stellt ein einzelnes Siebensegment-LED-Display dar, </para>
     ''' <para>das eine Ziffer oder einen Buchstaben anzeigt.</para>
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Dieses Steuerelement stellt ein einzelnes Siebensegment-LED-Display dar, das eine Ziffer oder einen Buchstaben anzeigt.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(SingleDigit), "SevenSegmentControl.SingleDigit.bmp")>

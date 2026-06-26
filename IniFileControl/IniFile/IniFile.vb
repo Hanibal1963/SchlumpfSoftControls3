@@ -14,7 +14,7 @@ Namespace IniFileControl
     ''' serialisierten Dateiinhalt. Änderungen an Abschnitten, Einträgen und Kommentaren werden über
     ''' <see cref="FileContentChanged"/> signalisiert.
     ''' </remarks>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Ein Set von Controls zum Verwalten und bearbeiten von INI - Dateien.")>
     <System.Drawing.ToolboxBitmap(GetType(IniFile), "IniFileControl.IniFile.bmp")>
     <System.ComponentModel.ToolboxItem(True)>

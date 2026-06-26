@@ -3,6 +3,7 @@
 26.06.2026 Version 1.2026.0626
 - IniFileControl hinzugefügt
 - ExplorerTreeViewControl hinzugefügt
+- Bibliothek SharedAttributes hinzugefügt und Verweise in allen Controls aktualisiert
 
 23.06.2026 Version 1.2026.0623
 - FileListControl hinzugefügt

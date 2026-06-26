@@ -14,7 +14,7 @@ Namespace IniFileControl
     ''' <see cref="TitelText"/> und <see cref="Lines"/> werden intern auf die UI
     ''' synchronisiert.
     ''' </remarks>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)> ' Sorgt dafür, dass das Control in einer angegebenen Toolbox-Kategorie erscheint.
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Steuerelement zum Anzeigen des Dateiinhaltes.")> ' Beschreibt das Control im Designer (Eigenschaftenfenster/Toolbox).
     <System.ComponentModel.ToolboxItem(True)> ' Markiert die Klasse als Toolbox-Element.
     <System.Drawing.ToolboxBitmap(GetType(ContentView), "IniFileControl.ContentView.bmp")> ' Legt das Symbol in der Toolbox fest.

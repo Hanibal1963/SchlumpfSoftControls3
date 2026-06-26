@@ -9,7 +9,7 @@ Namespace NotifyFormControl
     ''' <summary>
     ''' Control zum Anzeigen von Benachrichtigungsfenstern.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Control zum Anzeigen von Benachrichtigungsfenstern.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(NotifyForm), "NotifyFormControl.NotifyForm.bmp")>

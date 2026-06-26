@@ -3,12 +3,13 @@
 ' Author: Andreas Sauer
 ' Datum: 25.04.2026
 ' --------------------------------------------------------------------------------------------------------
+
 Namespace AniGifControl
 
     ''' <summary>
     ''' Control zum Anzeigen von animierten Grafiken.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Control zum Anzeigen von animierten Grafiken.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(AniGif), "AniGifControl.AniGif.bmp")>
@@ -143,8 +144,8 @@ Namespace AniGifControl
         End Property
 
         ''' <summary>
-        ''' Legt fest, ob die benutzerdefinierte Anzeigegeschwindigkeit (Timer/FPS) oder die im GIF hinterlegte Bildfolge
-        ''' (ImageAnimator) verwendet wird.
+        ''' Legt fest, ob die benutzerdefinierte Anzeigegeschwindigkeit (Timer/FPS) oder die im GIF hinterlegte
+        ''' Bildfolge (ImageAnimator) verwendet wird.
         ''' </summary>
         <System.ComponentModel.Browsable(True)>
         <System.ComponentModel.Category("Behavior")>

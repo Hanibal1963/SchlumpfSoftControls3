@@ -12,5 +12,5 @@
 <Assembly: System.Reflection.AssemblyTrademark("")>
 <Assembly: System.Reflection.AssemblyCulture("")>
 <Assembly: System.Runtime.InteropServices.ComVisible(False)>
-<Assembly: System.Reflection.AssemblyVersion("1.2026.0626.6")>
-<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0626.6")>
+<Assembly: System.Reflection.AssemblyVersion("1.2026.0626.8")>
+<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0626.8")>

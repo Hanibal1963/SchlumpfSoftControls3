@@ -17,7 +17,7 @@ Namespace IniFileControl
     ''' Klick auf den Übernehmen-Button per <see cref="CommentChanged"/> nach außen
     ''' gemeldet.
     ''' </remarks>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Steuerelement zum Anzeigen und Bearbeiten des Datei- oder Abschnitts- Kommentars einer INI - Datei.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(CommentEdit), "IniFileControl.CommentEdit.bmp")>

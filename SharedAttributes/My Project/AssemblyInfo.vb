@@ -28,5 +28,5 @@ Imports System.Runtime.InteropServices
 '      Revision
 '
 
-<Assembly: AssemblyVersion("1.2026.0626.1")>
-<Assembly: AssemblyFileVersion("1.2026.0626.1")>
+<Assembly: AssemblyVersion("1.2026.0626.2")>
+<Assembly: AssemblyFileVersion("1.2026.0626.2")>

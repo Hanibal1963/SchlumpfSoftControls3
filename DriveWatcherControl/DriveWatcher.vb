@@ -20,7 +20,7 @@ Namespace DriveWatcherControl
     ''' Für Netzlaufwerke werden zusätzlich <see cref="NetworkDriveAdded"/> und
     ''' <see cref="NetworkDriveRemoved"/> bereitgestellt.
     ''' </remarks>
-    <ProvideToolboxControl("Schlumpfsoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.ToolboxItem(True)>
     <System.ComponentModel.DesignTimeVisible(True)>
     <System.ComponentModel.Description("Steuerelement zum Überwachen der Anzahl der Laufwerke.")>

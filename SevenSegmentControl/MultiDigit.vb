@@ -9,7 +9,7 @@ Namespace SevenSegmentControl
     ''' <summary>
     ''' Stellt ein Control dar, das mehrere Siebensegmentanzeigen enthält.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Stellt ein Control dar, das mehrere Siebensegmentanzeigen enthält.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(MultiDigit), "SevenSegmentControl.MultiDigit.bmp")>

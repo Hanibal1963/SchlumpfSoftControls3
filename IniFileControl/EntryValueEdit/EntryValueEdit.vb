@@ -14,7 +14,7 @@ Namespace IniFileControl
     ''' Änderungen werden nicht sofort gemeldet, sondern erst nach expliziter
     ''' Bestätigung über den Übernehmen-Button per <see cref="ValueChanged"/>.
     ''' </remarks>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Steuerelement zum Anzeigen und Bearbeiten der Einträge eines Abschnitts einer INI - Datei.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(EntryValueEdit), "IniFileControl.EntryValueEdit.bmp")> ' Hinweis: Das Bitmap "EntryValueEdit.bmp" muss als eingebettete Ressource vorliegen (BuildAction: Embedded Resource).

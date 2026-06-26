@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <AssemblyVersion>1.2026.0626.0</AssemblyVersion>
+    <AssemblyVersion>1.2026.0626.2</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -76,7 +76,6 @@
   <ItemGroup>
     <Compile Include="DiagonalLineModes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="ProvideToolboxControlAttribute.vb" />
     <Compile Include="Shape.Designer.vb">
       <DependentUpon>Shape.vb</DependentUpon>
     </Compile>
@@ -109,6 +108,12 @@
     <EmbeddedResource Include="Shape.resx">
       <DependentUpon>Shape.vb</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedAttributes\SharedAttributes.vbproj">
+      <Project>{de3061c5-f6a9-4b01-9d04-ee0366af091e}</Project>
+      <Name>SharedAttributes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -13,7 +13,7 @@ Namespace FileListControl
     ''' Es bietet Funktionalität zum Sortieren von Spalten, Anpassen der Spaltengröße
     ''' sowie zum Speichern und Laden der Spaltenreihenfolge.
     ''' </summary>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.ToolboxItem(True)>
     <System.ComponentModel.DesignTimeVisible(True)>
     <System.ComponentModel.Description("Steuerelement zum Anzeigen der Dateien und Unterordner eines Ordners.")>

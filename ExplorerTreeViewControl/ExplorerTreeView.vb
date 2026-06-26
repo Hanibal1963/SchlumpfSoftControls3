@@ -47,7 +47,7 @@ Namespace ExplorerTreeViewControl
     '''  </item>
     ''' </list>
     ''' </remarks>
-    <ProvideToolboxControl("SchlumpfSoft Controls", False)>
+    <SchlumpfSoft.ProvideToolboxControlAttribute("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Stellt ein Steuerelement zur Anzeige und Navigation der Verzeichnisstruktur des Computers bereit.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(ExplorerTreeView), "ExplorerTreeViewControl.ExplorerTreeView.bmp")>

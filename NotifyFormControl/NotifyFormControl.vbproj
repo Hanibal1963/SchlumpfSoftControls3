@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <AssemblyVersion>1.2026.0626.0</AssemblyVersion>
+    <AssemblyVersion>1.2026.0626.2</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -89,7 +89,6 @@
     <Compile Include="NotifyFormControlPackage.vb" />
     <Compile Include="NotifyFormDesign.vb" />
     <Compile Include="NotifyformStyle.vb" />
-    <Compile Include="ProvideToolboxControlAttribute.vb" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,6 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NotifyFormControl.NotifyForm.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedAttributes\SharedAttributes.vbproj">
+      <Project>{de3061c5-f6a9-4b01-9d04-ee0366af091e}</Project>
+      <Name>SharedAttributes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
