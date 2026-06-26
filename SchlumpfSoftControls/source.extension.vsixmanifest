@@ -8,7 +8,7 @@
         <License>License.txt</License>
         <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
         <Icon>Icon.png</Icon>
-        <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, Control, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit</Tags>
+        <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, Control, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>
@@ -40,5 +40,6 @@
         <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="FileListControl" Path="|FileListControl;PkgdefProjectOutputGroup|" />
         <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="SevenSegmentControl" Path="|SevenSegmentControl;PkgdefProjectOutputGroup|" />
         <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="IniFileControl" Path="|IniFileControl;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ExplorerTreeViewControl" Path="|ExplorerTreeViewControl;PkgdefProjectOutputGroup|" />
     </Assets>
 </PackageManifest>
