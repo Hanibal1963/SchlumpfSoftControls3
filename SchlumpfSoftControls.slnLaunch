@@ -97,5 +97,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "ExplorerTreeViewControlTest",
+    "Projects": [
+      {
+        "Path": "ExplorerTreeViewControlTest\\ExplorerTreeViewControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
