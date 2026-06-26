@@ -1,6 +1,11 @@
-﻿
+﻿' --------------------------------------------------------------------------------------------------------
+' Datei: ExplorerTreeView.vb
+' Author: Andreas Sauer
+' Datum: 26.06.2026
+' --------------------------------------------------------------------------------------------------------
+
 Imports System.Linq
-Imports Microsoft.VisualBasic
+'Imports Microsoft.VisualBasic
 
 Namespace ExplorerTreeViewControl
 
@@ -330,6 +335,7 @@ Namespace ExplorerTreeViewControl
         ''' </remarks>
         Public Sub New()
             Me.InitializeComponent()
+            Me.TV.ShowNodeToolTips = True
             Me.LoadImages()
             Me.SetRootNode()
         End Sub
@@ -354,14 +360,13 @@ Namespace ExplorerTreeViewControl
             For Each pathsegment As String In Me.GetPathSegments(Path)
                 lastpath = System.IO.Path.Combine(lastpath, pathsegment)
                 foundNode = Me.FindNodeByPath(lastnode.Nodes, lastpath)
-                If IsNothing(foundNode) Then Return False
+                If Microsoft.VisualBasic.IsNothing(foundNode) Then Return False
                 foundNode.Expand()
                 lastnode = foundNode
             Next
             Me.TV.SelectedNode = lastnode
             Return True
         End Function
-
 
 #End Region
 
@@ -440,6 +445,10 @@ Namespace ExplorerTreeViewControl
                 Case TypeOf Node Is FolderNode
                     CType(Node, FolderNode).LoadSubfolders()
             End Select
+
+            For Each child As System.Windows.Forms.TreeNode In Node.Nodes
+                Me.UpdateNodeAccessVisual(child)
+            Next
         End Sub
 
         Private Sub CreateFileSystemWatcher(FolderPath As String)
@@ -504,7 +513,18 @@ Namespace ExplorerTreeViewControl
         End Sub
 
         Private Sub TV_BeforeExpand(sender As Object, e As System.Windows.Forms.TreeViewCancelEventArgs) Handles TV.BeforeExpand
-            Me.LoadSubfolders(e.Node) ' Lädt die untergeordneten Knoten des aktuellen Knotens.
+            If TypeOf e.Node Is ComputerNode Then
+                Me.LoadSubfolders(e.Node)
+                Return
+            End If
+
+            Dim path As String = Me.GetDirectoryPath(e.Node)
+            If Not Me.CanOpenFolder(path) Then
+                e.Cancel = True ' anzeigen ja, öffnen nein
+                Return
+            End If
+
+            Me.LoadSubfolders(e.Node)
         End Sub
 
         Private Sub TV_AfterExpand(sender As Object, e As System.Windows.Forms.TreeViewEventArgs) Handles TV.AfterExpand
@@ -518,6 +538,8 @@ Namespace ExplorerTreeViewControl
         Private Sub TV_AfterSelect(sender As Object, e As System.Windows.Forms.TreeViewEventArgs) Handles TV.AfterSelect
             Dim selectedpath As String = Me.GetDirectoryPath(e.Node)
             If String.IsNullOrEmpty(selectedpath) Then Exit Sub
+            If Not Me.CanOpenFolder(selectedpath) Then Exit Sub ' kein Event für geschützte Ordner
+
             Me._SelectedPath = selectedpath
             RaiseEvent SelectedPathChanged(Me, New SelectedPathChangedEventArgs(selectedpath))
         End Sub
@@ -550,6 +572,34 @@ Namespace ExplorerTreeViewControl
                     End If
                 End If
             Next
+        End Sub
+
+        Private Function CanOpenFolder(path As String) As Boolean
+            If String.IsNullOrWhiteSpace(path) Then Return False
+
+            Try
+                Using it = System.IO.Directory.EnumerateFileSystemEntries(path).GetEnumerator()
+                    Dim unused = it.MoveNext() ' Zugriffstest (auch bei leerem Ordner gültig)
+                End Using
+                Return True
+            Catch ex As System.UnauthorizedAccessException
+                Return False
+            Catch ex As System.IO.IOException
+                Return False
+            End Try
+        End Function
+
+        Private Sub UpdateNodeAccessVisual(node As System.Windows.Forms.TreeNode)
+            Dim path As String = Me.GetDirectoryPath(node)
+            If String.IsNullOrWhiteSpace(path) Then Exit Sub
+
+            If Me.CanOpenFolder(path) Then
+                node.ForeColor = Me.TV.ForeColor
+                node.ToolTipText = String.Empty
+            Else
+                node.ForeColor = System.Drawing.Color.Gray
+                node.ToolTipText = "Kein Zugriff auf diesen Ordner"
+            End If
         End Sub
 
 #End Region

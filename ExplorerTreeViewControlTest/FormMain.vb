@@ -17,6 +17,8 @@ Public Class FormMain
             For Each file As String In Directory.GetFiles(selpath) ' Dateien auslesen
                 Dim unused2 = Me.ListView.Items.Add(Me.GetName(file))
             Next
+        Catch ex As UnauthorizedAccessException
+            ' geschützter Ordner: ignorieren oder Hinweis anzeigen
         Catch ex As IOException
         End Try
 
@@ -27,7 +29,7 @@ Public Class FormMain
         Dim result As DialogResult = Me.FolderBrowserDialog1.ShowDialog(Me)
         If result = DialogResult.OK Then
             Me.LabelPath.Text = Me.FolderBrowserDialog1.SelectedPath
-            Me.ExplorerTreeView1.ExpandPath(Me.FolderBrowserDialog1.SelectedPath)
+            Dim unused = Me.ExplorerTreeView1.ExpandPath(Me.FolderBrowserDialog1.SelectedPath)
         End If
 
     End Sub
