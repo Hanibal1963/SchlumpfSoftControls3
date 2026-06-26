@@ -7,6 +7,7 @@ Die Sammlung enthält aktuell folgende Controls:
 - [AniGifControl](AniGifControl/ReadMe.md) - Ein Control zum Anzeigen von animierten GIF - Grafiken.
 - [ColorProgressBarControl](ColorProgressBarControl/ReadMe.md) - Ein Control zum Anzeigen eines anpassbaren Fortschrittsbalkens mit verschiedenen Farben.
 - [DriveWatcherControl](DriveWatcherControl/ReadMe.md) - Ein Control zum Überwachen von Laufwerken und Anzeigen von Informationen über diese.
+- [ExplorerTreeViewControl](ExplorerTreeViewControl/ReadMe.md) - Ein Control zum Anzeigen und Navigieren der Windows Verzeichnisstruktur (ähnlich dem linken Bereich des Windows Explorers).
 - [ExtendedRTFControl](ExtendedRTFControl/ReadMe.md) - Ein Control zum Anzeigen von Rich Text Format (RTF) Inhalten mit erweiterten Funktionen.
 - [FileListControl](FileListControl/ReadMe.md) - Ein Control zum Anzeigen von Dateien in einer Liste mit verschiedenen Ansichten und Funktionen.
 - [IniFileControl](IniFileControl/ReadMe.md) - Ein Control zum Anzeigen und Bearbeiten von INI-Dateien mit einer benutzerfreundlichen Oberfläche.
