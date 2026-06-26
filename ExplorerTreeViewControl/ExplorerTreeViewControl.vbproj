@@ -157,7 +157,7 @@
     <None Include="Resources\FolderVideos.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExplorerTreeView.bmp" />
+    <EmbeddedResource Include="ExplorerTreeViewControl.ExplorerTreeView.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DriveWatcherControl\DriveWatcherControl.vbproj">

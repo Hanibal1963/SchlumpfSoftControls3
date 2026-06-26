@@ -4,9 +4,6 @@
 ' Datum: 26.06.2026
 ' --------------------------------------------------------------------------------------------------------
 
-Imports System.Linq
-'Imports Microsoft.VisualBasic
-
 Namespace ExplorerTreeViewControl
 
     ''' <summary>
@@ -53,7 +50,7 @@ Namespace ExplorerTreeViewControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Stellt ein Steuerelement zur Anzeige und Navigation der Verzeichnisstruktur des Computers bereit.")>
     <System.ComponentModel.ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(ExplorerTreeViewControl.ExplorerTreeView), "ExplorerTreeView.bmp")>
+    <System.Drawing.ToolboxBitmap(GetType(ExplorerTreeView), "ExplorerTreeViewControl.ExplorerTreeView.bmp")>
     Public Class ExplorerTreeView
 
         Inherits System.Windows.Forms.UserControl
