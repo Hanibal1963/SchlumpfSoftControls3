@@ -9,6 +9,7 @@ Die Sammlung enthält aktuell folgende Controls:
 - [DriveWatcherControl](DriveWatcherControl/ReadMe.md) - Ein Control zum Überwachen von Laufwerken und Anzeigen von Informationen über diese.
 - [ExtendedRTFControl](ExtendedRTFControl/ReadMe.md) - Ein Control zum Anzeigen von Rich Text Format (RTF) Inhalten mit erweiterten Funktionen.
 - [FileListControl](FileListControl/ReadMe.md) - Ein Control zum Anzeigen von Dateien in einer Liste mit verschiedenen Ansichten und Funktionen.
+- [IniFileControl](IniFileControl/ReadMe.md) - Ein Control zum Anzeigen und Bearbeiten von INI-Dateien mit einer benutzerfreundlichen Oberfläche.
 - [NotifyFormControl](NotifyFormControl/ReadMe.md) - Ein Control zum Erstellen von Benachrichtigungsformularen, die über der Taskleiste oder anderen Anwendungen angezeigt werden können.
 - [SevenSegmentControl](SevenSegmentControl/ReadMe.md) - Ein Control zum Anzeigen von Zahlen im Sieben-Segment-Stil, ähnlich wie bei digitalen Anzeigen.
 - [ShapeControl](ShapeControl/ReadMe.md) - Ein Control zum Zeichnen von verschiedenen geometrischen Formen wie Rechtecken, Ellipsen, Linien usw.

@@ -88,5 +88,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "IniFileControlTest",
+    "Projects": [
+      {
+        "Path": "IniFileControlTest\\IniFileControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
