@@ -16,3 +16,10 @@ Die Sammlung enthält aktuell folgende Controls:
 - [ShapeControl](ShapeControl/ReadMe.md) - Ein Control zum Zeichnen von verschiedenen geometrischen Formen wie Rechtecken, Ellipsen, Linien usw.
 - [TransparentLabelControl](TransparentLabelControl/ReadMe.md) - Ein Control zum Anzeigen von transparenten Texten über anderen Steuerelementen oder Hintergründen.
 - [WizardControl](WizardControl/ReadMe.md) - Ein Control zum Erstellen von mehrseitigen Assistenten (Wizards) mit benutzerdefinierten Seiten und Navigation.
+
+## geplante Änderungen und Erweiterungen
+
+- Neues Control zum Auslesen und Bearbeiten der EXIF Tag's von Bildern hinzufügen.
+- Neues Control zum Auslesen und Bearbeiten von ID3 Tag's von Musikdateien hinzufügen.
+- Neues Control zum Auswählen einer Uhrzeit hinzufügen.
+- Neues Control zur Anzeige und Extraktion von Icons aus DLLs oder EXEs.
