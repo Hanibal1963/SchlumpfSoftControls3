@@ -80,9 +80,12 @@ Public Class ProvideToolboxControlAttribute
             Throw New ArgumentNullException("context")
         End If
 
-        Using key As Key = context.CreateKey(String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}\{1}",
-                                                         ToolboxControlsInstallerPath,
-                                                         context.ComponentType.Assembly.FullName))
+        Using key As Key = context.CreateKey(
+            String.Format(
+            System.Globalization.CultureInfo.InvariantCulture,
+            "{0}\{1}",
+            ToolboxControlsInstallerPath,
+            context.ComponentType.Assembly.FullName))
 
             key.SetValue(String.Empty, Me.Name)
             key.SetValue("Codebase", context.CodeBase)
@@ -103,9 +106,13 @@ Public Class ProvideToolboxControlAttribute
 
         If context IsNot Nothing Then
 
-            context.RemoveKey(String.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}\{1}",
-                                                         ToolboxControlsInstallerPath,
-                                                         context.ComponentType.Assembly.FullName))
+            context.RemoveKey(
+                String.Format(
+                System.Globalization.CultureInfo.InvariantCulture,
+                "{0}\{1}",
+                ToolboxControlsInstallerPath,
+                context.ComponentType.Assembly.FullName))
+
         End If
 
     End Sub
