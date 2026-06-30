@@ -16,24 +16,36 @@ Weitere Infos unter:
 
 ## Eigenschaften
 
-- **AutoPlay** - Steuert, ob die GIF‑Animation automatisch gestartet wird, sobald ein Bild vorhanden ist.
-- **Gif** - Gibt die animierte GIF‑Grafik zurück oder legt diese fest.
-- **GifSizeMode** - Gibt den Anzeigemodus (Skalierung/Ausrichtung) der GIF‑Grafik zurück oder legt ihn fest und kann einen der folgenden Werte annehmen:
-  - **Normal** - Zeigt die GIF‑Grafik in ihrer Originalgröße an.
-  - **CenterImage** - Zentriert die GIF‑Grafik im Control, ohne sie zu skalieren.
-  - **StretchImage** - Skaliert die GIF‑Grafik, um den gesamten Bereich des Controls auszufüllen, wobei das Seitenverhältnis möglicherweise verzerrt wird.   - **Zoom** - Skaliert die GIF‑Grafik, um den gesamten Bereich des Controls auszufüllen, während das Seitenverhältnis beibehalten wird. Es kann zu schwarzen Balken kommen, wenn die Proportionen nicht übereinstimmen.
-- **CustomDisplaySpeed** - Legt fest, ob die benutzerdefinierte Anzeigegeschwindigkeit (Timer/FPS) oder die im GIF hinterlegte Bildfolge (ImageAnimator) verwendet wird.
-- **FramesPerSecound** - Legt die benutzerdefinierte Anzeigegeschwindigkeit in Bildern pro Sekunde (FPS) fest.
-- **ZoomFactor** - Legt den Zoomfaktor in Prozent fest, mit dem das GIF skaliert wird.
+- `AutoPlay`: Steuert, ob die GIF‑Animation automatisch gestartet wird, sobald ein Bild vorhanden ist.
+- `Gif`: Gibt die animierte GIF‑Grafik zurück oder legt diese fest.
+- `GifSizeMode`: Gibt den Anzeigemodus (Skalierung/Ausrichtung) der GIF‑Grafik zurück oder legt ihn fest.
+- `CustomDisplaySpeed`: Legt fest, ob die benutzerdefinierte Anzeigegeschwindigkeit (Timer/FPS) oder die im GIF hinterlegte Bildfolge (`ImageAnimator`) verwendet wird.
+- `FramesPerSecond`: Legt die benutzerdefinierte Anzeigegeschwindigkeit in Bildern pro Sekunde (FPS) fest.
+- `ZoomFactor`: Legt den Zoomfaktor in Prozent fest, mit dem das GIF skaliert wird.
+- `MaximumSize`: Ausgeblendet, da für dieses Control nicht relevant.
+- `MinimumSize`: Ausgeblendet, da für dieses Control nicht relevant.
+- `Padding`: Ausgeblendet, da für dieses Control nicht relevant.
+- `RightToLeft`: Ausgeblendet, da für dieses Control nicht relevant.
+- `Text`: Ausgeblendet, da für dieses Control nicht relevant.
+- `AllowDrop`: Ausgeblendet, da für dieses Control nicht relevant.
+- `AutoScrollOffset`: Ausgeblendet, da für dieses Control nicht relevant.
+- `AutoSize`: Ausgeblendet, da für dieses Control nicht relevant.
+- `BackgroundImage`: Ausgeblendet, da für dieses Control nicht relevant.
+- `BackgroundImageLayout`: Ausgeblendet, da für dieses Control nicht relevant.
+- `ContextMenuStrip`: Ausgeblendet, da für dieses Control nicht relevant.
+- `Dock`: Ausgeblendet, da für dieses Control nicht relevant.
+- `Font`: Ausgeblendet, da für dieses Control nicht relevant.
+- `ForeColor`: Ausgeblendet, da für dieses Control nicht relevant.
 
 ## Methoden
 
-- **StartAnimation** - Startet die Animation (falls noch nicht aktiv).
-- **StopAnimation** - Stoppt die Animation und beendet Timer sowie ImageAnimator.
+- `StartAnimation()`: Startet die Animation (falls noch nicht aktiv).
+- `StopAnimation()`: Stoppt die Animation und beendet Timer sowie `ImageAnimator`.
 
 ## Ereignisse
 
-- **NoAnimation** - Wird ausgelöst wenn die Grafik nicht animiert werden kann.
-- **AutoPlayChanged** - Wird ausgelöst wenn sich die AutoPlay‑Eigenschaft geändert hat.
-- **AnimationStarted** - Wird ausgelöst wenn die Animation gestartet wurde.
-- **AnimationStopped** - Wird ausgelöst wenn die Animation gestoppt wurde.
+- `NoAnimation`: Wird ausgelöst, wenn die Grafik nicht animiert werden kann.
+- `AutoPlayChanged`: Wird ausgelöst, wenn sich die Eigenschaft `AutoPlay` geändert hat.
+- `AnimationStarted`: Wird ausgelöst, wenn die Animation gestartet wurde.
+- `AnimationStopped`: Wird ausgelöst, wenn die Animation gestoppt wurde.
+
