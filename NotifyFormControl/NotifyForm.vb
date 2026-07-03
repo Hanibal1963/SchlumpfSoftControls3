@@ -30,6 +30,10 @@ Namespace NotifyFormControl
         ''' <summary>
         ''' Legt das Aussehen des Benachrichtigungsfensters fest.
         ''' </summary>
+        ''' <value>
+        ''' Ein Wert aus <see
+        ''' cref="SchlumpfSoft.Controls.NotifyFormControl.NotifyFormDesign"/>
+        ''' </value>
         <System.ComponentModel.Browsable(True)>
         <System.ComponentModel.Category("Appearance")>
         <System.ComponentModel.Description("Legt das Aussehen des Benachrichtigungsfensters fest.")>
@@ -78,6 +82,10 @@ Namespace NotifyFormControl
         ''' <summary>
         ''' Legt das anzuzeigende Symbol im Benachrichtigungsfensters fest.
         ''' </summary>
+        ''' <value>
+        ''' Ein Wert aus <see
+        ''' cref="SchlumpfSoft.Controls.NotifyFormControl.NotifyFormStyle"/>
+        ''' </value>
         <System.ComponentModel.Browsable(True)>
         <System.ComponentModel.Category("Appearance")>
         <System.ComponentModel.Description("Legt das anzuzeigende Symbol im Benachrichtigungsfensters fest.")>
