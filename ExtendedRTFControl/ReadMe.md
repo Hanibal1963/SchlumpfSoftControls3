@@ -13,23 +13,25 @@ Erweiterte RichTextBox für Windows Forms mit komfortablen Formatierungs- und Abf
 
 ## Eigenschaften
 
-- **SelectionFontSize** -   Liest oder setzt die Schriftgröße der aktuellen Auswahl bzw. am Caret.
-- **SelectionBold** - Liest oder setzt den Fettdruck der aktuellen Auswahl bzw. am Caret.
-- **SelectionItalic** - Liest oder setzt Kursiv (Italic) der aktuellen Auswahl bzw. am Caret.
-- **SelectionUnderline** - Liest oder setzt Unterstreichung der aktuellen Auswahl bzw. am Caret.
-- **SelectionStrikeout** -  Liest oder setzt Durchstreichung der aktuellen Auswahl bzw. am Caret.
-- **SelectionForeColor** - Liest oder setzt die aktuelle Vordergrundfarbe (Textfarbe) der Auswahl bzw. am Caret.
-- **SelectionBackColor** - Liest oder setzt die aktuelle Hintergrund-/Highlightfarbe der Auswahl bzw. am Caret.
-- **SelectionLeftIndent** - Liest oder setzt den linken Absatz-Einzug (in Pixel) der aktuellen Absatz-/Absatzauswahl bzw. am Caret.
+- `SelectionFontSize`: Liest oder setzt die Schriftgröße der aktuellen Auswahl bzw. am Caret; bei uneinheitlicher Auswahl wird `Nothing` zurückgegeben.
+- `SelectionBold`: Liest oder setzt den Fettdruck der aktuellen Auswahl bzw. am Caret; bei Mischzustand wird `Nothing` zurückgegeben.
+- `SelectionItalic`: Liest oder setzt Kursiv (`Italic`) der aktuellen Auswahl bzw. am Caret; bei Mischzustand wird `Nothing` zurückgegeben.
+- `SelectionUnderline`: Liest oder setzt Unterstreichung der aktuellen Auswahl bzw. am Caret; bei Mischzustand wird `Nothing` zurückgegeben.
+- `SelectionStrikeout`: Liest oder setzt Durchstreichung der aktuellen Auswahl bzw. am Caret; bei Mischzustand wird `Nothing` zurückgegeben.
+- `SelectionForeColor`: Liest oder setzt die aktuelle Vordergrundfarbe (Textfarbe) der Auswahl bzw. am Caret.
+- `SelectionBackColor`: Liest oder setzt die aktuelle Hintergrund-/Highlightfarbe der Auswahl bzw. am Caret.
+- `SelectionLeftIndent`: Liest oder setzt den linken Absatz-Einzug (in Pixel) der aktuellen Absatz-/Absatzauswahl bzw. am Caret; bei Mischzustand wird `Nothing` zurückgegeben.
 
 ## Methoden
 
-- **ClearFormatting** - Entfernt Formatierungen (Schriftstil, Vorder-/Hintergrundfarbe, Bullet-Aufzählung) vollständig aus aktueller Auswahl oder ohne Auswahl ab der Caret-Position.
-- **SetSelectionAlignment** - Setzt die horizontale Ausrichtung der aktuellen Absatz-/Absatzauswahl.
-- **ToggleBold** - Schaltet Fettdruck für aktuelle Auswahl bzw. Caret um.
-- **ToggleItalic** - Schaltet Kursiv für aktuelle Auswahl bzw. Caret um.
-- **ToggleUnderline** - Schaltet Unterstreichung für aktuelle Auswahl bzw. Caret um.
-- **ToggleStrikeout** - Schaltet Durchstreichung für aktuelle Auswahl bzw. Caret um.
-- **ToggleBullet** - Schaltet Bullet-Aufzählung für aktuelle Absatz-/Absatzauswahl um.  
+- `ClearFormatting()`: Entfernt Formatierungen (Schriftstil, Vorder-/Hintergrundfarbe, Bullet-Aufzählung) aus der aktuellen Auswahl oder – ohne Auswahl – ab der Caret-Position.
+- `SetSelectionAlignment(alignment)`: Setzt die horizontale Ausrichtung der aktuellen Absatz-/Absatzauswahl.
+- `ToggleBold()`: Schaltet Fettdruck für aktuelle Auswahl bzw. Caret um.
+- `ToggleItalic()`: Schaltet Kursiv für aktuelle Auswahl bzw. Caret um.
+- `ToggleUnderline()`: Schaltet Unterstreichung für aktuelle Auswahl bzw. Caret um.
+- `ToggleStrikeout()`: Schaltet Durchstreichung für aktuelle Auswahl bzw. Caret um.
+- `ToggleBullet()`: Schaltet Bullet-Aufzählung für aktuelle Absatz-/Absatzauswahl um.
 
 ## Ereignisse
+
+- Keine zusätzlichen öffentlichen Ereignisse definiert (es gelten die geerbten Ereignisse der `RichTextBox`).

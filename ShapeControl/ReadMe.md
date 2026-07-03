@@ -6,21 +6,23 @@ Steuerelement zum Darstellen einer Linie, eines Rechtecks oder einer Ellipse.
 
 ## Eigenschaften
 
-- **ShapeModus** - Legt den Modus des Shape Controls fest. Mögliche Werte sind:
-  - **HorizontalLine** - Eine horizontale Linie, die über die gesamte Breite des Controls verläuft.
-  - **VerticalLine** - Eine vertikale Linie, die über die gesamte Höhe des Controls verläuft.
-  - **DiagonalLine** - Eine diagonale Linie, die von eine Ecke zur gegenüberliegenden Ecke verläuft.
-  - **Rectangle** - Ein Rechteck, das die gesamte Fläche des Controls ausfüllt.
-  - **FilledRectangle** - Ein gefülltes Rechteck, das die gesamte Fläche des Controls ausfüllt.
-  - **Ellipse** - Eine Ellipse, die die gesamte Fläche des Controls ausfüllt.
-  - **FilledEllipse** - Eine gefüllte Ellipse, die die gesamte Fläche des Controls ausfüllt.
-- **DiagonallineModus** - Legt den Modus für die Diagonallinien fest. Mögliche Werte sind:
-  - **TopLeftToBottomRight** - Die Diagonallinie verläuft von der oberen linken Ecke zur unteren rechten Ecke.
-  - **BottomLeftToTopRight** - Die Diagonallinie verläuft von der unteren linken Ecke zur rechten oberen Ecke.
-- **LineWidth** - Legt die Breite der Linien fest.
-- **LineColor** - Legt die Farbe der Linien fest.
-- **FillColor** - Legt die Füllfarbe des Shapes fest.
+- `ShapeModus`: Legt die anzuzeigende Form fest oder gibt diese zurück.
+- `LineWidth`: Legt die Breite der Linie oder Rahmenlinie fest oder gibt diese zurück.
+- `LineColor`: Legt die Farbe der Linie oder Rahmenlinie fest oder gibt diese zurück.
+- `FillColor`: Legt die Füllfarbe für die Form fest oder gibt diese zurück.
+- `DiagonalLineModus`: Legt fest, in welcher Richtung eine diagonale Linie gezeichnet wird.
+- `BackColor`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
+- `BackgroundImage`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
+- `BackgroundImageLayout`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
+- `Font`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
+- `ForeColor`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
+- `RightToLeft`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
+- `Text`: Im Designer ausgeblendet, da für dieses Steuerelement nicht relevant.
 
 ## Methoden
 
+- `New()`: Initialisiert eine neue Instanz von `Shape` und richtet Standardwerte sowie Zeichenstile ein.
+
 ## Ereignisse
+
+- Keine steuerelement-spezifischen Ereignisse dokumentiert.

@@ -14,80 +14,99 @@ Das Set beinhaltet die folgenden Controls:
 
 ## Beschreibung der Controls
 
-### IniFile Eigenschaften
+## Eigenschaften - IniFile
 
-- **FileName** - Der Name der INI - Datei.
-- **FilePath** - Der Pfad der INI - Datei ohne den Dateinamen.
-- **AutoSave** - Speichert die INI - Datei automatisch nach jeder Änderung.
-- **CommentPrefix** - Das Zeichen, das für Kommentare in der INI - Datei verwendet wird.
-- **FileSaved** - zeigt and ob die Datei gespeichert ist oder nicht.
+- `FileSaved`: Gibt an, ob der aktuelle Zustand bereits gespeichert wurde.
+- `CommentPrefix`: Gibt das Prefixzeichen für Kommentare zurück oder legt es fest.
+- `FileName`: Gibt den aktuellen Dateinamen zurück oder legt ihn fest.
+- `FilePath`: Gibt den Pfad zur INI-Datei zurück oder legt ihn fest.
+- `AutoSave`: Legt fest, ob Änderungen automatisch gespeichert werden.
 
-### IniFile Methoden
+### Methoden - IniFile
 
-- **CreateNewFile** - Erstellt eine neue INI - Datei. (mit Standardname oder unter Angabe des Namens)
-- **LoadFile** - Lädt eine INI - Datei. (mit dem in der Eigenschaft Filename angegeben Datei oder unter Angabe einer Datei)
-- **SaveFile** - Speichert die INI - Datei. (mit dem in der Eigenschaft Filename angegeben Datei oder unter Angabe einer Datei)
-- **GetFileContent** - Gibt den Inhalt der INI - Datei zurück.
-- **GetFileComment** - Gibt den Kommentar der INI - Datei zurück.
-- **SetFileComment** - Setzt den Kommentar der INI - Datei.
-- **GetSectionNames** - Gibt eine Liste der Abschnittsnamen zurück.
-- **GetEntryNames** - Gibt eine Liste der Eintragsnamen eines Abschnitts zurück.
-- **AddSection** - Fügt einen neuen Abschnitt hinzu.
-- **AddEntry** - Fügt einen neuen Eintrag zu einem Abschnitt hinzu.
-- **RenameSection** - Benennt einen Abschnitt um.
-- **RenameEntry** - Benennt einen Eintrag um.
-- **DeleteSection** - Löscht einen Abschnitt.
-- **DeleteEntry** - Löscht einen Eintrag.
-- **GetSectionComment** - Gibt den Kommentar eines Abschnitts zurück.
-- **GetEntryValue** - Gibt den Wert eines Eintrags zurück.
-- **SetSectionComment** - Setzt den Kommentar eines Abschnitts.
-- **SetEntryValue** - Setzt den Wert eines Eintrags.
+- `CreateNewFile()`: Erzeugt eine neue INI-Datei mit Beispielinhalt.
+- `CreateNewFile(CommentPrefix As Char)`: Erzeugt eine neue INI-Datei mit Beispielinhalt und definierbarem Kommentar-Präfix.
+- `LoadFile(FilePathAndName As String)`: Lädt eine INI-Datei über den vollständigen Pfad.
+- `LoadFile()`: Lädt die Datei aus `FilePath` und `FileName`.
+- `SaveFileAs(FilePathAndName As String)`: Speichert den aktuellen Inhalt unter einem vollständigen Zielpfad.
+- `SaveFile()`: Speichert den aktuellen Inhalt nach `FilePath` und `FileName`.
+- `GetFileContent() As String()`: Gibt den aktuellen Dateiinhalt als Zeilenarray zurück.
+- `GetFileComment() As String()`: Gibt die Kommentarzeilen im Dateikopf zurück.
+- `SetFileComment(CommentLines() As String)`: Ersetzt den Dateikopf-Kommentar vollständig.
+- `GetSectionNames() As String()`: Gibt alle Abschnittsnamen zurück.
+- `GetEntryNames(SectionName As String) As String()`: Gibt alle Eintragsnamen eines Abschnitts zurück.
+- `AddSection(Name As String)`: Fügt einen neuen Abschnitt hinzu.
+- `AddEntry(Section As String, Name As String)`: Fügt einen neuen Eintrag in einem Abschnitt hinzu.
+- `RenameSection(OldName As String, NewName As String)`: Benennt einen Abschnitt um.
+- `RenameEntry(Section As String, OldName As String, NewName As String)`: Benennt einen Eintrag um.
+- `DeleteSection(Name As String)`: Löscht einen Abschnitt samt zugehörigem Kommentar.
+- `DeleteEntry(Section As String, Entry As String)`: Löscht einen Eintrag aus einem Abschnitt.
+- `GetSectionComment(SectionName As String) As String()`: Gibt die Kommentarzeilen eines Abschnitts zurück.
+- `GetEntryValue(Section As String, Entry As String) As String`: Gibt den Wert eines Eintrags zurück.
+- `SetSectionComment(Name As String, CommentLines() As String)`: Ersetzt den Kommentar eines Abschnitts vollständig.
+- `SetEntryValue(Section As String, Entry As String, Value As String)`: Setzt den Wert eines Eintrags.
 
-### IniFile Events
+### Ereignisse - IniFile
 
-- **FileContentChanged** - Wird ausgelöst, wenn sich der Inhalt der INI - Datei geändert hat.
-- **SectionNameExist** - Wird ausgelöst, wenn versucht wird einen Abschnitt hinzuzufügen oder umzubenennen, dessen Name bereits existiert.
-- **EntryNameExist** - Wird ausgelöst, wenn versucht wird einen Eintrag hinzuzufügen oder umzubenennen, dessen Name bereits existiert.
+- `FileContentChanged`: Wird ausgelöst, wenn sich der Dateiinhalt geändert hat.
+- `SectionNameExist`: Wird ausgelöst, wenn ein Abschnittsname bereits vorhanden ist.
+- `EntryNameExist`: Wird ausgelöst, wenn ein Eintragsname bereits vorhanden ist.
 
----
+### Eigenschaften - ContentView
 
-### ContentView Eigenschaften
+- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
+- `Lines`: Gibt den angezeigten Inhalt als Zeilenarray zurück oder legt ihn fest.
 
-- **TitelText** - Text der in der Headerzeile des Controls angezeigt wird.
-- **Lines** - Eine Liste der Zeilen, die im Control angezeigt werden.
+### Methoden - ContentView
 
----
+- `New()`: Initialisiert das Control und übernimmt den initialen Titel.
 
-### CommentEdit  Eigenschaften
+### Ereignisse - ContentView
 
-- **TitelText** - Text der in der Headerzeile des Controls angezeigt wird.
-- **Comment** - Der Kommentar, der im Control angezeigt und bearbeitet werden kann.
-- **SectionName** - Der Name des Abschnitts, dessen Kommentar bearbeitet wird.
+- Keine öffentlichen Ereignisse.
 
-### CommentEdit Events
+### Eigenschaften - CommentEdit
 
-- **CommentChanged** - Wird ausgelöst, wenn sich der Kommentar geändert hat.
+- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
+- `Comment`: Gibt den Kommentar als Zeilenarray zurück oder legt ihn fest.
+- `SectionName`: Gibt den Namen des aktuell bearbeiteten Abschnitts zurück oder legt ihn fest.
 
----
+### Methoden - CommentEdit
 
-### ListEdit Eigenschaften
+- `New()`: Initialisiert das Control und setzt den Startzustand.
 
-- **TitelText** - Text der in der Headerzeile des Controls angezeigt wird.
-- **ListItems** - Eine Liste der Einträge, die im Control angezeigt werden.
-- **SelectedItem** - Der aktuell ausgewählte Eintrag im Control.
+### Ereignisse - CommentEdit
 
-### ListEdit Events
+- `CommentChanged`: Wird ausgelöst, wenn der bearbeitete Kommentar übernommen wurde.
 
-- **ItemAdded** - Wird ausgelöst, wenn ein neuer Eintrag hinzugefügt wurde.
-- **ItemRenamed** - Wird ausgelöst, wenn ein Eintrag umbenannt wurde.
-- **ItemRemoved** - Wird ausgelöst wenn ein Eintrag gelöscht wurde.
-- **SelectedItemChanged** - Wird ausgelöst, wenn sich der ausgewählte Eintrag geändert hat.
+### Eigenschaften - ListEdit
 
----
+- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
+- `ListItems`: Gibt die anzuzeigenden Listeneinträge zurück oder ersetzt diese.
+- `SelectedElement`: Gibt das aktuell ausgewählte Element zurück.
 
-### EntryValueEdit Eigenschaften
+### Methoden - ListEdit
 
-- **SelectedSection** - Der Name des Abschnitts, dessen Eintrag bearbeitet wird.
-- **SelectedEntry** - Der Name des Eintrags, dessen Wert bearbeitet wird.
-- **NewValue** - Der neue Wert, der im Control eingegeben wurde.
+- `New()`: Initialisiert das Control und übernimmt den Starttitel.
 
+### Ereignisse - ListEdit
+
+- `ItemAdd`: Wird ausgelöst, wenn ein neuer Eintrag angefordert wurde.
+- `ItemRename`: Wird ausgelöst, wenn ein Eintrag umbenannt werden soll.
+- `ItemRemove`: Wird ausgelöst, wenn ein Eintrag gelöscht werden soll.
+- `SelectedItemChanged`: Wird ausgelöst, wenn sich die Auswahl geändert hat.
+
+### Eigenschaften - EntryValueEdit
+
+- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
+- `SelectedSection`: Gibt den aktuell ausgewählten Abschnitt zurück oder legt ihn fest.
+- `SelectedEntry`: Gibt den aktuell ausgewählten Eintrag zurück oder legt ihn fest.
+- `Value`: Gibt den aktuell bearbeiteten Eintragswert zurück oder legt ihn fest.
+
+### Methoden - EntryValueEdit
+
+- `New()`: Initialisiert das Control und übernimmt den Starttitel.
+
+### Ereignisse - EntryValueEdit
+
+- `ValueChanged`: Wird ausgelöst, wenn ein bearbeiteter Wert übernommen wurde.

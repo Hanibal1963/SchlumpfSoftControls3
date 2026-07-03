@@ -10,21 +10,17 @@ Falls jemand die ursprüngliche Quelle kennt oder finden sollte, dann bitte eine 
 
 ## Eigenschaften
 
-- **Title** - Der Titel des Benachrichtigungsfensters.
-- **Message** - Der Text, der im Benachrichtigungsfenster angezeigt wird.
-- **ShowTime** - Die Zeit (in Millisekunden), die das Benachrichtigungsfenster angezeigt wird, bevor es automatisch geschlossen wird.
-- **Design** - Gibt das Design des Benachrichtigungsfensters an und kann folgende Werte annehmen:
-  - **Bright** - Helles Design.
-  - **Colorful** - Farbiges Desingn.
-  - **Dark** - Dunkles Design.
-- **Style** - Der Stil des Benachrichtigungsfensters kann einen der folgenden Werte annehmen:
-  - **Information** - Zeigt ein Informationssymbol an.
-  - **Question** - Zeigt ein Fragesymbol an.
-  - **CriticalError** - Zeigt ein Fehlersymbol an.
-  - **Warning** - Zeigt ein Warnsymbol an.
+- `Design`: Legt das Aussehen des Benachrichtigungsfensters fest (`Bright`, `Colorful`, `Dark`).
+- `Message`: Legt den Benachrichtigungstext fest, der angezeigt werden soll.
+- `ShowTime`: Legt die Anzeigedauer des Benachrichtigungsfensters in Millisekunden fest (`0` = kein automatisches Schließen).
+- `Style`: Legt das anzuzeigende Symbol im Benachrichtigungsfenster fest (`Information`, `Question`, `CriticalError`, `Exclamation`).
+- `Title`: Legt den Text der Titelzeile des Benachrichtigungsfensters fest.
 
 ## Methoden
 
-- **Show** - Zeigt das Benachrichtigungsfenster an.
+- `New()`: Initialisiert eine neue Instanz von `NotifyForm` mit Standardwerten.
+- `Show()`: Zeigt das Meldungsfenster mit den aktuellen Einstellungen an.
 
 ## Ereignisse
+
+- Keine öffentlichen Ereignisse vorhanden.

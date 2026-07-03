@@ -19,10 +19,15 @@ Die Breite der Spalten passt sich automatisch an den Inhalt an.
 
 ## Eigenschaften
 
-- **StartFolder** - Legt den ordner fest dessen Inhalt angezeigt werden soll oder gibt diesen zurück.
-- **AutoResizeColumnsEnabled** - Legt fest ob die Spaltenbreite automatisch an ihren Inhalt angepasst werden oder gibt den Zustand zurück.
-- **ColumnOrderState** - Legt die Reihenfolge der Spalten fest oder gibt diese zurück.
+- `StartFolder`: Ruft den Pfad des Startordners ab oder legt ihn fest.
+- `AutoResizeColumnsEnabled`: Gibt an, ob die automatische Größenanpassung von Spalten aktiviert ist.
+- `ColumnOrderState`: Ruft den aktuellen Zustand der Spaltenreihenfolge als Zeichenfolge ab oder legt ihn fest.
 
 ## Methoden
 
+- `New()`: Initialisiert eine neue Instanz der `FileList`-Klasse, richtet die Benutzeroberfläche ein und lädt die gespeicherte Spaltenreihenfolge.
+- `RefreshEntries()`: Aktualisiert die Einträge im `ListView` durch erneutes Laden des Startordners.
+
 ## Ereignisse
+
+- Keine öffentlichen Ereignisse vorhanden.
