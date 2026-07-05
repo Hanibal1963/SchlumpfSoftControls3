@@ -73,6 +73,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SharedAttributes", "SharedA
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageComboBoxControl", "ImageComboBoxControl\ImageComboBoxControl.vbproj", "{F8FAFC90-7C86-41D9-ABDF-04D4A7A239FB}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageComboBoxControlTest", "ImageComboBoxControlTest\ImageComboBoxControlTest.vbproj", "{CEF89D67-BBCF-4C6F-9709-61A62460901B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -407,6 +409,18 @@ Global
 		{F8FAFC90-7C86-41D9-ABDF-04D4A7A239FB}.Release|arm64.Build.0 = Release|arm64
 		{F8FAFC90-7C86-41D9-ABDF-04D4A7A239FB}.Release|x86.ActiveCfg = Release|x86
 		{F8FAFC90-7C86-41D9-ABDF-04D4A7A239FB}.Release|x86.Build.0 = Release|x86
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Debug|arm64.Build.0 = Debug|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Debug|x86.Build.0 = Debug|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|arm64.ActiveCfg = Release|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|arm64.Build.0 = Release|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|x86.ActiveCfg = Release|Any CPU
+		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
