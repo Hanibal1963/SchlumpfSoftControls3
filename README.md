@@ -19,7 +19,8 @@ Die Sammlung enthält aktuell folgende Controls:
 
 ## geplante Änderungen und Erweiterungen
 
-- [ ] Neues Control zum Auslesen und Bearbeiten der EXIF Tag's von Bildern hinzufügen.
-- [ ] Neues Control zum Auslesen und Bearbeiten von ID3 Tag's von Musikdateien hinzufügen.
+- [ ] Neues Control zum Auslesen und Bearbeiten der EXIF Tags von Bildern hinzufügen.
+- [ ] Neues Control zum Auslesen und Bearbeiten von ID3 Tags von Musikdateien hinzufügen.
 - [ ] Neues Control zum Auswählen einer Uhrzeit hinzufügen.
 - [ ] Neues Control zur Anzeige und Extraktion von Icons aus DLLs oder EXEs.
+- [ ] Neues Control zum Anzeigen einer Combobox mit Symbolen.
