@@ -22,17 +22,36 @@ Partial Class FormMain
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
+        Me.ImageComboBox1 = New SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBox()
         Me.SuspendLayout()
         '
-        'Form1
+        'ImageComboBox1
+        '
+        Me.ImageComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
+        Me.ImageComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ImageComboBox1.Elements.Add(CType(resources.GetObject("ImageComboBox1.Elements"), SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBoxItem))
+        Me.ImageComboBox1.FormattingEnabled = True
+        Me.ImageComboBox1.Location = New System.Drawing.Point(84, 38)
+        Me.ImageComboBox1.Name = "ImageComboBox1"
+        Me.ImageComboBox1.Size = New System.Drawing.Size(163, 21)
+        Me.ImageComboBox1.TabIndex = 0
+        '
+        'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(449, 315)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.ClientSize = New System.Drawing.Size(493, 268)
+        Me.Controls.Add(Me.ImageComboBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "FormMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "FormMain"
         Me.ResumeLayout(False)
 
     End Sub
 
+    Private WithEvents ImageComboBox1 As SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBox
 End Class

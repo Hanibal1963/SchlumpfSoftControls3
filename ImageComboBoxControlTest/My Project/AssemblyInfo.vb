@@ -1,32 +1,17 @@
-﻿Imports System
-Imports System.Reflection
-Imports System.Runtime.InteropServices
+' --------------------------------------------------------------------------------------------------------
+' Datei: AssemblyInfo.vb
+' Author: Andreas Sauer
+' Datum: 05.07.2026
+' --------------------------------------------------------------------------------------------------------
 
-' Allgemeine Informationen über eine Assembly werden über die folgenden
-' Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
-' die einer Assembly zugeordnet sind.
-
-' Werte der Assemblyattribute überprüfen
-
-<Assembly: AssemblyTitle("ImageComboBoxControlTest")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("ImageComboBoxControlTest")>
-<Assembly: AssemblyCopyright("Copyright ©  2026")>
-<Assembly: AssemblyTrademark("")>
-
-<Assembly: ComVisible(False)>
-
-'Die folgende GUID wird für die typelib-ID verwendet, wenn dieses Projekt für COM verfügbar gemacht wird.
-<Assembly: Guid("00867513-7bd5-47fe-a576-16266607e943")>
-
-' Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
-'
-'      Hauptversion
-'      Nebenversion
-'      Buildnummer
-'      Revision
-'
-
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: System.Reflection.AssemblyTitle("ImageComboBoxControlTest")>
+<Assembly: System.Reflection.AssemblyDescription("Testannwendung für ImageComboBox")>
+<Assembly: System.Reflection.AssemblyCompany("Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyProduct("ImageComboBoxControlTest")>
+<Assembly: System.Reflection.AssemblyCopyright("Copyright © 2026 by Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyTrademark("SchlumpfSoft")>
+<Assembly: System.Runtime.InteropServices.ComVisible(False)>
+<Assembly: System.Runtime.InteropServices.Guid("00867513-7bd5-47fe-a576-16266607e943")>
+<Assembly: System.Reflection.AssemblyVersion("1.2026.0705.3")>
+<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0705.3")>
+<Assembly: System.Resources.NeutralResourcesLanguage("de-DE")>

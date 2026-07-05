@@ -106,5 +106,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "ImageComboBoxControlTest",
+    "Projects": [
+      {
+        "Path": "ImageComboBoxControlTest\\ImageComboBoxControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
