@@ -19,6 +19,12 @@ Namespace ImageComboBoxControl
 
         Private _items As ImageComboBoxCollection(Of ImageComboBoxItem)
 
+        ''' <summary>
+        ''' Ruft die Elemente der ComboBox ab.
+        ''' </summary>
+        ''' <value>
+        ''' Die Kollektion der Elemente.
+        ''' </value>
         <System.ComponentModel.Browsable(False)>
         <System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>
         <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
@@ -28,6 +34,12 @@ Namespace ImageComboBoxControl
             End Get
         End Property
 
+        ''' <summary>
+        ''' Ruft die designbare Elementekollektion der ComboBox ab.
+        ''' </summary>
+        ''' <value>
+        ''' Die Elemente der ComboBox.
+        ''' </value>
         <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)>
         <System.ComponentModel.Editor(GetType(ImageComboBoxCollectionEditor), GetType(System.Drawing.Design.UITypeEditor))>
         <System.ComponentModel.MergableProperty(False)>
@@ -43,6 +55,9 @@ Namespace ImageComboBoxControl
             End Get
         End Property
 
+        ''' <summary>
+        ''' Initialisiert eine neue Instanz der Klasse <see cref="ImageComboBox"/>.
+        ''' </summary>
         Public Sub New()
 
             Me.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
