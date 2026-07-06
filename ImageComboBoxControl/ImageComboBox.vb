@@ -20,8 +20,8 @@ Namespace ImageComboBoxControl
         Private _items As ImageComboBoxCollection(Of ImageComboBoxItem)
 
         <System.ComponentModel.Browsable(False)>
-        <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
         <System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>
+        <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
         Public Shadows ReadOnly Property Items As ImageComboBoxCollection(Of ImageComboBoxItem)
             Get
                 Return Me.Elements
@@ -31,6 +31,8 @@ Namespace ImageComboBoxControl
         <System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)>
         <System.ComponentModel.Editor(GetType(ImageComboBoxCollectionEditor), GetType(System.Drawing.Design.UITypeEditor))>
         <System.ComponentModel.MergableProperty(False)>
+        <System.ComponentModel.Description("Die Elemente der ComboBox.")>
+        <System.ComponentModel.Category("Data")>
         Public ReadOnly Property Elements As ImageComboBoxCollection(Of ImageComboBoxItem)
             Get
                 If Me._items Is Nothing Then
