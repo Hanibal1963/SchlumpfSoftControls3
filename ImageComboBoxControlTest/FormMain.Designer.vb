@@ -30,9 +30,14 @@ Partial Class FormMain
         '
         Me.ImageComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
         Me.ImageComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ImageComboBox1.DropDownWidth = 163
         Me.ImageComboBox1.Elements.Add(CType(resources.GetObject("ImageComboBox1.Elements"), SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBoxItem))
+        Me.ImageComboBox1.Elements.Add(CType(resources.GetObject("ImageComboBox1.Elements1"), SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBoxItem))
+        Me.ImageComboBox1.Elements.Add(CType(resources.GetObject("ImageComboBox1.Elements2"), SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBoxItem))
+        Me.ImageComboBox1.Elements.Add(CType(resources.GetObject("ImageComboBox1.Elements3"), SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBoxItem))
+        Me.ImageComboBox1.Elements.Add(CType(resources.GetObject("ImageComboBox1.Elements4"), SchlumpfSoft.Controls.ImageComboBoxControl.ImageComboBoxItem))
         Me.ImageComboBox1.FormattingEnabled = True
-        Me.ImageComboBox1.Location = New System.Drawing.Point(84, 38)
+        Me.ImageComboBox1.Location = New System.Drawing.Point(30, 24)
         Me.ImageComboBox1.Name = "ImageComboBox1"
         Me.ImageComboBox1.Size = New System.Drawing.Size(163, 21)
         Me.ImageComboBox1.TabIndex = 0
