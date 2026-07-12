@@ -12,15 +12,49 @@ Anregungen zu diesem Control hatte ich durch folgende Webseiten:
 
 ---
 
-## Eigenschaften
+## Eigenschaften ImageComboBox
 
 - `Items`: Ruft die Elemente der ComboBox ab.
 - `Elements`: Ruft die designbare Elementekollektion der ComboBox ab.
 
-## Methoden
+## Methoden ImageComboBox
 
 - `New()`: Initialisiert eine neue Instanz der Klasse `ImageComboBox`.
 
-## Ereignisse
+## Ereignisse ImageComboBox
 
 - Keine öffentlichen, spezifischen Ereignisse im Control dokumentiert.
+
+### Eigenschaften - ImageComboBoxItem
+
+- `Value`: Ruft den anzuzeigenden Textwert des Elements ab oder legt ihn fest.
+- `Image`: Ruft das dem Element zugeordnete Bild ab oder legt es fest.
+
+### Methoden - ImageComboBoxItem
+
+- `New()`: Initialisiert eine neue Instanz der Klasse `ImageComboBoxItem`.
+- `New(value As String)`: Initialisiert eine neue Instanz der Klasse `ImageComboBoxItem` mit einem Textwert.
+- `New(value As String, image As System.Drawing.Image)`: Initialisiert eine neue Instanz der Klasse `ImageComboBoxItem` mit Textwert und Bild.
+- `ToString() As String`: Gibt den Textwert des Elements zurück.
+
+### Ereignisse - ImageComboBoxItem
+
+- Keine öffentlichen Ereignisse in `ImageComboBoxItem` dokumentiert.
+
+### Eigenschaften - ImageComboBoxCollection
+
+- `ItemsBase`: Ruft die zugrunde liegende `System.Windows.Forms.ComboBox.ObjectCollection` ab oder legt sie fest.
+- `Item(index As Integer)`: Ruft das `ImageComboBoxItem` am angegebenen Index ab oder legt es fest.
+
+### Methoden - ImageComboBoxCollection
+
+- `Add(value As ImageComboBoxItem) As Integer`: Fügt der Kollektion ein Element hinzu und gibt den Index zurück.
+- `IndexOf(value As ImageComboBoxItem) As Integer`: Ermittelt den Index eines bestimmten Elements in der Kollektion.
+- `Insert(index As Integer, value As ImageComboBoxItem)`: Fügt ein Element an der angegebenen Position in die Kollektion ein.
+- `Remove(value As ImageComboBoxItem)`: Entfernt das angegebene Element aus der Kollektion.
+- `Clear()`: Entfernt alle Elemente aus der Kollektion.
+- `Contains(value As ImageComboBoxItem) As Boolean`: Prüft, ob ein bestimmtes Element in der Kollektion enthalten ist.
+
+### Ereignisse - ImageComboBoxCollection
+
+- `UpdateItems`: Tritt auf, wenn sich die Elemente der Kollektion geändert haben.
