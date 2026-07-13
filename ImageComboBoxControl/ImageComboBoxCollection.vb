@@ -37,6 +37,7 @@ Namespace ImageComboBoxControl
                 _itemsBase = value
 
                 If _itemsBase IsNot Nothing Then
+                    ' Die Ziel-Collection wird vollständig neu aufgebaut, um die Reihenfolge konsistent zu halten.
                     _itemsBase.Clear()
 
                     For Each item As ImageComboBoxItem In Me.List
@@ -85,6 +86,7 @@ Namespace ImageComboBoxControl
         Public Function Add(value As ImageComboBoxItem) As System.Int32
             Dim index As System.Int32 = Me.List.Add(value)
 
+            ' Der Eintrag wird direkt in die Basis-Items übernommen, damit sofort korrekt gezeichnet wird.
             _itemsBase?.Add(value)
 
             RaiseEvent UpdateItems(Me, System.EventArgs.Empty)
@@ -133,6 +135,7 @@ Namespace ImageComboBoxControl
         Public Sub Remove(value As ImageComboBoxItem)
             Dim index As System.Int32 = Me.List.IndexOf(value)
             If index < 0 Then
+                ' Früher Rückgabepunkt vermeidet unnötige Aktualisierung bei nicht vorhandenem Element.
                 Return
             End If
 

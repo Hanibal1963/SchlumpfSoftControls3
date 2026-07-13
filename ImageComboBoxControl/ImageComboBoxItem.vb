@@ -50,6 +50,7 @@ Namespace ImageComboBoxControl
         ''' </summary>
         Public Sub New()
             _value = String.Empty
+            ' Ein minimales Platzhalterbild vermeidet Nullprüfungen in Zeichenroutinen.
             _image = New System.Drawing.Bitmap(1, 1)
         End Sub
 
@@ -61,6 +62,7 @@ Namespace ImageComboBoxControl
         ''' </param>
         Public Sub New(value As String)
             _value = value
+            ' Ein minimales Platzhalterbild vereinfacht die Verarbeitung in OwnerDraw-Szenarien.
             _image = New System.Drawing.Bitmap(1, 1)
         End Sub
 

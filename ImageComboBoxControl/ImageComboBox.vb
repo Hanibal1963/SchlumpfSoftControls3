@@ -61,6 +61,7 @@ Namespace ImageComboBoxControl
         Public Sub New()
 
             Me.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            ' OwnerDrawVariable ist erforderlich, damit Bild und Text pro Eintrag gemeinsam gezeichnet werden können.
             Me.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
             Me.InitializeItemsCollection()
             AddHandler DrawItem, AddressOf Me.ComboBoxDrawItemEvent
@@ -79,6 +80,8 @@ Namespace ImageComboBoxControl
                 Me._items = New ImageComboBoxCollection(Of ImageComboBoxItem)()
                 AddHandler Me._items.UpdateItems, AddressOf Me.UpdateItems
             End If
+
+            ' Die Basis-Items werden bei jeder Initialisierung neu zugewiesen, damit Designer und Laufzeit synchron bleiben.
             Me._items.ItemsBase = MyBase.Items
         End Sub
 
@@ -90,6 +93,7 @@ Namespace ImageComboBoxControl
             Using g As System.Drawing.Graphics = Me.CreateGraphics()
                 Dim maxWidth As System.Int32 = 0
 
+                ' Die maximale Breite wird vorab ermittelt, damit Einträge mit Bild nicht abgeschnitten werden.
                 For Each comboItem As ImageComboBoxItem In Me.Elements
                     Dim itemText As String = String.Empty
                     Dim imageWidth As System.Int32 = 0
@@ -126,6 +130,7 @@ Namespace ImageComboBoxControl
 
                     If comboboxItem.Image IsNot Nothing Then
                         e.Graphics.DrawImage(comboboxItem.Image, e.Bounds.X, e.Bounds.Y, imageWidth, Me.ItemHeight)
+                        ' Text wird nach rechts verschoben, damit Bild und Beschriftung nicht überlappen.
                         textLeft += imageWidth
                     End If
 
