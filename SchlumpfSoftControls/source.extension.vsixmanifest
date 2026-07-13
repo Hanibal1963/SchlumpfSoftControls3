@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="1.2026.0712" Language="de-DE" Publisher="Andreas Sauer" />
+        <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="1.2026.0713" Language="de-DE" Publisher="Andreas Sauer" />
         <DisplayName>SchlumpfSoftControls</DisplayName>
         <Description xml:space="preserve">Eine Sammlung verschiedener Controls.Eine Sammlung verschiedener Controls.</Description>
         <MoreInfo>https://github.com/Hanibal1963/SchlumpfSoftControls3</MoreInfo>

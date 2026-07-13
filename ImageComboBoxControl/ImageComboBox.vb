@@ -9,7 +9,7 @@ Namespace ImageComboBoxControl
     ''' <summary>
     ''' Eine erweiterte ComboBox mit Symbolen.
     ''' </summary>
-    <SchlumpfSoft.ProvideToolboxControl("SchlumpfSoft.Controls.ImageComboBox", False)>
+    <SchlumpfSoft.ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <System.ComponentModel.Description("Eine erweiterte ComboBox mit Symbolen.")>
     <System.ComponentModel.ToolboxItem(True)>
     <System.Drawing.ToolboxBitmap(GetType(ImageComboBox), "ImageComboBoxControl.ImageComboBox.bmp")>
