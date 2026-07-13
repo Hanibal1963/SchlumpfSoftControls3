@@ -75,6 +75,17 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageComboBoxControl", "Ima
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageComboBoxControlTest", "ImageComboBoxControlTest\ImageComboBoxControlTest.vbproj", "{CEF89D67-BBCF-4C6F-9709-61A62460901B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Control-API-Checkliste.md = docs\Control-API-Checkliste.md
+		docs\Control-Backlog-Issues.md = docs\Control-Backlog-Issues.md
+		docs\Control-PR-Checklist.md = docs\Control-PR-Checklist.md
+		docs\Control-PR-Description-Short.md = docs\Control-PR-Description-Short.md
+		docs\Control-Review-Template.md = docs\Control-Review-Template.md
+		docs\Control-Roadmap.md = docs\Control-Roadmap.md
+		docs\Control-Vorschlaege.md = docs\Control-Vorschlaege.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -427,15 +438,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6DC2D356-73A2-48FA-8B32-6B256B016DD9}
-	EndGlobalSection
-	GlobalSection(AutomaticVersions) = postSolution
-		UpdateAssemblyVersion = True
-		UpdateAssemblyFileVersion = True
-		UpdateAssemblyInfoVersion = False
-		AssemblyVersionSettings = None.YearStamp.MMddStamp.IncrementWithResetOnIncrease
-		AssemblyFileVersionSettings = None.YearStamp.MMddStamp.IncrementWithResetOnIncrease
-		UpdatePackageVersion = False
-		AssemblyInfoVersionType = SettingsVersion
-		InheritWinAppVersionFrom = None
 	EndGlobalSection
 EndGlobal
