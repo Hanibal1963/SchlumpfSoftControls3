@@ -85,6 +85,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C
 		docs\Control-Review-Template.md = docs\Control-Review-Template.md
 		docs\Control-Roadmap.md = docs\Control-Roadmap.md
 		docs\Control-Vorschlaege.md = docs\Control-Vorschlaege.md
+		docs\Links.md = docs\Links.md
 		docs\VS-Marketplace-Vorlage.md = docs\VS-Marketplace-Vorlage.md
 	EndProjectSection
 EndProject
