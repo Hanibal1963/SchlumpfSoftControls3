@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-    <Metadata>
-        <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="1.2026.0713.2" Language="de-DE" Publisher="Andreas Sauer" />
-        <DisplayName>SchlumpfSoftControls</DisplayName>
-        <Description xml:space="preserve">Eine Sammlung verschiedener Controls.Eine Sammlung verschiedener Controls.</Description>
-        <MoreInfo>https://github.com/Hanibal1963/SchlumpfSoftControls3</MoreInfo>
-        <License>License.txt</License>
-        <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
-        <Icon>Icon.png</Icon>
-        <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, Control, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView, ComboBox, Image</Tags>
-        <Preview>true</Preview>
-    </Metadata>
-    <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-    </Installation>
-    <Dependencies>
-        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-    </Dependencies>
-    <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
-    </Prerequisites>
-    <Assets>
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="AniGifControl" Path="|AniGifControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ColorProgressBarControl" Path="|ColorProgressBarControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="DriveWatcherControl" Path="|DriveWatcherControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ExtendedRTFControl" Path="|ExtendedRTFControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="WizardControl" Path="|WizardControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="TransparentLabelControl" Path="|TransparentLabelControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ShapeControl" Path="|ShapeControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="NotifyFormControl" Path="|NotifyFormControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="FileListControl" Path="|FileListControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="SevenSegmentControl" Path="|SevenSegmentControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="IniFileControl" Path="|IniFileControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ExplorerTreeViewControl" Path="|ExplorerTreeViewControl;PkgdefProjectOutputGroup|" />
-        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="ImageComboBoxControl" Path="|ImageComboBoxControl;PkgdefProjectOutputGroup|" />
-    </Assets>
+  <Metadata>
+    <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="3.2026.0713.2" Language="de-DE" Publisher="Andreas Sauer" />
+    <DisplayName>SchlumpfSoftControls</DisplayName>
+    <Description xml:space="preserve">Eine Sammlung verschiedener Controls.Eine Sammlung verschiedener Controls.</Description>
+    <MoreInfo>https://github.com/Hanibal1963/SchlumpfSoftControls3</MoreInfo>
+    <License>License.txt</License>
+    <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
+    <Icon>Icon.png</Icon>
+    <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, Control, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView, ComboBox, Image</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.5,)" d:Source="Manual" />
+  </Dependencies>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" DisplayName="Visual Studio core editor" Version="[17.0,18.0)" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|AniGifControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="AniGifControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ColorProgressBarControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ColorProgressBarControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|DriveWatcherControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="DriveWatcherControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ExtendedRTFControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ExtendedRTFControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|WizardControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="WizardControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|TransparentLabelControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="TransparentLabelControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ShapeControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ShapeControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|NotifyFormControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="NotifyFormControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|FileListControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="FileListControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|SevenSegmentControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="SevenSegmentControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|IniFileControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="IniFileControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ExplorerTreeViewControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ExplorerTreeViewControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ImageComboBoxControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ImageComboBoxControl" />
+  </Assets>
 </PackageManifest>

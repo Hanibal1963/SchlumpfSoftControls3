@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.8.12009.203 stable
+VisualStudioVersion = 18.8.12009.203
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SchlumpfSoftControls", "SchlumpfSoftControls\SchlumpfSoftControls.vbproj", "{DE4CAEAC-9D2B-40B1-AE07-E1C1EC1EF991}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -85,6 +85,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C
 		docs\Control-Review-Template.md = docs\Control-Review-Template.md
 		docs\Control-Roadmap.md = docs\Control-Roadmap.md
 		docs\Control-Vorschlaege.md = docs\Control-Vorschlaege.md
+		docs\VS-Marketplace-Vorlage.md = docs\VS-Marketplace-Vorlage.md
 	EndProjectSection
 EndProject
 Global
