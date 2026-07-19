@@ -8,9 +8,9 @@
 <Assembly: System.Reflection.AssemblyDescription("Eine Sammlung verschiedener Controls")>
 <Assembly: System.Reflection.AssemblyCompany("Andreas Sauer")>
 <Assembly: System.Reflection.AssemblyProduct("SchlumpfSoftControls")>
-<Assembly: System.Reflection.AssemblyCopyright("Copyright � 2026 by Andreas Sauer")>
+<Assembly: System.Reflection.AssemblyCopyright("Copyright © 2026 by Andreas Sauer")>
 <Assembly: System.Reflection.AssemblyTrademark("SchlumpfSoft")>
 <Assembly: System.Runtime.InteropServices.ComVisible(False)>
-<Assembly: System.Reflection.AssemblyVersion("1.2026.0717.0")>
-<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0717.0")>
+<Assembly: System.Reflection.AssemblyVersion("3.2026.0717.0")>
+<Assembly: System.Reflection.AssemblyFileVersion("3.2026.0717.0")>
 <Assembly: System.Resources.NeutralResourcesLanguage("de-DE")>

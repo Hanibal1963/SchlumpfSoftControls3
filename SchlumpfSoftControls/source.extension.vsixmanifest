@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="3.2026.0713.2" Language="de-DE" Publisher="Andreas Sauer" />
+    <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="3.2026.0719.0" Language="de-DE" Publisher="Andreas Sauer" />
     <DisplayName>SchlumpfSoftControls</DisplayName>
-    <Description xml:space="preserve">Eine Sammlung verschiedener Controls.Eine Sammlung verschiedener Controls.</Description>
+    <Description xml:space="preserve">Eine Sammlung verschiedener Controls.</Description>
     <MoreInfo>https://github.com/Hanibal1963/SchlumpfSoftControls3</MoreInfo>
     <License>License.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
@@ -28,18 +28,18 @@
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" DisplayName="Visual Studio core editor" Version="[17.0,18.0)" />
   </Prerequisites>
   <Assets>
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|AniGifControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="AniGifControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ColorProgressBarControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ColorProgressBarControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|DriveWatcherControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="DriveWatcherControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ExtendedRTFControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ExtendedRTFControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|WizardControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="WizardControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|TransparentLabelControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="TransparentLabelControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ShapeControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ShapeControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|NotifyFormControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="NotifyFormControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|FileListControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="FileListControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|SevenSegmentControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="SevenSegmentControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|IniFileControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="IniFileControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ExplorerTreeViewControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ExplorerTreeViewControl" />
-    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ImageComboBoxControl;PkgdefProjectOutputGroup|" d:Source="Project" d:ProjectName="ImageComboBoxControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|AniGifControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="AniGifControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ColorProgressBarControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="ColorProgressBarControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|DriveWatcherControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="DriveWatcherControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ExtendedRTFControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="ExtendedRTFControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|WizardControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="WizardControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|TransparentLabelControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="TransparentLabelControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ShapeControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="ShapeControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|NotifyFormControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="NotifyFormControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|FileListControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="FileListControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|SevenSegmentControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="SevenSegmentControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|IniFileControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="IniFileControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ExplorerTreeViewControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="ExplorerTreeViewControl" />
+    <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|ImageComboBoxControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="ImageComboBoxControl" />
   </Assets>
 </PackageManifest>
