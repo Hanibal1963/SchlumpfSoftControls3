@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="3.2026.0719.0" Language="de-DE" Publisher="Andreas Sauer" />
+    <Identity Id="SchlumpfSoftControls.c578021c-aff1-4192-ac44-32744474397f" Version="3.2026.0719.1" Language="de-DE" Publisher="Andreas Sauer" />
     <DisplayName>SchlumpfSoftControls</DisplayName>
     <Description xml:space="preserve">Eine Sammlung verschiedener Controls.</Description>
     <MoreInfo>https://github.com/Hanibal1963/SchlumpfSoftControls3</MoreInfo>
@@ -11,13 +11,13 @@
     <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, Control, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView, ComboBox, Image</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.8)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.8)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,18.8)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
   </Installation>
@@ -25,7 +25,7 @@
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.5,)" d:Source="Manual" />
   </Dependencies>
   <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" DisplayName="Visual Studio core editor" Version="[17.0,18.0)" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" DisplayName="Visual Studio core editor" Version="[17.0,18.8)" />
   </Prerequisites>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.ToolboxControl" Path="|AniGifControl;PkgdefProjectOutputGroup|" d:Source="Projekt" d:ProjectName="AniGifControl" />
