@@ -78,16 +78,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		docs\ChatLog1.md = docs\ChatLog1.md
-		docs\Control-API-Checkliste.md = docs\Control-API-Checkliste.md
-		docs\Control-Backlog-Issues.md = docs\Control-Backlog-Issues.md
-		docs\Control-PR-Checklist.md = docs\Control-PR-Checklist.md
-		docs\Control-PR-Description-Short.md = docs\Control-PR-Description-Short.md
-		docs\Control-Review-Template.md = docs\Control-Review-Template.md
-		docs\Control-Roadmap.md = docs\Control-Roadmap.md
 		docs\Control-Vorschlaege.md = docs\Control-Vorschlaege.md
 		docs\Links.md = docs\Links.md
 		docs\VS-Marketplace-Vorlage.md = docs\VS-Marketplace-Vorlage.md
 	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PasswordControl", "PasswordControl\PasswordControl.vbproj", "{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PasswordControlTest", "PasswordControlTest\PasswordControlTest.vbproj", "{D42A28DF-39BC-4747-BC92-6064E976DA6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -379,6 +377,26 @@ Global
 		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|arm64.Build.0 = Release|Any CPU
 		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|x86.ActiveCfg = Release|Any CPU
 		{CEF89D67-BBCF-4C6F-9709-61A62460901B}.Release|x86.Build.0 = Release|Any CPU
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Debug|arm64.ActiveCfg = Debug|arm64
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Debug|arm64.Build.0 = Debug|arm64
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Debug|x86.ActiveCfg = Debug|x86
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Debug|x86.Build.0 = Debug|x86
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Release|arm64.ActiveCfg = Release|arm64
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Release|arm64.Build.0 = Release|arm64
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Release|x86.ActiveCfg = Release|x86
+		{8B1E7099-02FA-4285-818A-E6BDA49D5EA8}.Release|x86.Build.0 = Release|x86
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Debug|arm64.Build.0 = Debug|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Debug|x86.Build.0 = Debug|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Release|arm64.ActiveCfg = Release|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Release|arm64.Build.0 = Release|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Release|x86.ActiveCfg = Release|Any CPU
+		{D42A28DF-39BC-4747-BC92-6064E976DA6C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -115,5 +115,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "PasswordControlTest",
+    "Projects": [
+      {
+        "Path": "PasswordControlTest\\PasswordControlTest.vbproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
