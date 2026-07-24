@@ -171,6 +171,10 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3bPkgdefProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
+    <ProjectReference Include="..\PasswordControl\PasswordControl.vbproj">
+      <Project>{8b1e7099-02fa-4285-818a-e6bda49d5ea8}</Project>
+      <Name>PasswordControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SevenSegmentControl\SevenSegmentControl.vbproj">
       <Project>{222AC22C-CB46-46EC-A499-03639CD00678}</Project>
       <Name>SevenSegmentControl</Name>
