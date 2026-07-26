@@ -8,7 +8,7 @@
     <License>License.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
     <Icon>Icon.png</Icon>
-    <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, Control, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView, ComboBox, Image, Password</Tags>
+    <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView, ComboBox, Image, Password</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.8)">
