@@ -32,12 +32,22 @@ Namespace PasswordControl
 
 #Region "Definition der Ereignisse"
 
+        ''' <summary>
+        ''' Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Hashwert erzeugt wurde.
+        ''' </summary>
+        ''' <param name="sender">Das Steuerelement, das das Ereignis auslöst.</param>
+        ''' <param name="e">Enthält den neu erzeugten Passwort-Hash.</param>
+        <System.ComponentModel.Description("Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Hashwert erzeugt wurde.")>
         Public Event PasswortHashChanged(sender As Object, e As PasswordHashChangedEventArgs)
 
 #End Region
 
 #Region "Definition der Eigenschaften"
 
+        ''' <summary>
+        ''' Gibt den zuletzt erzeugten Passwort-Hash zurück.
+        ''' </summary>
+        <System.ComponentModel.Description("Gibt den zuletzt erzeugten Passwort-Hash zurück.")>
         Public ReadOnly Property PasswortHash As String
             Get
                 Return Me._passwortHash
@@ -48,11 +58,18 @@ Namespace PasswordControl
 
 #Region "Öffentliche Methoden"
 
+        ''' <summary>
+        ''' Initialisiert eine neue Instanz des <see cref="Password" />-Steuerelements.
+        ''' </summary>
         Public Sub New()
             Me.InitializeComponent()
+            ' Legt eine Mindestgröße fest, damit Textfeld und Symbol stets sichtbar bleiben.
             Me.MinimumSize = New System.Drawing.Size(100, 20)
+            ' Setzt die Standardgröße des Steuerelements beim Einfügen in den Designer.
             Me.Size = New System.Drawing.Size(100, 20)
+            ' Zeigt beim Start das Symbol zum Ausblenden des Passworts an.
             Me.PB.Image = My.Resources.pic_noshow
+            ' Aktiviert die maskierte Eingabe als Standardverhalten.
             Me.TB.UseSystemPasswordChar = True
         End Sub
 
@@ -62,7 +79,9 @@ Namespace PasswordControl
 
         Private Sub CheckTBText()
             Dim tbtext As String = Me.TB.Text
+            ' Erzeugt nur dann einen Hash, wenn tatsächlich ein Passwort eingegeben wurde.
             Dim Hash = If(String.IsNullOrWhiteSpace(tbtext), $"", Me.CreateHash(tbtext))
+            ' Benachrichtigt Abonnenten über den neu berechneten Hashwert.
             RaiseEvent PasswortHashChanged(Me, New PasswordHashChangedEventArgs(Hash))
         End Sub
 
@@ -76,14 +95,17 @@ Namespace PasswordControl
 
             Dim salt(SaltSize - 1) As Byte
             Using randomNumberGenerator As System.Security.Cryptography.RandomNumberGenerator = System.Security.Cryptography.RandomNumberGenerator.Create()
+                ' Erzeugt für jeden Hashvorgang ein neues zufälliges Salt.
                 randomNumberGenerator.GetBytes(salt)
             End Using
 
             Dim hash As Byte()
             Using deriveBytes As New System.Security.Cryptography.Rfc2898DeriveBytes(inputtext, salt, IterationCount, System.Security.Cryptography.HashAlgorithmName.SHA256)
+                ' Leitet aus Passwort, Salt und Iterationen einen stabilen Hashwert ab.
                 hash = deriveBytes.GetBytes(HashSize)
             End Using
 
+            ' Speichert Iterationen, Salt und Hash gemeinsam als Zeichenfolge für die spätere Prüfung.
             result = String.Format("{0}.{1}.{2}", IterationCount, System.Convert.ToBase64String(salt), System.Convert.ToBase64String(hash))
 
             Return result
@@ -95,21 +117,25 @@ Namespace PasswordControl
 #Region "Ereignisbehandlungen"
 
         Private Sub Password_Resize(sender As Object, e As System.EventArgs) Handles Me.Resize
+            ' Erzwingt eine konstante Höhe, damit das Layout des Passwortfeldes stabil bleibt.
             Me.Height = 20
         End Sub
 
         Private Sub PB_Click(sender As Object, e As System.EventArgs) Handles PB.Click
             Me._showpasswort = Not Me._showpasswort
             If Me._showpasswort Then
+                ' Wechselt auf das Symbol für sichtbare Passwörter und zeigt den Text unmaskiert an.
                 Me.PB.Image = My.Resources.pic_show
                 Me.TB.UseSystemPasswordChar = False
             Else
+                ' Stellt das Symbol für ausgeblendete Passwörter wieder her und maskiert die Eingabe.
                 Me.PB.Image = My.Resources.pic_noshow
                 Me.TB.UseSystemPasswordChar = True
             End If
         End Sub
 
         Private Sub TB_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles TB.KeyDown
+            ' Löst die Hashbildung direkt bei Bestätigung mit der Eingabetaste aus.
             If e.KeyCode = System.Windows.Forms.Keys.Enter Then Me.CheckTBText()
         End Sub
 
