@@ -1,15 +1,14 @@
 ﻿' --------------------------------------------------------------------------------------------------------
-' Datei: Form1.vb
+' Datei: FormMain.vb
 ' Author: Andreas Sauer
 ' Datum: 24.07.2026
 ' --------------------------------------------------------------------------------------------------------
 
-Imports SchlumpfSoft.Controls
+Public Class FormMain
 
-Public Class Form1
-
-    Private Sub Password1_PasswortHashChanged(sender As Object, e As PasswordControl.PasswordHashChangedEventArgs) Handles Password1.PasswortHashChanged
-        Me.Label1.Text = $"Erzeugter Hashwert = {e.Hash}"
+    Public Sub New()
+        Me.InitializeComponent()
+        Me.Text = $"{My.Application.Info.AssemblyName} V{My.Application.Info.Version} {My.Application.Info.Copyright}"
     End Sub
 
 End Class

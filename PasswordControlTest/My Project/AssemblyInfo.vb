@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Werte der Assemblyattribute überprüfen
 
 <Assembly: AssemblyTitle("PasswordControlTest")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("TestApplication für PasswordControl")>
+<Assembly: AssemblyCompany("Andreas Sauer")>
 <Assembly: AssemblyProduct("PasswordControlTest")>
-<Assembly: AssemblyCopyright("Copyright ©  2026")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyCopyright("Copyright ©  2026 Andreas Sauer")>
+<Assembly: AssemblyTrademark("SchlumpfSoft")>
 
 <Assembly: ComVisible(False)>
 
