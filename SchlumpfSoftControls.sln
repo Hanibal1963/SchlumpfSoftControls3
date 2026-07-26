@@ -77,9 +77,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageComboBoxControlTest", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		docs\ChatLog1.md = docs\ChatLog1.md
 		docs\Control-Vorschlaege.md = docs\Control-Vorschlaege.md
 		docs\Links.md = docs\Links.md
+		docs\Symole für Markdown.md = docs\Symole für Markdown.md
+		docs\Vorschlag PasswordControl.md = docs\Vorschlag PasswordControl.md
 		docs\VS-Marketplace-Vorlage.md = docs\VS-Marketplace-Vorlage.md
 	EndProjectSection
 EndProject
