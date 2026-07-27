@@ -1,5 +1,8 @@
 ﻿Versionsverlauf
 
+27.07.2026 Version 3.2026.0727
+- Passwordcontrol wieder entfernt, da es fehlerhaft ist.
+
 26.07.2026 Version 3.2026.0726
 - PasswordControl hinzugefügt
 
