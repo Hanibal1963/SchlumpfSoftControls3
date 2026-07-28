@@ -1,4 +1,6 @@
 ﻿Versionsverlauf
+ 28.07.2026 Version 3.2026.0728
+ - Fehler in der PasswordControl behoben, sodass die Passwortanzeige wieder korrekt funktioniert.
 
 27.07.2026 Version 3.2026.0727
 - Passwordcontrol wieder entfernt, da es fehlerhaft ist.
