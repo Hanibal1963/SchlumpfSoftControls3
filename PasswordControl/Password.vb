@@ -4,6 +4,8 @@
 ' Datum: 24.07.2026
 ' --------------------------------------------------------------------------------------------------------
 
+'Imports System
+
 Namespace PasswordControl
 
     ''' <summary>
@@ -15,44 +17,22 @@ Namespace PasswordControl
     <System.Drawing.ToolboxBitmap(GetType(Password), "PasswordControl.Password.bmp")>
     Public Class Password
 
-#Region "Definition der Konstanten"
-
-        Private Const SaltSize As Integer = 16
-        Private Const HashSize As Integer = 32
-        Private Const IterationCount As Integer = 100000
-
-#End Region
-
 #Region "Definition der Variablen"
 
-        Private _passwortHash As String
         Private _showpasswort As Boolean
+        Private ReadOnly _security As New SecurityService()
 
 #End Region
 
 #Region "Definition der Ereignisse"
 
         ''' <summary>
-        ''' Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Hashwert erzeugt wurde.
+        ''' Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Code erzeugt wurde.
         ''' </summary>
         ''' <param name="sender">Das Steuerelement, das das Ereignis auslöst.</param>
-        ''' <param name="e">Enthält den neu erzeugten Passwort-Hash.</param>
-        <System.ComponentModel.Description("Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Hashwert erzeugt wurde.")>
-        Public Event PasswortHashChanged(sender As Object, e As PasswordHashChangedEventArgs)
-
-#End Region
-
-#Region "Definition der Eigenschaften"
-
-        ''' <summary>
-        ''' Gibt den zuletzt erzeugten Passwort-Hash zurück.
-        ''' </summary>
-        <System.ComponentModel.Description("Gibt den zuletzt erzeugten Passwort-Hash zurück.")>
-        Public ReadOnly Property PasswortHash As String
-            Get
-                Return Me._passwortHash
-            End Get
-        End Property
+        ''' <param name="e">Enthält den neu erzeugten Passwort-Code.</param>
+        <System.ComponentModel.Description("Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Code erzeugt wurde.")>
+        Public Event PasswortChanged(sender As Object, e As PasswordChangedEventArgs)
 
 #End Region
 
@@ -62,148 +42,104 @@ Namespace PasswordControl
         ''' Initialisiert eine neue Instanz des <see cref="Password" />-Steuerelements.
         ''' </summary>
         Public Sub New()
+
             Me.InitializeComponent()
+
             ' Legt eine Mindestgröße fest, damit Textfeld und Symbol stets sichtbar bleiben.
             Me.MinimumSize = New System.Drawing.Size(100, 20)
+
             ' Setzt die Standardgröße des Steuerelements beim Einfügen in den Designer.
             Me.Size = New System.Drawing.Size(100, 20)
+
             ' Zeigt beim Start das Symbol zum Ausblenden des Passworts an.
             Me.PB.Image = My.Resources.pic_noshow
+
             ' Aktiviert die maskierte Eingabe als Standardverhalten.
             Me.TB.UseSystemPasswordChar = True
+
         End Sub
+
+        Public Function VerifyPasswordCode(PasswordCode As String) As Boolean
+
+            Dim pwhash As String = Me._security.UnprotectSecret(PasswordCode)
+            Return Me._security.VerifyPassword(Me.TB.Text, pwhash)
+
+        End Function
 
 #End Region
 
 #Region "Interne Methoden"
 
         Private Sub CheckTBText()
+
+            ' Liest den aktuell im Textfeld eingegebenen Passworttext aus.
             Dim tbtext As String = Me.TB.Text
+
             ' Erzeugt nur dann einen Hash, wenn tatsächlich ein Passwort eingegeben wurde.
-            Dim Hash = If(String.IsNullOrWhiteSpace(tbtext), $"", Me.CreateHash(tbtext))
+            Dim hash = If(String.IsNullOrWhiteSpace(tbtext), $"", Me._security.CreatePasswordHash(tbtext))
+
+            ' Schützt den erzeugten Hash zusätzlich, bevor er an andere Komponenten weitergegeben wird.
+            Dim passwordcode As String = Me._security.ProtectSecret(hash)
+
             ' Benachrichtigt Abonnenten über den neu berechneten Hashwert.
-            RaiseEvent PasswortHashChanged(Me, New PasswordHashChangedEventArgs(Hash))
+            RaiseEvent PasswortChanged(Me, New PasswordChangedEventArgs(passwordcode))
+
         End Sub
 
-        Private Function CreateHash(inputtext As String) As String
-
-            Dim result As String = $""
-
-            If inputtext Is Nothing Then
-                Return result
-            End If
-
-            Dim salt(SaltSize - 1) As Byte
-            Using randomNumberGenerator As System.Security.Cryptography.RandomNumberGenerator = System.Security.Cryptography.RandomNumberGenerator.Create()
-                ' Erzeugt für jeden Hashvorgang ein neues zufälliges Salt.
-                randomNumberGenerator.GetBytes(salt)
-            End Using
-
-            Dim hash As Byte()
-            Using deriveBytes As New System.Security.Cryptography.Rfc2898DeriveBytes(inputtext, salt, IterationCount, System.Security.Cryptography.HashAlgorithmName.SHA256)
-                ' Leitet aus Passwort, Salt und Iterationen einen stabilen Hashwert ab.
-                hash = deriveBytes.GetBytes(HashSize)
-            End Using
-
-            ' Speichert Iterationen, Salt und Hash gemeinsam als Zeichenfolge für die spätere Prüfung.
-            result = String.Format("{0}.{1}.{2}", IterationCount, System.Convert.ToBase64String(salt), System.Convert.ToBase64String(hash))
-
-            Return result
-
-        End Function
-
-#End Region
-
-#Region "Ereignisbehandlungen"
-
         Private Sub Password_Resize(sender As Object, e As System.EventArgs) Handles Me.Resize
+
             ' Erzwingt eine konstante Höhe, damit das Layout des Passwortfeldes stabil bleibt.
             Me.Height = 20
+
+        End Sub
+
+        Private Sub Password_EnabledChanged(sender As Object, e As System.EventArgs) Handles Me.EnabledChanged
+
+            If Me.Enabled Then
+
+                ' Aktiviert die Eingabe und zeigt das Symbol an.
+                Me.TB.Enabled = True
+                Me.PB.Image = If(Me._showpasswort, My.Resources.pic_show, My.Resources.pic_noshow)
+
+            Else
+
+                ' Deaktiviert die Eingabe und blendet das Symbol aus.
+                Me.TB.Enabled = False
+                Me.PB.Image = If(Me._showpasswort, My.Resources.pic_show_gray, My.Resources.pic_noshow_gray)
+
+            End If
+
         End Sub
 
         Private Sub PB_Click(sender As Object, e As System.EventArgs) Handles PB.Click
+
+            ' Wechselt zwischen der Anzeige des Passworts und der Maskierung.
             Me._showpasswort = Not Me._showpasswort
+
             If Me._showpasswort Then
+
                 ' Wechselt auf das Symbol für sichtbare Passwörter und zeigt den Text unmaskiert an.
                 Me.PB.Image = My.Resources.pic_show
                 Me.TB.UseSystemPasswordChar = False
+
             Else
+
                 ' Stellt das Symbol für ausgeblendete Passwörter wieder her und maskiert die Eingabe.
                 Me.PB.Image = My.Resources.pic_noshow
                 Me.TB.UseSystemPasswordChar = True
+
             End If
+
         End Sub
 
         Private Sub TB_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles TB.KeyDown
+
             ' Löst die Hashbildung direkt bei Bestätigung mit der Eingabetaste aus.
             If e.KeyCode = System.Windows.Forms.Keys.Enter Then Me.CheckTBText()
+
         End Sub
 
 #End Region
-
-
-
-
-        'Private Shared Function ByteArraysAreEqual(leftbytes As Byte(), rightbytes As Byte()) As Boolean
-
-        '    ' Gibt sofort False zurück, wenn eines der Arrays Nothing ist
-        '    ' oder wenn beide Arrays unterschiedlich lang sind.
-        '    If leftbytes Is Nothing OrElse rightbytes Is Nothing OrElse leftbytes.Length <> rightbytes.Length Then
-        '        Return False
-        '    End If
-
-        '    ' Speichert alle gefundenen Unterschiede zwischen den Bytes.
-        '    Dim difference As Integer = 0
-
-        '    ' Vergleicht jedes Byte-Paar an derselben Position.
-        '    For index As Integer = 0 To leftbytes.Length - 1
-        '        ' Xor liefert 0 bei gleichen Werten, sonst einen Wert ungleich 0.
-        '        ' Mit Or werden alle Unterschiede gesammelt.
-        '        difference = difference Or (leftbytes(index) Xor rightbytes(index))
-        '    Next
-
-        '    ' Nur wenn kein Unterschied gefunden wurde, sind die Arrays gleich.
-        '    Return difference = 0
-
-        'End Function
-
-        'Public Shared Function VerifyPassword(passwort As String, gespeicherterHash As String) As Boolean
-        '    If passwort Is Nothing Then
-        '        Throw New ArgumentNullException(NameOf(passwort))
-        '    End If
-
-        '    If String.IsNullOrWhiteSpace(gespeicherterHash) Then
-        '        Return False
-        '    End If
-
-        '    Dim teile As String() = gespeicherterHash.Split("."c)
-        '    If teile.Length <> 3 Then
-        '        Return False
-        '    End If
-
-        '    Dim iterationen As Integer
-        '    If Not Integer.TryParse(teile(0), iterationen) Then
-        '        Return False
-        '    End If
-
-        '    Dim salt As Byte()
-        '    Dim erwarteterHash As Byte()
-
-        '    Try
-        '        salt = Convert.FromBase64String(teile(1))
-        '        erwarteterHash = Convert.FromBase64String(teile(2))
-        '    Catch ex As FormatException
-        '        Return False
-        '    End Try
-
-        '    Dim aktuellerHash As Byte()
-        '    Using deriveBytes As New Rfc2898DeriveBytes(passwort, salt, iterationen, HashAlgorithmName.SHA256)
-        '        aktuellerHash = deriveBytes.GetBytes(erwarteterHash.Length)
-        '    End Using
-
-        '    Return ByteArraysAreEqual(aktuellerHash, erwarteterHash)
-        'End Function
-
 
     End Class
 

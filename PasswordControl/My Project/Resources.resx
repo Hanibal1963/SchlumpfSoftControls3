@@ -120,8 +120,18 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pic_noshow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pic_noshow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>wenn angezeigt</comment>
+  </data>
+  <data name="pic_noshow_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pic_noshow_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>wenn ausgeblendet</comment>
   </data>
   <data name="pic_show" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pic_show.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>wenn angezeigt</comment>
+  </data>
+  <data name="pic_show_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pic_show_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>wenn ausgeblendet</comment>
   </data>
 </root>

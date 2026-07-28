@@ -13,6 +13,6 @@ Imports System.Resources
 <Assembly: System.Reflection.AssemblyCopyright("Copyright © 2026 by Andreas Sauer")>
 <Assembly: System.Reflection.AssemblyTrademark("SchlumpfSoft")>
 <Assembly: System.Runtime.InteropServices.ComVisible(False)>
-<Assembly: System.Reflection.AssemblyVersion("1.2026.0726.1")>
-<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0726.1")>
+<Assembly: System.Reflection.AssemblyVersion("1.2026.0728.7")>
+<Assembly: System.Reflection.AssemblyFileVersion("1.2026.0728.7")>
 <Assembly: NeutralResourcesLanguage("de-DE")>
