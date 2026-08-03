@@ -26,6 +26,7 @@ Namespace PasswordControl
             If String.IsNullOrWhiteSpace(password) Then Throw New System.ArgumentException(
                 "Passwort darf nicht leer sein.", NameOf(password))
 
+            ' Erzeugt für jedes Passwort einen eigenen Zufalls-Salt, damit identische Eingaben unterschiedliche Hashwerte ergeben.
             Dim salt(SaltSize - 1) As Byte
 
             Using rng As System.Security.Cryptography.RandomNumberGenerator = System.Security.Cryptography.RandomNumberGenerator.Create()
@@ -35,7 +36,10 @@ Namespace PasswordControl
             Using pbkdf2 As New System.Security.Cryptography.Rfc2898DeriveBytes(
                 password, salt, Iterations, System.Security.Cryptography.HashAlgorithmName.SHA256)
 
+                ' Leitet aus Passwort, Salt und Iterationszahl einen festen Hashwert für die spätere Prüfung ab.
                 Dim hash As Byte() = pbkdf2.GetBytes(HashSize)
+
+                ' Serialisiert alle benötigten Bestandteile in ein speicherbares Textformat für die spätere Verifikation.
                 Return $"PBKDF2${Iterations}${System.Convert.ToBase64String(salt)}${System.Convert.ToBase64String(hash)}"
 
             End Using
@@ -48,25 +52,38 @@ Namespace PasswordControl
         ''' <param name="password">Eingegebenes Klartext-Passwort.</param>
         ''' <param name="storedHash">Gespeicherter Hash im Format PBKDF2$Iterationen$Salt$Hash.</param>
         ''' <returns>True, wenn gültig; sonst False.</returns>
-        ''' <exception cref="ArgumentException">Wenn Eingaben ungültig sind.</exception>
+        ''' <exception cref="ArgumentException">Wenn das Passwort oder der gespeicherte Hash leer ist.</exception>
+        ''' <exception cref="FormatException">Wenn Salt oder Hash im gespeicherten Wert nicht gültig Base64-kodiert sind.</exception>
         Public Function VerifyPassword(password As String, storedHash As String) As Boolean
 
-            If String.IsNullOrWhiteSpace(password) Then Return False
-            If String.IsNullOrWhiteSpace(storedHash) Then Return False
+            If String.IsNullOrWhiteSpace(password) Then
+                Throw New System.ArgumentException("Passwort darf nicht leer sein.", NameOf(password))
+            End If
 
+            If String.IsNullOrWhiteSpace(storedHash) Then
+                Throw New System.ArgumentException("Hash darf nicht leer sein.", NameOf(storedHash))
+            End If
+
+            ' Zerlegt den gespeicherten Wert in Algorithmuskennung, Iterationszahl, Salt und Hash.
             Dim parts As String() = storedHash.Split("$"c)
             If parts.Length <> 4 OrElse Not String.Equals(parts(0), "PBKDF2", System.StringComparison.Ordinal) Then Return False
 
             Dim iterationCount As Integer
+
+            ' Übernimmt die im gespeicherten Hash hinterlegte Iterationszahl, damit Altwerte weiterhin validiert werden können.
             If Not Integer.TryParse(parts(1), iterationCount) Then Return False
 
+            ' Stellt Salt und Ziel-Hash aus der Base64-Darstellung wieder als Bytefolgen her.
             Dim salt As Byte() = System.Convert.FromBase64String(parts(2))
             Dim expectedHash As Byte() = System.Convert.FromBase64String(parts(3))
 
             Using pbkdf2 As New System.Security.Cryptography.Rfc2898DeriveBytes(
                 password, salt, iterationCount, System.Security.Cryptography.HashAlgorithmName.SHA256)
 
+                ' Berechnet aus dem eingegebenen Passwort erneut den Vergleichswert in derselben Länge wie der gespeicherte Hash.
                 Dim actualHash As Byte() = pbkdf2.GetBytes(expectedHash.Length)
+
+                ' Vergleicht beide Bytefolgen in konstanter Zeit, um Rückschlüsse über die Laufzeit zu vermeiden.
                 Return Me.FixedTimeEquals(actualHash, expectedHash)
 
             End Using
@@ -78,14 +95,20 @@ Namespace PasswordControl
         ''' </summary>
         ''' <param name="plainText">Zu schützender Klartext.</param>
         ''' <returns>Base64-kodierter Ciphertext.</returns>
+        ''' <exception cref="ArgumentNullException">Wenn <paramref name="plainText" /> den Wert <c>Nothing</c> hat.</exception>
+        ''' <exception cref="System.Security.Cryptography.CryptographicException">Wenn der Klartext nicht geschützt werden kann.</exception>
         Public Function ProtectSecret(plainText As String) As String
 
             If plainText Is Nothing Then Throw New System.ArgumentNullException(NameOf(plainText))
 
+            ' Wandelt den Klartext in UTF-8-Bytes um, damit die DPAPI mit einem stabilen Binärformat arbeiten kann.
             Dim data As Byte() = System.Text.Encoding.UTF8.GetBytes(plainText)
+
+            ' Schützt die Daten benutzergebunden, sodass nur derselbe Windows-Benutzer sie wieder entschlüsseln kann.
             Dim protectedBytes As Byte() = System.Security.Cryptography.ProtectedData.Protect(
                 data, Nothing, System.Security.Cryptography.DataProtectionScope.CurrentUser)
 
+            ' Kodiert die geschützten Bytes als Text, damit sie gespeichert oder übertragen werden können.
             Return System.Convert.ToBase64String(protectedBytes)
 
         End Function
@@ -95,15 +118,22 @@ Namespace PasswordControl
         ''' </summary>
         ''' <param name="protectedBase64">Base64-kodierter Ciphertext.</param>
         ''' <returns>Entschlüsselter Klartext.</returns>
+        ''' <exception cref="ArgumentException">Wenn <paramref name="protectedBase64" /> leer ist.</exception>
+        ''' <exception cref="FormatException">Wenn <paramref name="protectedBase64" /> kein gültiger Base64-Text ist.</exception>
+        ''' <exception cref="System.Security.Cryptography.CryptographicException">Wenn die DPAPI-Daten nicht für den aktuellen Benutzer entschlüsselt werden können.</exception>
         Public Function UnprotectSecret(protectedBase64 As String) As String
 
             If String.IsNullOrWhiteSpace(protectedBase64) Then Throw New System.ArgumentException(
                 "Wert darf nicht leer sein.", NameOf(protectedBase64))
 
+            ' Wandelt den gespeicherten Base64-Text zurück in die ursprünglich geschützte Bytefolge.
             Dim protectedBytes As Byte() = System.Convert.FromBase64String(protectedBase64)
+
+            ' Hebt den benutzergebundenen DPAPI-Schutz wieder auf und liefert die ursprünglichen Nutzdaten zurück.
             Dim data As Byte() = System.Security.Cryptography.ProtectedData.Unprotect(
                 protectedBytes, Nothing, System.Security.Cryptography.DataProtectionScope.CurrentUser)
 
+            ' Rekonstruiert den entschlüsselten Klartext aus den UTF-8-Bytes.
             Return System.Text.Encoding.UTF8.GetString(data)
 
         End Function
@@ -119,6 +149,7 @@ Namespace PasswordControl
             If a Is Nothing OrElse b Is Nothing Then Return False
             If a.Length <> b.Length Then Return False
 
+            ' Verknüpft alle Byte-Unterschiede bitweise, damit die Schleife unabhängig vom ersten Treffer vollständig durchläuft.
             Dim result As Integer = 0
             For i As Integer = 0 To a.Length - 1
                 result = result Or (a(i) Xor b(i))
