@@ -68,16 +68,24 @@ Diese Klasse stellt die Daten für das Ereignis `PasswortChanged` bereit.
 Der `SecurityService` übernimmt die sicherheitsrelevanten Operationen des Steuerelements.
 Dazu gehören das Erzeugen eines Passwort-Hashs, das Prüfen eines Passworts sowie das Schützen und Entschützen sensibler Daten.
 
-### Methoden
+### Eigenschaften - SecurityService
+
+Die Klasse stellt keine öffentlichen Eigenschaften bereit.
+
+### Methoden - SecurityService
 
 - `CreatePasswordHash(password As String) As String`
-  Erzeugt einen serialisierten PBKDF2-Hash im Format `PBKDF2$Iterationen$Salt$Hash`.
+  Erzeugt einen speicherbaren Passwort-Hash im Format `PBKDF2$Iterationen$Salt$Hash`.
 - `VerifyPassword(password As String, storedHash As String) As Boolean`
-  Prüft, ob ein eingegebenes Passwort zum gespeicherten Hash passt.
+  Validiert ein eingegebenes Passwort gegen einen gespeicherten PBKDF2-Hash.
 - `ProtectSecret(plainText As String) As String`
-  Schützt Klartext benutzergebunden mit DPAPI und gibt den Wert Base64-kodiert zurück.
+  Verschlüsselt Daten benutzergebunden mit DPAPI und liefert einen Base64-kodierten Ciphertext zurück.
 - `UnprotectSecret(protectedBase64 As String) As String`
-  Entschützt einen Base64-kodierten DPAPI-Wert und liefert den ursprünglichen Klartext zurück.
+  Entschlüsselt benutzergebundene DPAPI-Daten und liefert den ursprünglichen Klartext zurück.
+
+### Ereignisse - SecurityService
+
+Die Klasse stellt keine öffentlichen Ereignisse bereit.
 
 ### Sicherheitsmerkmale
 
