@@ -14,3 +14,4 @@
 <Assembly: System.Runtime.InteropServices.Guid("1d94ad8a-5dbb-48d4-b128-18247638cf10")>
 <Assembly: System.Reflection.AssemblyVersion("1.2026.0717.0")>
 <Assembly: System.Reflection.AssemblyFileVersion("1.2026.0717.0")>
+<Assembly: System.Reflection.AssemblyInformationalVersion("1.2026.0717.0")>

@@ -67,6 +67,6 @@ Neues Control zum Auswählen einer Uhrzeit hinzufügen.
 
 Neues Control zur Anzeige und Extraktion von Icons aus DLLs oder EXEs.
 
- &#x2714; Neues Control zur Eingabe und zum Validieren von Passwörtern hinzufügen.
+&#x2714; Neues Control zur Eingabe und zum Validieren von Passwörtern hinzufügen.
 
 &#x2714; Neues Control zum Anzeigen einer Combobox mit Symbolen.
