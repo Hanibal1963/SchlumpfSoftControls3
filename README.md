@@ -10,7 +10,7 @@ Es wurden gegenüber der vorherigen Versionen einige Änderungen vorgenommen und n
 >
 > *Die 1. Version ist mittlerweile nicht mehr im Marketplace verfügbar. [Der Code ist archiviert.](https://github.com/Hanibal1963/SchlumpfSoftControls)*
 >
-> *Die Version 2 ist noch im Marketplace verfügbar. [Der Code ist archiviert.](https://github.com/Hanibal1963/SchlumpfSoftControls2)*
+> *Die Version 2 ist noch im [Marketplace](https://marketplace.visualstudio.com/items?itemName=AndreasSauer.SchlumpfSoftControls2) verfügbar. [Der Code ist archiviert.](https://github.com/Hanibal1963/SchlumpfSoftControls2)*
 >
 
 ---
