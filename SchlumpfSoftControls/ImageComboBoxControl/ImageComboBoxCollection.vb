@@ -4,6 +4,10 @@
 ' Datum: 05.07.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Collections
+Imports System.Windows.Forms
+
 Namespace ImageComboBoxControl
 
     ''' <summary>
@@ -12,34 +16,31 @@ Namespace ImageComboBoxControl
     ''' <typeparam name="TComboBoxItem">
     ''' Der Typ der verwalteten ComboBox-Elemente.
     ''' </typeparam>
-    Public Class ImageComboBoxCollection(Of TComboBoxItem)
+    Public Class ImageComboBoxCollection(Of TComboBoxItem) : Inherits CollectionBase
 
-        Inherits System.Collections.CollectionBase
+        Private _itemsBase As ComboBox.ObjectCollection
 
         ''' <summary>
         ''' Tritt auf, wenn sich die Elemente der Kollektion geändert haben.
         ''' </summary>
-        Public Event UpdateItems As System.EventHandler
+        Public Event UpdateItems As EventHandler
 
-        Private _itemsBase As System.Windows.Forms.ComboBox.ObjectCollection
 
         ''' <summary>
-        ''' Ruft die zugrunde liegende <see cref="System.Windows.Forms.ComboBox.ObjectCollection"/> ab oder legt sie fest.
+        ''' Ruft die zugrunde liegende <see cref="ComboBox.ObjectCollection"/> ab oder legt sie fest.
         ''' </summary>
         ''' <value>
         ''' Die zugrunde liegende Objektkollektion der ComboBox.
         ''' </value>
-        Public Property ItemsBase As System.Windows.Forms.ComboBox.ObjectCollection
+        Public Property ItemsBase As ComboBox.ObjectCollection
             Get
                 Return Me._itemsBase
             End Get
-            Set(value As System.Windows.Forms.ComboBox.ObjectCollection)
+            Set(value As ComboBox.ObjectCollection)
                 Me._itemsBase = value
-
                 If Me._itemsBase IsNot Nothing Then
                     ' Die Ziel-Collection wird vollständig neu aufgebaut, um die Reihenfolge konsistent zu halten.
                     Me._itemsBase.Clear()
-
                     For Each item As ImageComboBoxItem In Me.List
                         Dim unused = Me._itemsBase.Add(item)
                     Next
@@ -56,21 +57,19 @@ Namespace ImageComboBoxControl
         ''' <value>
         ''' Das <see cref="ImageComboBoxItem"/> am angegebenen Index.
         ''' </value>
-        ''' <exception cref="System.ArgumentOutOfRangeException">
+        ''' <exception cref="ArgumentOutOfRangeException">
         ''' Der angegebene Index liegt außerhalb des gültigen Bereichs.
         ''' </exception>
-        Default Public Property Item(index As System.Int32) As ImageComboBoxItem
+        Default Public Property Item(index As Int32) As ImageComboBoxItem
             Get
                 Return CType(Me.List(index), ImageComboBoxItem)
             End Get
             Set(value As ImageComboBoxItem)
                 Me.List(index) = value
-
                 If Me._itemsBase IsNot Nothing Then
                     Me._itemsBase(index) = value
                 End If
-
-                RaiseEvent UpdateItems(Me, System.EventArgs.Empty)
+                RaiseEvent UpdateItems(Me, EventArgs.Empty)
             End Set
         End Property
 
@@ -83,13 +82,13 @@ Namespace ImageComboBoxControl
         ''' <returns>
         ''' Der nullbasierte Index des hinzugefügten Elements.
         ''' </returns>
-        Public Function Add(value As ImageComboBoxItem) As System.Int32
-            Dim index As System.Int32 = Me.List.Add(value)
+        Public Function Add(value As ImageComboBoxItem) As Int32
+            Dim index As Int32 = Me.List.Add(value)
 
             ' Der Eintrag wird direkt in die Basis-Items übernommen, damit sofort korrekt gezeichnet wird.
             Me._itemsBase?.Add(value)
 
-            RaiseEvent UpdateItems(Me, System.EventArgs.Empty)
+            RaiseEvent UpdateItems(Me, EventArgs.Empty)
             Return index
         End Function
 
@@ -102,7 +101,7 @@ Namespace ImageComboBoxControl
         ''' <returns>
         ''' Der nullbasierte Index des Elements oder -1, wenn das Element nicht gefunden wurde.
         ''' </returns>
-        Public Function IndexOf(value As ImageComboBoxItem) As System.Int32
+        Public Function IndexOf(value As ImageComboBoxItem) As Int32
             Return Me.List.IndexOf(value)
         End Function
 
@@ -115,15 +114,13 @@ Namespace ImageComboBoxControl
         ''' <param name="value">
         ''' Das einzufügende Element.
         ''' </param>
-        ''' <exception cref="System.ArgumentOutOfRangeException">
+        ''' <exception cref="ArgumentOutOfRangeException">
         ''' Der angegebene Index liegt außerhalb des gültigen Bereichs.
         ''' </exception>
-        Public Sub Insert(index As System.Int32, value As ImageComboBoxItem)
+        Public Sub Insert(index As Int32, value As ImageComboBoxItem)
             Me.List.Insert(index, value)
-
             Me._itemsBase?.Insert(index, value)
-
-            RaiseEvent UpdateItems(Me, System.EventArgs.Empty)
+            RaiseEvent UpdateItems(Me, EventArgs.Empty)
         End Sub
 
         ''' <summary>
@@ -133,17 +130,14 @@ Namespace ImageComboBoxControl
         ''' Das zu entfernende Element.
         ''' </param>
         Public Sub Remove(value As ImageComboBoxItem)
-            Dim index As System.Int32 = Me.List.IndexOf(value)
+            Dim index As Int32 = Me.List.IndexOf(value)
             If index < 0 Then
                 ' Früher Rückgabepunkt vermeidet unnötige Aktualisierung bei nicht vorhandenem Element.
                 Return
             End If
-
             Me.List.RemoveAt(index)
-
             Me._itemsBase?.RemoveAt(index)
-
-            RaiseEvent UpdateItems(Me, System.EventArgs.Empty)
+            RaiseEvent UpdateItems(Me, EventArgs.Empty)
         End Sub
 
         ''' <summary>
@@ -151,10 +145,8 @@ Namespace ImageComboBoxControl
         ''' </summary>
         Public Overloads Sub Clear()
             Me.List.Clear()
-
             Me._itemsBase?.Clear()
-
-            RaiseEvent UpdateItems(Me, System.EventArgs.Empty)
+            RaiseEvent UpdateItems(Me, EventArgs.Empty)
         End Sub
 
         ''' <summary>

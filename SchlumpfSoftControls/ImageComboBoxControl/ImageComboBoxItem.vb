@@ -13,9 +13,7 @@ Namespace ImageComboBoxControl
     ''' Repräsentiert ein einzelnes Element für die <see cref="ImageComboBox"/>.
     ''' </summary>
     <Serializable>
-    Public Class ImageComboBoxItem
-
-        Implements IDisposable
+    Public Class ImageComboBoxItem : Implements IDisposable
 
         Private _value As String
         Private _image As Image

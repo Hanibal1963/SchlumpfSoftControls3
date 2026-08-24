@@ -9,9 +9,7 @@ Namespace ImageComboBoxControl
     ''' <summary>
     ''' Stellt den Designer-Editor für die <see cref="ImageComboBoxCollection(Of TComboBoxItem)"/> bereit.
     ''' </summary>
-    Public Class ImageComboBoxCollectionEditor
-
-        Inherits CollectionEditor
+    Public Class ImageComboBoxCollectionEditor : Inherits CollectionEditor
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz der Klasse <see cref="ImageComboBoxCollectionEditor"/>.
