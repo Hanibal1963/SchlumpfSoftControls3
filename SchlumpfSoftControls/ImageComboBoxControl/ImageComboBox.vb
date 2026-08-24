@@ -76,6 +76,9 @@ Namespace ImageComboBoxControl
 
         End Sub
 
+        ''' <summary>
+        ''' </summary>
+        ''' <returns></returns>
         Protected Overrides Function CreateControlsInstance() As ControlCollection
 
             Dim result As ControlCollection = MyBase.CreateControlsInstance()
@@ -84,6 +87,9 @@ Namespace ImageComboBoxControl
 
         End Function
 
+        ''' <summary>
+        ''' Initialisiert die Elementekollektion der ComboBox.
+        ''' </summary>
         Private Sub InitializeItemsCollection()
 
             If Me._items Is Nothing Then
@@ -96,10 +102,20 @@ Namespace ImageComboBoxControl
 
         End Sub
 
+        ''' <summary>
+        ''' Aktualisiert die Anzeige der Elemente in der ComboBox.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         Private Sub UpdateItems(sender As Object, e As EventArgs)
             Me.Invalidate()
         End Sub
 
+        ''' <summary>
+        ''' Ermittelt die Höhe und Breite der Einträge in der ComboBox, um die Anzeige korrekt zu gestalten.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         Private Sub ComboBoxMeasureItem(sender As Object, e As MeasureItemEventArgs)
 
             Using g As Graphics = Me.CreateGraphics()
@@ -136,29 +152,36 @@ Namespace ImageComboBoxControl
 
         End Sub
 
+        ''' <summary>
+        ''' Zeichnet die Einträge in der ComboBox mit Bild und Text.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
         Private Sub ComboBoxDrawItemEvent(sender As Object, e As DrawItemEventArgs)
+
             e.DrawBackground()
 
             If e.Index >= 0 AndAlso e.Index < Me.Elements.Count Then
                 Dim comboboxItem As ImageComboBoxItem = Me.Elements(e.Index)
                 If comboboxItem IsNot Nothing Then
+
                     Dim imageWidth As Int32 = Me.ItemHeight
                     Dim textLeft As Int32 = e.Bounds.X
 
                     If comboboxItem.Image IsNot Nothing Then
+
                         e.Graphics.DrawImage(comboboxItem.Image, e.Bounds.X, e.Bounds.Y, imageWidth, Me.ItemHeight)
                         ' Text wird nach rechts verschoben, damit Bild und Beschriftung nicht überlappen.
                         textLeft += imageWidth
+
                     End If
 
                     Dim text As String = If(comboboxItem.Value, String.Empty)
 
-                    e.Graphics.DrawString(
-                        text,
-                        Me.Font,
-                        Brushes.Black,
-                        New RectangleF(textLeft, e.Bounds.Y, Me.DropDownWidth, Me.ItemHeight))
+                    e.Graphics.DrawString(text, Me.Font, Brushes.Black,
+                                          New RectangleF(textLeft, e.Bounds.Y, Me.DropDownWidth, Me.ItemHeight))
                 End If
+
             End If
 
             e.DrawFocusRectangle()
