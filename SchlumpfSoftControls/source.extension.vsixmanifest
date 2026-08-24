@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="SchlumpfSoftControls.f82f9ea5-a8ad-4464-bdc2-2b67ca9b194f" Version="3.2026" Language="de-DE" Publisher="Andreas Sauer" />
+        <DisplayName>SchlumpfSoftControls</DisplayName>
+        <Description xml:space="preserve">Eine Sammlung verschiedener Controls</Description>
+        <License>License.rtf</License>
+        <ReleaseNotes>ReleaseNotes.rtf</ReleaseNotes>
+        <Icon>Icon.png</Icon>
+        <Tags>Control, Animation, Graphic, Bitmap, Gif, Color, ProgressBar, Drive, Watcher, RTF, Text, Format, Wizard, ToolBox, Windows, Forms,Transparent, Text, Label, Line, Rectangle, Ellipse, Shape,Diagonal, Notify, File, List, SevenSegment, IniFile, ListEdit, ContentView, CommentEdit, ValueEdit, Explorer, TreeView, ComboBox, Image, Password</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.ToolboxControl" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>

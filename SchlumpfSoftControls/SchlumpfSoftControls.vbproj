@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <AssemblyVersion>3.2026.0823.28</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>SchlumpfSoftControls.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>SchlumpfSoftControls.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|arm64'">
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>SchlumpfSoftControls.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|arm64'">
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>SchlumpfSoftControls.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MyType>Windows</MyType>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <ProjectGuid>{1B9F83D1-AA8D-4DF2-A51F-8A33A5424B68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SchlumpfSoft.Controls</RootNamespace>
+    <AssemblyName>SchlumpfSoftControls</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+    <UseCodebase>true</UseCodebase>
+    <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CopyBuildOutputToOutputDirectory>true</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>true</CopyOutputSymbolsToOutputDirectory>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <StartAction>Program</StartAction>
+    <StartProgram Condition="'$(DevEnvDir)' != ''">$(DevEnvDir)devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DeployExtension>True</DeployExtension>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>SchlumpfSoftControls.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>SchlumpfSoftControls.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="License.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="ReleaseNotes.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <EmbeddedResource Include="ImageComboBoxControl\ImageComboBox.resx">
+      <DependentUpon>ImageComboBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AniGifControl.AniGif.bmp" />
+    <EmbeddedResource Include="Resources\AniGifControl.Standard.gif" />
+    <EmbeddedResource Include="Resources\ColorProgressBarControl.ColorProgressBar.bmp" />
+    <EmbeddedResource Include="Resources\DriveWatcherControl.DriveWatcher.bmp" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.Computer.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveCDRom.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveDisk.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveFixed.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveNetwork.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveNoRoot.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveRamDisk.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveRemovable.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveSystem.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.DriveUnknown.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.ExplorerTreeView.bmp" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.Folder.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.FolderDesktop.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.FolderDocuments.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.FolderDownloads.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.FolderMusic.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.FolderPictures.png" />
+    <EmbeddedResource Include="Resources\ExplorerTreeViewControl.FolderVideos.png" />
+    <EmbeddedResource Include="Resources\ExtendedRTFControl.ExtendedRTF.bmp" />
+    <EmbeddedResource Include="Resources\FileListControl.FileList.bmp" />
+    <EmbeddedResource Include="Resources\ImageComboBoxControl.ImageComboBox.bmp" />
+    <EmbeddedResource Include="Resources\IniFileControl.CommentEdit.bmp" />
+    <EmbeddedResource Include="Resources\IniFileControl.ContentView.bmp" />
+    <EmbeddedResource Include="Resources\IniFileControl.EntryValueEdit.bmp" />
+    <EmbeddedResource Include="Resources\IniFileControl.IniFile.bmp" />
+    <EmbeddedResource Include="Resources\IniFileControl.ListEdit.bmp" />
+    <EmbeddedResource Include="Resources\NotifyFormControl.CriticalError.png" />
+    <EmbeddedResource Include="Resources\NotifyFormControl.Information.png" />
+    <EmbeddedResource Include="Resources\NotifyFormControl.NotifyForm.bmp" />
+    <EmbeddedResource Include="Resources\NotifyFormControl.Question.png" />
+    <EmbeddedResource Include="Resources\NotifyFormControl.Warning.png" />
+    <EmbeddedResource Include="Resources\PasswordControl.noshow.png" />
+    <EmbeddedResource Include="Resources\PasswordControl.noshowgray.png" />
+    <EmbeddedResource Include="Resources\PasswordControl.Password.bmp" />
+    <EmbeddedResource Include="Resources\PasswordControl.show.png" />
+    <EmbeddedResource Include="Resources\PasswordControl.showgray.png" />
+    <EmbeddedResource Include="Resources\SevenSegmentControl.MultiDigit.bmp" />
+    <EmbeddedResource Include="Resources\SevenSegmentControl.SingleDigit.bmp" />
+    <EmbeddedResource Include="Resources\ShapeControl.Shape.bmp" />
+    <EmbeddedResource Include="Resources\TransparentLabelControl.TransparentLabel.bmp" />
+    <EmbeddedResource Include="Resources\WizardControl.HeaderImage.jpg" />
+    <EmbeddedResource Include="Resources\WizardControl.WelcomeImage.jpg" />
+    <EmbeddedResource Include="Resources\WizardControl.Wizard.bmp" />
+    <EmbeddedResource Include="WizardControl\PageCustom.resx">
+      <DependentUpon>PageCustom.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardControl\PageFinish.resx">
+      <DependentUpon>PageFinish.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardControl\PageStandard.resx">
+      <DependentUpon>PageStandard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardControl\PageWelcome.resx">
+      <DependentUpon>PageWelcome.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardControl\Wizard.resx">
+      <DependentUpon>Wizard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardControl\WizardPage.resx">
+      <DependentUpon>WizardPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <None Include="AniGifControl\AniGifControl.md" />
+    <None Include="app.config" />
+    <None Include="ColorProgressBarControl\ColorProgressBarControl.md" />
+    <None Include="DriveWatcherControl\DriveWatcherControl.md" />
+    <None Include="ExplorerTreeViewControl\ExplorerTreeViewControl.md" />
+    <None Include="ExtendedRTFControl\ExtendedRTFControl.md" />
+    <None Include="FileListControl\FileListControl.md" />
+    <None Include="ImageComboBoxControl\ImageComboBoxControl.md" />
+    <None Include="IniFileControl\IniFileControl.md" />
+    <None Include="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="NotifyFormControl\NotifyFormControl.md" />
+    <None Include="PasswordControl\PasswordControl.md" />
+    <None Include="SevenSegmentControl\SevenSegmentControl.md" />
+    <None Include="ShapeControl\ShapeControl.md" />
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TransparentLabelControl\TransparentLabelControl.md" />
+    <None Include="WizardControl\WizardControl.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AniGifControl\AniGif.Designer.vb">
+      <DependentUpon>AniGif.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AniGifControl\AniGif.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AniGifControl\FunctionDefinitions.vb" />
+    <Compile Include="AniGifControl\ImageSizeMode.vb" />
+    <Compile Include="ColorProgressBarControl\ColorProgressBar.Designer.vb">
+      <DependentUpon>ColorProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorProgressBarControl\ColorProgressBar.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DriveWatcherControl\DriveAddedEventArgs.vb" />
+    <Compile Include="DriveWatcherControl\DriveRemovedEventArgs.vb" />
+    <Compile Include="DriveWatcherControl\DriveWatcher.Designer.vb">
+      <DependentUpon>DriveWatcher.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DriveWatcherControl\DriveWatcher.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DriveWatcherControl\NativeForm.vb" />
+    <Compile Include="ExplorerTreeViewControl\ComputerNode.vb" />
+    <Compile Include="ExplorerTreeViewControl\DriveNode.vb" />
+    <Compile Include="ExplorerTreeViewControl\ExplorerTreeView.Designer.vb">
+      <DependentUpon>ExplorerTreeView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ExplorerTreeViewControl\ExplorerTreeView.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExplorerTreeViewControl\FolderNode.vb" />
+    <Compile Include="ExplorerTreeViewControl\NodeHelpers.vb" />
+    <Compile Include="ExplorerTreeViewControl\SelectedPathChangedEventArgs.vb" />
+    <Compile Include="ExplorerTreeViewControl\SpecialFolderNode.vb" />
+    <Compile Include="ExtendedRTFControl\ApiDefinitions.vb" />
+    <Compile Include="ExtendedRTFControl\ExtendedRTF.Designer.vb">
+      <DependentUpon>ExtendedRTF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendedRTFControl\ExtendedRTF.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FileListControl\FileList.Designer.vb">
+      <DependentUpon>FileList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FileListControl\FileList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileListControl\ListViewColumnComparer.vb" />
+    <Compile Include="FileListControl\NativeMethods.vb" />
+    <Compile Include="ImageComboBoxControl\ImageComboBox.Designer.vb">
+      <DependentUpon>ImageComboBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImageComboBoxControl\ImageComboBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ImageComboBoxControl\ImageComboBoxCollection.vb" />
+    <Compile Include="ImageComboBoxControl\ImageComboBoxCollectionEditor.vb" />
+    <Compile Include="ImageComboBoxControl\ImageComboBoxItem.vb" />
+    <Compile Include="IniFileControl\AddItemDialog.Designer.vb">
+      <DependentUpon>AddItemDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\AddItemDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\CommentEdit.Designer.vb">
+      <DependentUpon>CommentEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\CommentEdit.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\CommentEditEventArgs.vb" />
+    <Compile Include="IniFileControl\ContentView.Designer.vb">
+      <DependentUpon>ContentView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\ContentView.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\DeleteItemDialog.Designer.vb">
+      <DependentUpon>DeleteItemDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\DeleteItemDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\EntryValueEdit.Designer.vb">
+      <DependentUpon>EntryValueEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\EntryValueEdit.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\EntryValueEditEventArgs.vb" />
+    <Compile Include="IniFileControl\IniFile.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\ListEdit.Designer.vb">
+      <DependentUpon>ListEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\ListEdit.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IniFileControl\ListEditAddEventArgs.vb" />
+    <Compile Include="IniFileControl\ListEditRemoveEventArgs.vb" />
+    <Compile Include="IniFileControl\ListEditRenameEventArgs.vb" />
+    <Compile Include="IniFileControl\ListEditSelectedElementChangedEventArgs.vb" />
+    <Compile Include="IniFileControl\RenameItemDialog.Designer.vb">
+      <DependentUpon>RenameItemDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IniFileControl\RenameItemDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyFormControl\FormTemplate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotifyFormControl\NotifyForm.Designer.vb">
+      <DependentUpon>NotifyForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyFormControl\NotifyForm.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NotifyFormControl\NotifyFormDesign.vb" />
+    <Compile Include="NotifyFormControl\NotifyformStyle.vb" />
+    <Compile Include="PasswordControl\Password.Designer.vb">
+      <DependentUpon>Password.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordControl\Password.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PasswordControl\PasswordChangedEventArgs.vb" />
+    <Compile Include="PasswordControl\SecurityService.vb" />
+    <Compile Include="ProvideToolboxControlAttribute.vb" />
+    <Compile Include="SchlumpfSoftControlsPackage.vb" />
+    <Compile Include="Settings.vb" />
+    <Compile Include="SevenSegmentControl\CharacterPattern.vb" />
+    <Compile Include="SevenSegmentControl\MultiDigit.Designer.vb">
+      <DependentUpon>MultiDigit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SevenSegmentControl\MultiDigit.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SevenSegmentControl\SingleDigit.Designer.vb">
+      <DependentUpon>SingleDigit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SevenSegmentControl\SingleDigit.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeControl\DiagonalLineModes.vb" />
+    <Compile Include="ShapeControl\Shape.Designer.vb">
+      <DependentUpon>Shape.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShapeControl\Shape.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeControl\ShapeModes.vb" />
+    <Compile Include="TransparentLabelControl\TransparentLabel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WizardControl\AfterSwitchPagesEventArgs.vb" />
+    <Compile Include="WizardControl\BeforeSwitchPagesEventArgs.vb" />
+    <Compile Include="WizardControl\PageCustom.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WizardControl\PageDesigner.vb" />
+    <Compile Include="WizardControl\PageFinish.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WizardControl\PagesCollection.vb" />
+    <Compile Include="WizardControl\PagesCollectionEditor.vb" />
+    <Compile Include="WizardControl\PageStandard.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WizardControl\PageStyle.vb" />
+    <Compile Include="WizardControl\PageWelcome.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WizardControl\Wizard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WizardControl\WizardDesigner.vb" />
+    <Compile Include="WizardControl\WizardPage.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <Version>10.0.400</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.14.40265" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.14.2120">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Collections.Immutable" Version="10.0.11">
+    </PackageReference>
+    <PackageReference Include="System.Memory" Version="4.6.3">
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="EnvDTE" />
+    <Import Include="EnvDTE100" />
+    <Import Include="EnvDTE80" />
+    <Import Include="EnvDTE90" />
+    <Import Include="EnvDTE90a" />
+    <Import Include="Extensibility" />
+    <Import Include="MessagePack" />
+    <Import Include="MessagePack.Formatters" />
+    <Import Include="MessagePack.ImmutableCollection" />
+    <Import Include="MessagePack.Internal" />
+    <Import Include="MessagePack.Resolvers" />
+    <Import Include="Microsoft" />
+    <Import Include="Microsoft.Build.Execution" />
+    <Import Include="Microsoft.Build.Framework" />
+    <Import Include="Microsoft.Build.Framework.BuildException" />
+    <Import Include="Microsoft.Build.Framework.Profiler" />
+    <Import Include="Microsoft.Build.Framework.XamlTypes" />
+    <Import Include="Microsoft.Build.Shared" />
+    <Import Include="Microsoft.Internal.VisualStudio.Diagnostics" />
+    <Import Include="Microsoft.Internal.VisualStudio.Extensibility.Framework" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.ComponentModel.Design" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AniGifControl\AniGif.resx">
+      <DependentUpon>AniGif.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorProgressBarControl\ColorProgressBar.resx">
+      <DependentUpon>ColorProgressBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExplorerTreeViewControl\ExplorerTreeView.resx">
+      <DependentUpon>ExplorerTreeView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedRTFControl\ExtendedRTF.resx">
+      <DependentUpon>ExtendedRTF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileListControl\FileList.resx">
+      <DependentUpon>FileList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\AddItemDialog.resx">
+      <DependentUpon>AddItemDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\CommentEdit.resx">
+      <DependentUpon>CommentEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\ContentView.resx">
+      <DependentUpon>ContentView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\DeleteItemDialog.resx">
+      <DependentUpon>DeleteItemDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\EntryValueEdit.resx">
+      <DependentUpon>EntryValueEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\IniFile.resx">
+      <DependentUpon>IniFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\ListEdit.resx">
+      <DependentUpon>ListEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniFileControl\RenameItemDialog.resx">
+      <DependentUpon>RenameItemDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotifyFormControl\FormTemplate.resx">
+      <DependentUpon>FormTemplate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotifyFormControl\NotifyForm.resx">
+      <DependentUpon>NotifyForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordControl\Password.resx">
+      <DependentUpon>Password.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SevenSegmentControl\MultiDigit.resx">
+      <DependentUpon>MultiDigit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SevenSegmentControl\SingleDigit.resx">
+      <DependentUpon>SingleDigit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShapeControl\Shape.resx">
+      <DependentUpon>Shape.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransparentLabelControl\TransparentLabel.resx">
+      <DependentUpon>TransparentLabel.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
