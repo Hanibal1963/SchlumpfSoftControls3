@@ -4,6 +4,11 @@
 ' Datum: 31.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+
 Namespace IniFileControl
 
     ''' <summary>
@@ -13,9 +18,7 @@ Namespace IniFileControl
     ''' Der Dialog zeigt den alten Namen im Hinweistext an und akzeptiert die Eingabe
     ''' nur, wenn sie nicht leer oder nur aus Leerzeichen besteht.
     ''' </remarks>
-    Friend Class RenameItemDialog
-
-        Inherits System.Windows.Forms.Form
+    Friend Class RenameItemDialog : Inherits Form
 
 #Region "Variablen"
 
@@ -66,7 +69,7 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert den Dialog und setzt den sicheren Initialzustand.
@@ -86,7 +89,7 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
         ''' <summary>
         ''' Überträgt den aktuellen Inhalt des Textfelds in <see cref="NewItemValue"/>.
@@ -101,16 +104,16 @@ Namespace IniFileControl
         ''' </summary>
         ''' <param name="sender">Das Steuerelement, das den Klick ausgelöst hat.</param>
         ''' <param name="e">Ereignisdaten des Klick-Ereignisses.</param>
-        Private Sub Button_Click(sender As Object, e As System.EventArgs) Handles ButtonYes.Click, ButtonNo.Click
+        Private Sub Button_Click(sender As Object, e As EventArgs) Handles ButtonYes.Click, ButtonNo.Click
             If sender Is Me.ButtonYes Then
                 ' Bei Bestätigung den neuen Namen sichern.
                 Me.SetNewItemValue()
 
                 ' Ergebnis für den aufrufenden Code: Umbenennung bestätigt.
-                Me.DialogResult = System.Windows.Forms.DialogResult.Yes
+                Me.DialogResult = DialogResult.Yes
             ElseIf sender Is Me.ButtonNo Then
                 ' Ergebnis für den aufrufenden Code: Umbenennung verworfen.
-                Me.DialogResult = System.Windows.Forms.DialogResult.No
+                Me.DialogResult = DialogResult.No
             End If
 
             ' Dialog nach der Entscheidung schließen.
@@ -122,9 +125,9 @@ Namespace IniFileControl
         ''' </summary>
         ''' <param name="sender">Die TextBox, deren Inhalt geprüft wird.</param>
         ''' <param name="e">Ereignisdaten der Textänderung.</param>
-        Private Sub TextBox_TextChanged(sender As Object, e As System.EventArgs) Handles TextBox.TextChanged
+        Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TextBox.TextChanged
             ' Aktiviert die Bestätigung nur bei sinnvoller Eingabe.
-            If String.IsNullOrWhiteSpace(CType(sender, System.Windows.Forms.TextBox).Text) Then
+            If String.IsNullOrWhiteSpace(CType(sender, TextBox).Text) Then
                 ' Ungültige Eingabe (leer/Whitespace): Bestätigen sperren.
                 Me.ButtonYes.Enabled = False
             Else

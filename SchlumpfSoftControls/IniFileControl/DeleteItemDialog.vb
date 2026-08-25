@@ -4,21 +4,25 @@
 ' Datum: 31.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+
 Namespace IniFileControl
 
     ''' <summary>
     ''' Dialog zur Bestätigung des Löschens eines Elements.
     ''' </summary>
     ''' <remarks>
-    ''' Der Dialog verwendet <see cref="System.Windows.Forms.DialogResult.OK"/> für
-    ''' eine Bestätigung und <see cref="System.Windows.Forms.DialogResult.Cancel"/> für
-    ''' einen Abbruch.
+    ''' Der Dialog verwendet <see cref="DialogResult.OK"/> für eine Bestätigung und
+    ''' <see cref="DialogResult.Cancel"/> für einen Abbruch.
     ''' </remarks>
     Friend Class DeleteItemDialog
 
-        Inherits System.Windows.Forms.Form
+        Inherits Form
 
-#Region "Variablendefinition"
+#Region "Variablen"
 
         Private _ItemValue As String = $""
 
@@ -30,10 +34,9 @@ Namespace IniFileControl
         ''' Enthält den Wert des Elements, das gelöscht werden soll.
         ''' </summary>
         ''' <remarks>
-        ''' Beim Setzen der Eigenschaft wird der Bestätigungstext im Dialog unmittelbar
-        ''' aktualisiert, damit der Benutzer genau sieht, welches Element betroffen ist.
-        ''' Dadurch bleibt die Anzeige konsistent, auch wenn der Wert kurz vor dem
-        ''' Anzeigen des Dialogs noch geändert wird.
+        ''' Beim Setzen der Eigenschaft wird der Bestätigungstext im Dialog unmittelbar aktualisiert, damit der Benutzer
+        ''' genau sieht, welches Element betroffen ist. Dadurch bleibt die Anzeige konsistent, auch wenn der Wert kurz
+        ''' vor dem Anzeigen des Dialogs noch geändert wird.
         ''' </remarks>
         ''' <value>
         ''' Der Elementwert, der in der Löschabfrage angezeigt wird.
@@ -59,8 +62,8 @@ Namespace IniFileControl
         ''' Erstellt eine neue Instanz des <see cref="DeleteItemDialog"/>.
         ''' </summary>
         ''' <remarks>
-        ''' In <see cref="InitializeComponent"/> werden alle im Designer definierten
-        ''' Steuerelemente erzeugt, initialisiert und den Ereignissen zugeordnet.
+        ''' In <see cref="InitializeComponent"/> werden alle im Designer definierten Steuerelemente erzeugt,
+        ''' initialisiert und den Ereignissen zugeordnet.
         ''' </remarks>
         Public Sub New()
 
@@ -78,14 +81,14 @@ Namespace IniFileControl
         ''' </summary>
         ''' <param name="sender">Das Steuerelement, das das Klick-Ereignis ausgelöst hat.</param>
         ''' <param name="e">Ereignisdaten des Klick-Ereignisses.</param>
-        Private Sub Button_Click(sender As Object, e As System.EventArgs) Handles ButtonYes.Click, ButtonNo.Click
+        Private Sub Button_Click(sender As Object, e As EventArgs) Handles ButtonYes.Click, ButtonNo.Click
 
             If sender Is Me.ButtonYes Then
                 ' Benutzer bestätigt das Löschen.
-                Me.DialogResult = System.Windows.Forms.DialogResult.OK
+                Me.DialogResult = DialogResult.OK
             ElseIf sender Is Me.ButtonNo Then
                 ' Benutzer bricht den Vorgang explizit ab.
-                Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
+                Me.DialogResult = DialogResult.Cancel
             End If
 
             ' Dialog unabhängig von der Auswahl schließen.

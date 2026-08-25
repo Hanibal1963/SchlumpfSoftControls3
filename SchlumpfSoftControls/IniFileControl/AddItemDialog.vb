@@ -4,6 +4,9 @@
 ' Datum: 31.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+
 Namespace IniFileControl
 
     ''' <summary>
@@ -19,13 +22,11 @@ Namespace IniFileControl
     '''   <description>Bei Änderungen im Textfeld wird die Eingabe auf Leer- bzw. Whitespace-Inhalt geprüft.</description>
     '''  </item>
     '''  <item>
-    '''   <description>Beim Bestätigen wird der Text in <see cref="NewItemValue"/> übernommen und der Dialog mit einem passenden <see cref="System.Windows.Forms.Form.DialogResult"/> geschlossen.</description>
+    '''   <description>Beim Bestätigen wird der Text in <see cref="NewItemValue"/> übernommen und der Dialog mit einem passenden <see cref="Form.DialogResult"/> geschlossen.</description>
     '''  </item>
     ''' </list>
     ''' </remarks>
-    Friend Class AddItemDialog
-
-        Inherits System.Windows.Forms.Form
+    Friend Class AddItemDialog : Inherits Form
 
 #Region "Eigenschaften"
 
@@ -48,7 +49,7 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz des Dialogs und setzt den Startzustand.
@@ -72,14 +73,14 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
         ''' <summary>
         ''' Verarbeitet Klicks auf OK und Abbrechen.
         ''' </summary>
         ''' <param name="sender">Das auslösende Steuerelement.</param>
         ''' <param name="e">Ereignisdaten des Klick-Ereignisses.</param>
-        Private Sub Button_Click(sender As Object, e As System.EventArgs) Handles ButtonOK.Click, ButtonCancel.Click
+        Private Sub Button_Click(sender As Object, e As EventArgs) Handles ButtonOK.Click, ButtonCancel.Click
 
             ' Ein gemeinsamer Handler für beide Buttons:
             ' Wir unterscheiden anhand des auslösenden Steuerelements.
@@ -87,12 +88,13 @@ Namespace IniFileControl
                 Case sender Is Me.ButtonOK
                     ' Nur bei OK wird der aktuelle Text als Ergebnis übernommen.
                     Me.SetNewItemValue()
-
                     ' Signalisiert dem aufrufenden Code: Eingabe wurde bestätigt.
-                    Me.DialogResult = System.Windows.Forms.DialogResult.OK
+                    Me.DialogResult = DialogResult.OK
+
                 Case sender Is Me.ButtonCancel
                     ' Signalisiert dem aufrufenden Code: Vorgang wurde abgebrochen.
-                    Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
+                    Me.DialogResult = DialogResult.Cancel
+
             End Select
 
             ' Schließt den Dialog nach der Auswahl.
@@ -116,16 +118,20 @@ Namespace IniFileControl
         ''' </summary>
         ''' <param name="sender">Das Textfeld, das das Ereignis ausgelöst hat.</param>
         ''' <param name="e">Ereignisdaten der Textänderung.</param>
-        Private Sub TextBox_TextChanged(sender As Object, e As System.EventArgs) Handles TextBox.TextChanged
+        Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TextBox.TextChanged
 
             ' Jede Texteingabe wird sofort validiert.
             ' Leere oder reine Whitespace-Eingaben sind nicht zulässig.
-            If String.IsNullOrWhiteSpace(CType(sender, System.Windows.Forms.TextBox).Text) Then
+            If String.IsNullOrWhiteSpace(CType(sender, TextBox).Text) Then
+
                 ' Ungültige Eingabe: Bestätigung deaktivieren.
                 Me.ButtonOK.Enabled = False
+
             Else
+
                 ' Gültige Eingabe: Bestätigung erlauben.
                 Me.ButtonOK.Enabled = True
+
             End If
 
         End Sub

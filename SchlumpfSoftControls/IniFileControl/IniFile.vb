@@ -5,6 +5,12 @@
 ' --------------------------------------------------------------------------------------------------------
 
 Imports Microsoft.VisualBasic
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.Collections.Generic
+Imports System.IO
 
 Namespace IniFileControl
 
@@ -18,20 +24,22 @@ Namespace IniFileControl
     ''' </remarks>
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Ein Set von Controls zum Verwalten und bearbeiten von INI - Dateien.")>
-    <System.Drawing.ToolboxBitmap(GetType(IniFile), "IniFileControl.IniFile.bmp")>
+    <ToolboxBitmap(GetType(IniFile), "IniFileControl.IniFile.bmp")>
     <ToolboxItem(True)>
-    Public Class IniFile
-
-        Inherits Component
+    Public Class IniFile : Inherits Component
 
 #Region "Variablen"
 
         Private _FileContent() As String = {$""} ' Aktueller Dateiinhalt als Zeilenpuffer (so, wie er gespeichert/geladen wird)
-        Private _FileComment As New System.Collections.Generic.List(Of String) ' Kommentarzeilen am Anfang der Datei (ohne Prefixzeichen)
-        Private _Sections As New System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.Dictionary(Of String, String)) ' Abschnitte mit Einträgen: Abschnittsname -> (Eintragsname -> Wert)
-        Private _SectionsComments As New System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of String)) ' Abschnittskommentare: Abschnittsname -> Liste der Kommentarzeilen (ohne Prefix)
+        Private _FileComment As New List(Of String) ' Kommentarzeilen am Anfang der Datei (ohne Prefixzeichen)
+        Private _Sections As New Dictionary(Of String, Dictionary(Of String, String)) ' Abschnitte mit Einträgen: Abschnittsname -> (Eintragsname -> Wert)
+        Private _SectionsComments As New Dictionary(Of String, List(Of String)) ' Abschnittskommentare: Abschnittsname -> Liste der Kommentarzeilen (ohne Prefix)
         Private _CurrentSectionName As String = $"" ' Name des Abschnitts, der beim Parsen gerade verarbeitet wird (Parserzustand)
         Private _FileSaved As Boolean = False ' Status, ob der aktuelle Zustand auf Datenträger gespeichert ist
+
+        Public Sub New()
+            Me.InitializeComponent()
+        End Sub
 
 #End Region
 
@@ -45,19 +53,19 @@ Namespace IniFileControl
         ''' unabhängig davon, ob <see cref="AutoSave"/> aktiv ist.
         ''' </remarks>
         <Description("Wird ausgelöst wenn sich der Dateiinhalt geändert hat.")>
-        Public Event FileContentChanged(sender As Object, e As System.EventArgs)
+        Public Event FileContentChanged(sender As Object, e As EventArgs)
 
         ''' <summary>
         ''' Wird ausgelöst, wenn beim Anlegen oder Umbenennen eines Abschnitts der Name bereits vorhanden ist.
         ''' </summary>
         <Description("Wird ausgelöst wenn beim anlegen eines neuen Abschnitts oder umbnennen eines Abschnitts der Name bereits vorhanden ist.")>
-        Public Event SectionNameExist(sender As Object, e As System.EventArgs)
+        Public Event SectionNameExist(sender As Object, e As EventArgs)
 
         ''' <summary>
         ''' Wird ausgelöst, wenn beim Anlegen oder Umbenennen eines Eintrags der Zielname bereits existiert.
         ''' </summary>
         <Description("Wird ausgelöst wenn beim anlegen eines neuen Eintrags oder umbenennen eines Eintrags der Name bereits vorhanden ist.")>
-        Public Event EntryNameExist(sender As Object, e As System.EventArgs)
+        Public Event EntryNameExist(sender As Object, e As EventArgs)
 
 #End Region
 
@@ -126,7 +134,7 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Erzeugt eine neue INI-Datei mit Beispielinhalt und verwendet das Standard-Präfix für Kommentare.
@@ -176,7 +184,7 @@ Namespace IniFileControl
             ' Neue Datei wurde erzeugt, aber noch nicht persistiert.
             Me._FileSaved = False
 
-            RaiseEvent FileContentChanged(Me, System.EventArgs.Empty)
+            RaiseEvent FileContentChanged(Me, EventArgs.Empty)
 
         End Sub
 
@@ -193,12 +201,12 @@ Namespace IniFileControl
         Public Sub LoadFile(FilePathAndName As String)
 
             If String.IsNullOrWhiteSpace(FilePathAndName) Then
-                Throw New System.ArgumentException("Der Parameter FilePathAndName darf nicht NULL oder ein Leerraumzeichen sein.", NameOf(FilePathAndName))
+                Throw New ArgumentException("Der Parameter FilePathAndName darf nicht NULL oder ein Leerraumzeichen sein.", NameOf(FilePathAndName))
             End If
 
             ' Eingabepfad in die von der Komponente verwendeten Design-Eigenschaften aufteilen.
-            Me.FilePath = System.IO.Path.GetDirectoryName(FilePathAndName)
-            Me.FileName = System.IO.Path.GetFileName(FilePathAndName)
+            Me.FilePath = Path.GetDirectoryName(FilePathAndName)
+            Me.FileName = Path.GetFileName(FilePathAndName)
             Me.LoadFile()
 
         End Sub
@@ -213,19 +221,19 @@ Namespace IniFileControl
         Public Sub LoadFile()
 
             ' Vollständigen Dateipfad aus Pfad- und Dateiname zusammensetzen.
-            Dim filepathandname As String = System.IO.Path.Combine(Me.FilePath, Me.FileName)
+            Dim filepathandname As String = Path.Combine(Me.FilePath, Me.FileName)
 
             Try
                 ' Datei vollständig lesen und in die Arbeitsstruktur übernehmen.
-                Me._FileContent = System.IO.File.ReadAllLines(filepathandname)
+                Me._FileContent = File.ReadAllLines(filepathandname)
                 Me.ParseFileContent()
 
                 ' Erfolgreich geladen bedeutet: aktueller Zustand entspricht Datenträgerstand.
                 Me._FileSaved = True
-                RaiseEvent FileContentChanged(Me, System.EventArgs.Empty)
-            Catch ex As System.IO.IOException
+                RaiseEvent FileContentChanged(Me, EventArgs.Empty)
+            Catch ex As IOException
                 ' Aufrufer erhält eine domänenspezifische IO-Fehlermeldung.
-                Throw New System.IO.IOException($"Fehler beim laden der Datei {filepathandname}.")
+                Throw New IOException($"Fehler beim laden der Datei {filepathandname}.")
             End Try
 
         End Sub
@@ -242,12 +250,12 @@ Namespace IniFileControl
         Public Sub SaveFileAs(FilePathAndName As String)
 
             If String.IsNullOrWhiteSpace(FilePathAndName) Then
-                Throw New System.ArgumentException("Der Parameter FilePathAndName darf nicht NULL oder ein Leerraumzeichen sein.", NameOf(FilePathAndName))
+                Throw New ArgumentException("Der Parameter FilePathAndName darf nicht NULL oder ein Leerraumzeichen sein.", NameOf(FilePathAndName))
             End If
 
             ' Zielpfad in die Komponenten-Eigenschaften übernehmen.
-            Me.FilePath = System.IO.Path.GetDirectoryName(FilePathAndName)
-            Me.FileName = System.IO.Path.GetFileName(FilePathAndName)
+            Me.FilePath = Path.GetDirectoryName(FilePathAndName)
+            Me.FileName = Path.GetFileName(FilePathAndName)
             Me.SaveFile()
 
         End Sub
@@ -263,8 +271,8 @@ Namespace IniFileControl
         Public Sub SaveFile()
 
             ' Vollständigen Zielpfad bilden und aktuellen Zeilenpuffer schreiben.
-            Dim filepathandname As String = System.IO.Path.Combine(Me.FilePath, Me.FileName)
-            System.IO.File.WriteAllLines(filepathandname, Me._FileContent)
+            Dim filepathandname As String = Path.Combine(Me.FilePath, Me.FileName)
+            File.WriteAllLines(filepathandname, Me._FileContent)
 
             ' Nach erfolgreichem Schreiben ist der Zustand synchron zum Datenträger.
             Me._FileSaved = True
@@ -322,7 +330,7 @@ Namespace IniFileControl
         Public Function GetSectionNames() As String()
 
             ' Keys der Abschnittsverwaltung in ein stabiles Array kopieren.
-            Dim names As New System.Collections.Generic.List(Of String)
+            Dim names As New List(Of String)
             For Each name As String In Me._Sections.Keys
                 names.Add(name)
             Next
@@ -345,7 +353,7 @@ Namespace IniFileControl
             If Me._Sections.ContainsKey(SectionName) Then
 
                 ' Eintragsnamen in ein neues Array materialisieren.
-                Dim names As New System.Collections.Generic.List(Of String)
+                Dim names As New List(Of String)
 
                 For Each name As String In Me._Sections.Item(SectionName).Keys
                     names.Add(name)
@@ -370,7 +378,7 @@ Namespace IniFileControl
 
             ' Doppelte Abschnittsnamen sind nicht erlaubt.
             If Me._Sections.ContainsKey(Name) Then
-                RaiseEvent SectionNameExist(Me, System.EventArgs.Empty)
+                RaiseEvent SectionNameExist(Me, EventArgs.Empty)
                 Exit Sub
             End If
 
@@ -395,7 +403,7 @@ Namespace IniFileControl
 
             ' Doppelte Eintragsnamen innerhalb des Abschnitts verhindern.
             If Me._Sections.Item(Section).ContainsKey(Name) Then
-                RaiseEvent EntryNameExist(Me, System.EventArgs.Empty)
+                RaiseEvent EntryNameExist(Me, EventArgs.Empty)
                 Exit Sub
             End If
 
@@ -418,7 +426,7 @@ Namespace IniFileControl
 
             ' Zielname darf nicht bereits existieren.
             If Me._Sections.ContainsKey(NewName) Then
-                RaiseEvent SectionNameExist(Me, System.EventArgs.Empty)
+                RaiseEvent SectionNameExist(Me, EventArgs.Empty)
                 Exit Sub
             End If
 
@@ -442,7 +450,7 @@ Namespace IniFileControl
 
             ' Zielname darf im Abschnitt noch nicht belegt sein.
             If Me._Sections.Item(Section).ContainsKey(NewName) Then
-                RaiseEvent EntryNameExist(Me, System.EventArgs.Empty)
+                RaiseEvent EntryNameExist(Me, EventArgs.Empty)
                 Exit Sub
             End If
 
@@ -544,11 +552,11 @@ Namespace IniFileControl
 
             ' Ohne Abschnittsname ist keine Zuordnung der Kommentarzeilen möglich.
             If String.IsNullOrEmpty(Name) Then
-                Dim unused = System.Windows.Forms.MessageBox.Show(
+                Dim unused = MessageBox.Show(
                     $"Es wurde kein Abschnitt ausgewählt!",
                     $"Fehler",
-                    System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error)
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error)
                 Exit Sub
             End If
 
@@ -576,11 +584,11 @@ Namespace IniFileControl
 
             ' Ohne Abschnitt kann kein Eintrag adressiert werden.
             If String.IsNullOrEmpty(Section) Then
-                Dim unused = System.Windows.Forms.MessageBox.Show(
+                Dim unused = MessageBox.Show(
                     $"Es wurde kein Eintrag ausgewählt!",
                     $"Fehler",
-                    System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error)
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error)
                 Exit Sub
             End If
 
@@ -593,8 +601,11 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
+        ''' <summary>
+        ''' Erzeugt den aktuellen Dateiinhalt aus der internen Struktur und speichert ihn ggf. auf Datenträger.
+        ''' </summary>
         Private Sub ChangeFileContent()
 
             ' Aus der internen Struktur immer zuerst den aktuellen Zeilenpuffer erzeugen.
@@ -608,19 +619,27 @@ Namespace IniFileControl
             End If
 
             ' Host informieren, damit UI und abhängige Logik aktualisiert werden können.
-            RaiseEvent FileContentChanged(Me, System.EventArgs.Empty)
+            RaiseEvent FileContentChanged(Me, EventArgs.Empty)
 
         End Sub
 
-
+        ''' <summary>
+        ''' Initialisiert die Parserzustandsvariablen vor jeder Analyse.
+        ''' </summary>
+        ''' <param name="Name"></param>
         Private Sub AddNewSection(Name As String)
 
             ' Abschnittscontainer für Werte und Kommentare parallel anlegen.
-            Me._Sections.Add(Name, New System.Collections.Generic.Dictionary(Of String, String))
-            Me._SectionsComments.Add(Name, New System.Collections.Generic.List(Of String))
+            Me._Sections.Add(Name, New Dictionary(Of String, String))
+            Me._SectionsComments.Add(Name, New List(Of String))
 
         End Sub
 
+        ''' <summary>
+        ''' Fügt einen neuen Eintrag in einem Abschnitt hinzu.
+        ''' </summary>
+        ''' <param name="Section"></param>
+        ''' <param name="Name"></param>
         Private Sub AddNewEntry(Section As String, Name As String)
 
             ' Neue Einträge werden mit leerem Wert initialisiert.
@@ -628,6 +647,11 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Ändert den Schlüssel eines Abschnittskommentars.
+        ''' </summary>
+        ''' <param name="OldName"></param>
+        ''' <param name="newName"></param>
         Private Sub RenameSectionComment(OldName As String, newName As String)
 
             ' Kommentar-Liste vom alten Namen lösen und unter neuem Namen registrieren.
@@ -637,6 +661,11 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Ändert den Schlüssel eines Abschnittswerts.
+        ''' </summary>
+        ''' <param name="OldName"></param>
+        ''' <param name="NewName"></param>
         Private Sub RenameSectionValue(OldName As String, NewName As String)
 
             ' Abschnittswerte vom alten Namen lösen und unter neuem Namen registrieren.
@@ -655,10 +684,13 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Erzeugt den aktuellen Dateiinhalt aus der internen Abschnitts-/Eintragsstruktur.
+        ''' </summary>
         Private Sub CreateFileContent()
 
             ' Zeilenliste als serialisierbares Abbild der internen Struktur aufbauen.
-            Dim filecontent As New System.Collections.Generic.List(Of String)
+            Dim filecontent As New List(Of String)
 
             ' Dateikommentare am Anfang der Datei ausgeben.
             For Each line As String In Me._FileComment
@@ -693,6 +725,10 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Analysiert den aktuellen Dateiinhalt zeilenweise und überführt ihn in die interne
+        ''' Abschnitts-/Eintragsstruktur.
+        ''' </summary>
         Private Sub ParseFileContent()
 
             ' Parserzustand vor jeder Analyse komplett zurücksetzen.
@@ -707,6 +743,10 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Analysiert eine einzelne Zeile und überführt sie in die interne Abschnitts-/Eintragsstruktur.
+        ''' </summary>
+        ''' <param name="LineContent"></param>
         Private Sub LineAnalyse(LineContent As String)
 
             ' Je nach Parserzustand und Präfix den Zeilentyp bestimmen.
@@ -722,6 +762,10 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Erkennt eine Eintragszeile im Format "Name = Wert" und fügt sie dem aktuellen Abschnitt hinzu.
+        ''' </summary>
+        ''' <param name="LineContent"></param>
         Private Sub AddEntryLine(LineContent As String)
 
             ' Zeile im Format "Name = Wert" aufteilen und in den aktuellen Abschnitt schreiben.
@@ -731,6 +775,10 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Erkennt eine Kommentarzeile im aktuellen Abschnitt und fügt sie der Abschnittskommentarliste hinzu.
+        ''' </summary>
+        ''' <param name="LineContent"></param>
         Private Sub AddSectionCommentLine(LineContent As String)
 
             ' Präfix entfernen und Kommentarzeile dem aktuellen Abschnitt zuordnen.
@@ -739,6 +787,10 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Erkennt eine Abschnittszeile im Format "[Name]" und legt einen neuen Abschnitt an.
+        ''' </summary>
+        ''' <param name="LineContent"></param>
         Private Sub AddSectionNameLine(LineContent As String)
 
             ' Abschnittsnamen aus "[Name]" extrahieren.
@@ -746,11 +798,15 @@ Namespace IniFileControl
 
             ' Neue Zielcontainer für den erkannten Abschnitt anlegen.
             Me._CurrentSectionName = line
-            Me._Sections.Add(Me._CurrentSectionName, New System.Collections.Generic.Dictionary(Of String, String))
-            Me._SectionsComments.Add(Me._CurrentSectionName, New System.Collections.Generic.List(Of String))
+            Me._Sections.Add(Me._CurrentSectionName, New Dictionary(Of String, String))
+            Me._SectionsComments.Add(Me._CurrentSectionName, New List(Of String))
 
         End Sub
 
+        ''' <summary>
+        ''' Erkennt eine Kommentarzeile im Dateikopf und fügt sie der Kopfkommentarliste hinzu.
+        ''' </summary>
+        ''' <param name="LineContent"></param>
         Private Sub AddFileCommentLine(LineContent As String)
 
             ' Präfix entfernen und als Dateikopf-Kommentarzeile speichern.
@@ -759,12 +815,15 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Initialisiert die Parserzustandsvariablen vor jeder Analyse.
+        ''' </summary>
         Private Sub InitParseVariables()
 
             ' Alle Parser-Zielcontainer leeren, damit keine Altzustände erhalten bleiben.
-            Me._FileComment = New System.Collections.Generic.List(Of String)
-            Me._Sections = New System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.Dictionary(Of String, String))
-            Me._SectionsComments = New System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of String))
+            Me._FileComment = New List(Of String)
+            Me._Sections = New Dictionary(Of String, Dictionary(Of String, String))
+            Me._SectionsComments = New Dictionary(Of String, List(Of String))
 
         End Sub
 

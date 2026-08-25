@@ -4,26 +4,27 @@
 ' Datum: 29.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
 Imports System.Linq
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
 
 Namespace IniFileControl
 
     ''' <summary>
-    ''' Stellt ein Steuerelement zum Anzeigen und Bearbeiten von Datei- oder
-    ''' Abschnittskommentaren einer INI-Datei bereit.
+    ''' Stellt ein Steuerelement zum Anzeigen und Bearbeiten von Datei- oder Abschnittskommentaren einer INI-Datei
+    ''' bereit.
     ''' </summary>
     ''' <remarks>
-    ''' Die Bearbeitung erfolgt im mehrzeiligen Textfeld. Änderungen werden erst nach
-    ''' Klick auf den Übernehmen-Button per <see cref="CommentChanged"/> nach außen
-    ''' gemeldet.
+    ''' Die Bearbeitung erfolgt im mehrzeiligen Textfeld. Änderungen werden erst nach Klick auf den Übernehmen-Button
+    ''' per <see cref="CommentChanged"/> nach außen gemeldet.
     ''' </remarks>
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Steuerelement zum Anzeigen und Bearbeiten des Datei- oder Abschnitts- Kommentars einer INI - Datei.")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(CommentEdit), "IniFileControl.CommentEdit.bmp")>
-    Public Class CommentEdit
-
-        Inherits System.Windows.Forms.UserControl
+    <ToolboxBitmap(GetType(CommentEdit), "IniFileControl.CommentEdit.bmp")>
+    Public Class CommentEdit : Inherits UserControl
 
 #Region "Variablen"
 
@@ -35,8 +36,7 @@ Namespace IniFileControl
 #Region "Ereignisse"
 
         ''' <summary>
-        ''' Wird ausgelöst, wenn der aktuell bearbeitete Kommentar per Übernehmen-Button
-        ''' bestätigt wurde.
+        ''' Wird ausgelöst, wenn der aktuell bearbeitete Kommentar per Übernehmen-Button bestätigt wurde.
         ''' </summary>
         ''' <param name="sender">Die auslösende Instanz von <see cref="CommentEdit"/>.</param>
         ''' <param name="e">Enthält Abschnittsname und die übernommenen Kommentarzeilen.</param>
@@ -71,8 +71,8 @@ Namespace IniFileControl
         ''' Gibt den Kommentar als Zeilenarray zurück oder legt ihn fest.
         ''' </summary>
         ''' <remarks>
-        ''' Beim Setzen werden die Zeilen nur dann übernommen, wenn sich der Inhalt
-        ''' gegenüber dem aktuellen Array tatsächlich geändert hat.
+        ''' Beim Setzen werden die Zeilen nur dann übernommen, wenn sich der Inhalt gegenüber dem aktuellen Array
+        ''' tatsächlich geändert hat.
         ''' </remarks>
         ''' <value>Kommentarzeilen; jedes Arrayelement entspricht genau einer Textzeile.</value>
         <Browsable(True)>
@@ -98,8 +98,7 @@ Namespace IniFileControl
         ''' Gibt den Namen des aktuell bearbeiteten INI-Abschnitts zurück oder legt ihn fest.
         ''' </summary>
         ''' <value>
-        ''' Abschnittsname, der im Ereignis <see cref="CommentChanged"/> zusammen mit dem
-        ''' Kommentar übertragen wird.
+        ''' Abschnittsname, der im Ereignis <see cref="CommentChanged"/> zusammen mit dem Kommentar übertragen wird.
         ''' </value>
         <Browsable(True)>
         <Category("Appearance")>
@@ -108,14 +107,14 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz der Klasse <see cref="CommentEdit"/>.
         ''' </summary>
         ''' <remarks>
-        ''' Nach dem Erstellen der Designer-Elemente wird der initiale GroupBox-Titel
-        ''' übernommen und der Übernehmen-Button deaktiviert.
+        ''' Nach dem Erstellen der Designer-Elemente wird der initiale GroupBox-Titel übernommen und der
+        ''' Übernehmen-Button deaktiviert.
         ''' </remarks>
         Public Sub New()
 
@@ -129,9 +128,15 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
-        Private Sub Button_Click(sender As Object, e As System.EventArgs) Handles Button.Click
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Benutzer den Übernehmen-Button klickt. Meldet den neuen Kommentar an den
+        ''' aufrufenden Code.
+        ''' </summary>
+        ''' <param name="sender">Das Steuerelement, das das Klick-Ereignis ausgelöst hat.</param>
+        ''' <param name="e">Ereignisdaten des Klick-Ereignisses.</param>
+        Private Sub Button_Click(sender As Object, e As EventArgs) Handles Button.Click
 
             ' Liest die aktuell sichtbaren Zeilen als neuen bestätigten Zustand ein.
             Me._Lines = Me.TextBox.Lines
@@ -142,7 +147,13 @@ Namespace IniFileControl
 
         End Sub
 
-        Private Sub TextBox_TextChanged(sender As Object, e As System.EventArgs) Handles TextBox.TextChanged
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Benutzer den Kommentartext im Textfeld ändert. Markiert den Inhalt als "nicht
+        ''' übernommen" und aktiviert den Übernehmen-Button.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TextBox.TextChanged
 
             ' Jede Benutzereingabe markiert den Inhalt als "nicht übernommen".
             Me.Button.Enabled = True

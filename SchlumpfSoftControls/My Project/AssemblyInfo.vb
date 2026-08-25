@@ -19,7 +19,7 @@ Imports Microsoft.VisualBasic
 <Assembly: AssemblyTrademark("SchlumpfSoft")>
 <Assembly: AssemblyCulture("")>
 <Assembly: ComVisible(False)>
-<Assembly: AssemblyVersion("3.2026.0824.0")>
-<Assembly: AssemblyFileVersion("3.2026.0824.0")>
+<Assembly: AssemblyVersion("3.2026.0825.0")>
+<Assembly: AssemblyFileVersion("3.2026.0825.0")>
 <Assembly: Guid("2f237cc7-d281-44e2-802c-7201c9028228")>
 <Assembly: NeutralResourcesLanguage("de-DE")>

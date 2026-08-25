@@ -4,6 +4,9 @@
 ' Datum: 29.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+
 Namespace IniFileControl
 
     ''' <summary>
@@ -13,9 +16,7 @@ Namespace IniFileControl
     ''' Diese Klasse wird im Ereignis <c>ValueChanged</c> von
     ''' <see cref="EntryValueEdit"/> verwendet.
     ''' </remarks>
-    Public Class EntryValueEditEventArgs
-
-        Inherits System.EventArgs
+    Public Class EntryValueEditEventArgs : Inherits EventArgs
 
         ''' <summary>
         ''' Gibt den Namen der betroffenen INI-Sektion zurück oder legt ihn fest.

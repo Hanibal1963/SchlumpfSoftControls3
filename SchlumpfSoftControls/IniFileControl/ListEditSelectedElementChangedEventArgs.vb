@@ -4,14 +4,14 @@
 ' Datum: 29.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+
 Namespace IniFileControl
 
     ''' <summary>
     ''' Stellt Ereignisdaten bereit, wenn sich der aktuell ausgewählte Listeneintrag ändert.
     ''' </summary>
-    Public Class ListEditSelectedElementChangedEventArgs
-
-        Inherits System.EventArgs
+    Public Class ListEditSelectedElementChangedEventArgs : Inherits EventArgs
 
         ''' <summary>
         ''' Enthält den aktuell ausgewählten Eintrag.

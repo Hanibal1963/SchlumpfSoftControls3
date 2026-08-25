@@ -4,13 +4,20 @@
 ' Datum: 29.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+
 Namespace IniFileControl
 
     ''' <summary>
     ''' Stellt eine editierbare Liste für Abschnitte oder Einträge einer INI-Datei bereit.
     ''' </summary>
     ''' <remarks>
+    '''
     ''' <para><b>Darstellung:</b></para>
+    '''
     ''' <list type="bullet"><item><description>Eine GroupBox mit Titel (Eigenschaft <see cref="TitelText"/> ).
     ''' </description> </item> <item><description>Eine ListBox mit Einträgen (Eigenschaft <see cref="ListItems"/> ).
     ''' </description> </item> <item><description>Drei Buttons: Hinzufügen, Umbenennen, Löschen. Interaktion:
@@ -22,10 +29,8 @@ Namespace IniFileControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Steuerelement zum Anzeigen und Bearbeiten der Abschnitts- oder Eintrags- Liste einer INI - Datei.")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(ListEdit), "IniFileControl.ListEdit.bmp")>
-    Public Class ListEdit
-
-        Inherits System.Windows.Forms.UserControl
+    <ToolboxBitmap(GetType(ListEdit), "IniFileControl.ListEdit.bmp")>
+    Public Class ListEdit : Inherits UserControl
 
 #Region "Variablen"
 
@@ -54,10 +59,6 @@ Namespace IniFileControl
         ''' <remarks>
         ''' Alter und neuer Wert werden über <see cref="ListEditRenameEventArgs"/> transportiert.
         ''' </remarks>
-        ''' <example>
-        ''' <code><![CDATA[AddHandler listEdit.ItemRename, Sub(sender, e) ' Umbenennen: alter Wert e.OldItemValue ->
-        ''' neuer Wert e.NewItemValue End Sub]]></code>
-        ''' </example>
         <Description("Wird ausgelöst wenn ein Eintrag umbenannt werden soll.")>
         <Category("ListEdit")>
         Public Event ItemRename(sender As Object, e As ListEditRenameEventArgs)
@@ -144,7 +145,7 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert das Steuerelement und übernimmt den aktuellen GroupBox-Titel als Startwert.
@@ -156,9 +157,15 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
-        Private Sub ListBox_SelectedIndex_Changed(sender As Object, e As System.EventArgs) Handles ListBox.SelectedIndexChanged
+        ''' <summary>
+        ''' Wird ausgelöst, wenn sich die Auswahl in der ListBox geändert hat. Die interne Property
+        ''' <see cref="_SelectedItem"/> wird aktualisiert und das Ereignis <see cref="SelectedItemChanged"/> ausgelöst.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub ListBox_SelectedIndex_Changed(sender As Object, e As EventArgs) Handles ListBox.SelectedIndexChanged
 
             If Me.ListBox.SelectedIndex = -1 Then
                 Me.ClearPropertySelectedItem()
@@ -170,37 +177,54 @@ Namespace IniFileControl
 
         End Sub
 
-        Private Sub ButtonAdd_Click(sender As Object, e As System.EventArgs) Handles ButtonAdd.Click
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Button "Hinzufügen" geklickt wird. Ein
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
 
             ' Dialog zur Eingabe eines neuen Elementnamens anzeigen.
             Dim newitemdlg As New AddItemDialog
-            Dim result As System.Windows.Forms.DialogResult = newitemdlg.ShowDialog(Me)
+            Dim result As DialogResult = newitemdlg.ShowDialog(Me)
 
             ' Nur bei bestätigter Eingabe wird das semantische Add-Ereignis ausgelöst.
-            If result = System.Windows.Forms.DialogResult.OK Then
+            If result = DialogResult.OK Then
                 RaiseEvent ItemAdd(Me, New ListEditAddEventArgs(newitemdlg.NewItemValue))
             End If
 
         End Sub
 
-        Private Sub ButtonRename_Click(sender As Object, e As System.EventArgs) Handles ButtonRename.Click
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Button "Umbenennen" geklickt wird. Ein Dialog zur Eingabe des neuen Namens wird
+        ''' angezeigt.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub ButtonRename_Click(sender As Object, e As EventArgs) Handles ButtonRename.Click
 
             ' Umbenennen-Dialog mit aktuellem Element vorbelegen.
             Dim renamedlg As New RenameItemDialog With {.OldItemValue = Me._SelectedItem}
-            Dim result As System.Windows.Forms.DialogResult = renamedlg.ShowDialog(Me)
+            Dim result As DialogResult = renamedlg.ShowDialog(Me)
 
             ' Nur bei Bestätigung mit "Yes" wird das Rename-Ereignis an den Host gemeldet.
-            If result = System.Windows.Forms.DialogResult.Yes Then
+            If result = DialogResult.Yes Then
                 RaiseEvent ItemRename(Me, New ListEditRenameEventArgs(Me._SelectedItem, renamedlg.NewItemValue))
             End If
 
         End Sub
 
-        Private Sub ButtonDelete_Click(sender As Object, e As System.EventArgs) Handles ButtonDelete.Click
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Button "Löschen" geklickt wird. Ein Dialog zur Bestätigung des Löschens wird
+        ''' angezeigt.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub ButtonDelete_Click(sender As Object, e As EventArgs) Handles ButtonDelete.Click
 
             ' Löschdialog mit aktuellem Element anzeigen.
             Dim deldlg As New DeleteItemDialog With {.ItemValue = Me._SelectedItem}
-            Dim result As System.Windows.Forms.DialogResult = deldlg.ShowDialog(Me)
+            Dim result As DialogResult = deldlg.ShowDialog(Me)
 
             ' Nur bei Bestätigung wird der Löschwunsch an den Host signalisiert.
             If result = System.Windows.Forms.DialogResult.OK Then
@@ -209,22 +233,35 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Wird ausgelöst, wenn die Datenquelle der ListBox geändert wurde. Die ListBox wird neu aufgebaut.
+        ''' </summary>
         Private Sub IniFileListEdit_ListItemsChanged() Handles Me.ListItemsChanged
             ' Bei neuer Datenquelle die komplette ListBox neu aufbauen.
             Me.FillListbox()
         End Sub
 
+        ''' <summary>
+        ''' Wird ausgelöst, wenn sich der Titeltext geändert hat. Die GroupBox wird mit dem neuen Text aktualisiert.
+        ''' </summary>
         Private Sub IniFileListEdit_TitelTextChanged() Handles Me.TitelTextChanged
             ' Geänderten Titel direkt auf die GroupBox übertragen.
             Me.GroupBox.Text = Me._TitelText
         End Sub
 
+        ''' <summary>
+        ''' Setzt die interne Property <see cref="_SelectedItem"/> auf den aktuell in der ListBox gewählten Eintrag.
+        ''' </summary>
         Private Sub SetPropertySelectedItem()
             Me._SelectedItem = CStr(Me.ListBox.SelectedItem)
             Me.ButtonDelete.Enabled = True
             Me.ButtonRename.Enabled = True
         End Sub
 
+        ''' <summary>
+        ''' Setzt die interne Property <see cref="_SelectedItem"/> auf einen leeren String und deaktiviert die Buttons
+        ''' "Löschen" und "Umbenennen".
+        ''' </summary>
         Private Sub ClearPropertySelectedItem()
             ' Auswahl zurücksetzen und Aktionen deaktivieren.
             Me._SelectedItem = String.Empty
@@ -232,6 +269,9 @@ Namespace IniFileControl
             Me.ButtonRename.Enabled = False
         End Sub
 
+        ''' <summary>
+        ''' Füllt die ListBox mit den aktuellen Einträgen aus <see cref="_Items"/> und setzt die Auswahl zurück.
+        ''' </summary>
         Private Sub FillListbox()
 
             Me.ListBox.Items.Clear()

@@ -4,23 +4,25 @@
 ' Datum: 29.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+
 Namespace IniFileControl
 
     ''' <summary>
     ''' Stellt ein Steuerelement zur schreibgeschützten Anzeige von Textinhalten bereit.
     ''' </summary>
     ''' <remarks>
-    ''' Die Anzeige erfolgt zeilenbasiert über <see cref="Lines"/>. Änderungen an
-    ''' <see cref="TitelText"/> und <see cref="Lines"/> werden intern auf die UI
-    ''' synchronisiert.
+    ''' Die Anzeige erfolgt zeilenbasiert über <see cref="Lines"/>. Änderungen an <see cref="TitelText"/> und
+    ''' <see cref="Lines"/> werden intern auf die UI synchronisiert.
     ''' </remarks>
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Steuerelement zum Anzeigen des Dateiinhaltes.")> ' Beschreibt das Control im Designer (Eigenschaftenfenster/Toolbox).
     <ToolboxItem(True)> ' Markiert die Klasse als Toolbox-Element.
-    <System.Drawing.ToolboxBitmap(GetType(ContentView), "IniFileControl.ContentView.bmp")> ' Legt das Symbol in der Toolbox fest.
-    Public Class ContentView
-
-        Inherits System.Windows.Forms.UserControl
+    <ToolboxBitmap(GetType(ContentView), "IniFileControl.ContentView.bmp")> ' Legt das Symbol in der Toolbox fest.
+    Public Class ContentView : Inherits UserControl
 
 #Region "Variablen"
 
@@ -62,8 +64,8 @@ Namespace IniFileControl
         ''' Gibt den angezeigten Inhalt als Zeilenarray zurück oder legt ihn fest.
         ''' </summary>
         ''' <remarks>
-        ''' Die Änderungsprüfung erfolgt über Referenzvergleich. Bei inhaltlichen
-        ''' Änderungen sollte daher ein neues Array zugewiesen werden.
+        ''' Die Änderungsprüfung erfolgt über Referenzvergleich. Bei inhaltlichen Änderungen sollte daher ein neues
+        ''' Array zugewiesen werden.
         ''' </remarks>
         ''' <value>Zeilenarray für die schreibgeschützte Textanzeige.</value>
         <Browsable(True)>
@@ -84,14 +86,13 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz der Klasse <see cref="ContentView"/>.
         ''' </summary>
         ''' <remarks>
-        ''' Erstellt die Designer-Komponenten und übernimmt den initialen Titel der
-        ''' GroupBox in das interne Titelfeld.
+        ''' Erstellt die Designer-Komponenten und übernimmt den initialen Titel der GroupBox in das interne Titelfeld.
         ''' </remarks>
         Public Sub New()
 
@@ -103,8 +104,11 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
+        ''' <summary>
+        ''' Synchronisiert den internen Zeileninhalt mit dem Anzeigefeld.
+        ''' </summary>
         Private Sub ContentView_LinesChanged() Handles Me.PropertyLinesChanged
 
             ' Spiegelt den internen Zeileninhalt im Anzeigefeld wider.
@@ -112,6 +116,9 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Synchronisiert den internen Titeltext mit der sichtbaren Gruppenüberschrift.
+        ''' </summary>
         Private Sub ContentView_TitelTextChanged() Handles Me.PropertyTitelTextChanged
 
             ' Aktualisiert die sichtbare Gruppenüberschrift.

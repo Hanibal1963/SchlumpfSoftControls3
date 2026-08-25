@@ -4,23 +4,26 @@
 ' Datum: 29.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+
 Namespace IniFileControl
 
     ''' <summary>
-    ''' Stellt ein Steuerelement zum Anzeigen und Bearbeiten eines INI-Eintragswerts
-    ''' innerhalb einer ausgewählten Sektion bereit.
+    ''' Stellt ein Steuerelement zum Anzeigen und Bearbeiten eines INI-Eintragswerts innerhalb einer ausgewählten
+    ''' Sektion bereit.
     ''' </summary>
     ''' <remarks>
-    ''' Änderungen werden nicht sofort gemeldet, sondern erst nach expliziter
-    ''' Bestätigung über den Übernehmen-Button per <see cref="ValueChanged"/>.
+    ''' Änderungen werden nicht sofort gemeldet, sondern erst nach expliziter Bestätigung über den Übernehmen-Button per
+    ''' <see cref="ValueChanged"/>.
     ''' </remarks>
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Steuerelement zum Anzeigen und Bearbeiten der Einträge eines Abschnitts einer INI - Datei.")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(EntryValueEdit), "IniFileControl.EntryValueEdit.bmp")> ' Hinweis: Das Bitmap "EntryValueEdit.bmp" muss als eingebettete Ressource vorliegen (BuildAction: Embedded Resource).
-    Public Class EntryValueEdit
-
-        Inherits System.Windows.Forms.UserControl
+    <ToolboxBitmap(GetType(EntryValueEdit), "IniFileControl.EntryValueEdit.bmp")> ' Hinweis: Das Bitmap "EntryValueEdit.bmp" muss als eingebettete Ressource vorliegen (BuildAction: Embedded Resource).
+    Public Class EntryValueEdit : Inherits UserControl
 
 #Region "Variablen"
 
@@ -88,8 +91,8 @@ Namespace IniFileControl
         ''' Gibt den aktuell bearbeiteten Eintragswert zurück oder legt ihn fest.
         ''' </summary>
         ''' <remarks>
-        ''' Beim Setzen wird der TextBox-Inhalt synchronisiert und der Übernehmen-Button
-        ''' deaktiviert, da der neue Wert als aktueller Ausgangszustand gilt.
+        ''' Beim Setzen wird der TextBox-Inhalt synchronisiert und der Übernehmen-Button deaktiviert, da der neue Wert
+        ''' als aktueller Ausgangszustand gilt.
         ''' </remarks>
         ''' <value>Der bearbeitete Wert des aktuell ausgewählten INI-Eintrags.</value>
         <Description("Gibt den Eintragswert zurück oder legt diesen fest.")>
@@ -108,14 +111,13 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz der Klasse <see cref="EntryValueEdit"/>.
         ''' </summary>
         ''' <remarks>
-        ''' Nach dem Erstellen der Designer-Elemente wird der initiale GroupBox-Titel
-        ''' in das interne Feld übernommen.
+        ''' Nach dem Erstellen der Designer-Elemente wird der initiale GroupBox-Titel in das interne Feld übernommen.
         ''' </remarks>
         Public Sub New()
             Me.InitializeComponent()
@@ -125,9 +127,15 @@ Namespace IniFileControl
 
 #End Region
 
-#Region "interne Methoden"
+#Region "Interne Methoden"
 
-        Private Sub Button_Click(sender As Object, e As System.EventArgs) Handles Button.Click
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Benutzer den Übernehmen-Button klickt. Meldet den neuen Wert an den aufrufenden
+        ''' Code und deaktiviert danach den Button, bis eine weitere Änderung erfolgt.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub Button_Click(sender As Object, e As EventArgs) Handles Button.Click
 
             ' Meldet den bestätigten Wert an den aufrufenden Code.
             RaiseEvent ValueChanged(Me, New EntryValueEditEventArgs(Me.SelectedSection, Me.SelectedEntry, Me._Value))
@@ -136,7 +144,14 @@ Namespace IniFileControl
 
         End Sub
 
-        Private Sub TextBox_TextChanged(sender As Object, e As System.EventArgs) Handles TextBox.TextChanged
+        ''' <summary>
+        ''' Wird ausgelöst, wenn der Benutzer den Text im Eingabefeld ändert. Aktiviert den Übernehmen-Button, wenn der
+        ''' neue Wert vom gespeicherten Wert abweicht. Deaktiviert den Button, wenn der neue Wert wieder dem
+        ''' gespeicherten Wert entspricht.
+        ''' </summary>
+        ''' <param name="sender"></param>
+        ''' <param name="e"></param>
+        Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TextBox.TextChanged
 
             If Me._Value <> Me.TextBox.Text Then
                 ' Benutzereingabe weicht vom gespeicherten Wert ab: Commit möglich.
@@ -150,6 +165,10 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Synchronisiert den GroupBox-Titel mit der Property <see cref="TitelText"/>, wenn diese programmatisch
+        ''' geändert wurde.
+        ''' </summary>
         Private Sub IniFileCommentEdit_TitelTextChanged() Handles Me.TitelTextChanged
 
             ' Spiegelt den Titel im UI-Container wider.
@@ -157,6 +176,11 @@ Namespace IniFileControl
 
         End Sub
 
+        ''' <summary>
+        ''' Synchronisiert den internen Wert mit dem Textfeld, wenn die Property <see cref="Value"/> programmatisch
+        ''' geändert wurde. Deaktiviert danach den Übernehmen-Button, da der neue Wert als aktueller Ausgangszustand
+        ''' gilt.
+        ''' </summary>
         Private Sub IniFileEntryValueEdit_PropertyValueChanged() Handles Me.PropertyValueChanged
 
             ' Schreibt programmatische Wertänderungen in das Textfeld.
