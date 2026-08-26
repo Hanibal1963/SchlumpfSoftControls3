@@ -4,6 +4,11 @@
 ' Datum: 06.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Windows.Forms
+Imports System.Drawing
+
 Namespace NotifyFormControl
 
     ''' <summary>
@@ -12,27 +17,26 @@ Namespace NotifyFormControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Control zum Anzeigen von Benachrichtigungsfenstern.")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(NotifyForm), "NotifyFormControl.NotifyForm.bmp")>
-    Public Class NotifyForm
+    <ToolboxBitmap(GetType(NotifyForm), "NotifyFormControl.NotifyForm.bmp")>
+    Public Class NotifyForm : Inherits Component
 
-#Region "Definition der Variablen"
+#Region "Variablen"
 
-        Private _Title As System.String
+        Private _Title As String
         Private _Style As NotifyFormStyle
-        Private _ShowTime As System.Int32
-        Private _Message As System.String
+        Private _ShowTime As Int32
+        Private _Message As String
         Private _Design As NotifyFormDesign
 
 #End Region
 
-#Region "Definition der Eigenschaften"
+#Region "Eigenschaften"
 
         ''' <summary>
         ''' Legt das Aussehen des Benachrichtigungsfensters fest.
         ''' </summary>
         ''' <value>
-        ''' Ein Wert aus <see
-        ''' cref="NotifyFormDesign"/>
+        ''' Ein Wert aus <see cref="NotifyFormDesign"/>
         ''' </value>
         <Browsable(True)>
         <Category("Appearance")>
@@ -70,7 +74,7 @@ Namespace NotifyFormControl
         <Browsable(True)>
         <Category("Behavior")>
         <Description("Legt die Anzeigedauer des Benachrichtigungsfensters in ms fest.")>
-        Public Property ShowTime As System.Int32
+        Public Property ShowTime As Int32
             Get
                 Return Me._ShowTime
             End Get
@@ -83,8 +87,7 @@ Namespace NotifyFormControl
         ''' Legt das anzuzeigende Symbol im Benachrichtigungsfensters fest.
         ''' </summary>
         ''' <value>
-        ''' Ein Wert aus <see
-        ''' cref="NotifyFormStyle"/>
+        ''' Ein Wert aus <see cref="NotifyFormStyle"/>
         ''' </value>
         <Browsable(True)>
         <Category("Appearance")>
@@ -115,11 +118,10 @@ Namespace NotifyFormControl
 
 #End Region
 
-#Region "öffentliche Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
-        ''' Initialisiert eine neue Instanz der <see cref="NotifyForm"/> Klasse mit
-        ''' Standardwerten.
+        ''' Initialisiert eine neue Instanz der <see cref="NotifyForm"/> Klasse mit Standardwerten.
         ''' </summary>
         Public Sub New()
             Me.InitializeComponent()
@@ -159,7 +161,7 @@ Namespace NotifyFormControl
         End Sub
 
         ''' <summary>
-        ''' Wählt anhand der konfigurierten <see cref="Design"/>-Eigenschaft das Farbschema aus.
+        ''' Wählt anhand der konfigurierten <see cref="Design"/> -Eigenschaft das Farbschema aus.
         ''' </summary>
         Private Sub SetFormDesign()
             Select Case Me.Design
@@ -173,30 +175,30 @@ Namespace NotifyFormControl
         ''' Setzt das helle Design für das Benachrichtigungsformular.
         ''' </summary>
         Private Shared Sub SetFormDesignBright()
-            FormTemplate.BackgroundColor = System.Drawing.Color.White
-            FormTemplate.TextFieldColor = System.Drawing.Color.White
-            FormTemplate.TitleBarColor = System.Drawing.Color.Gray
-            FormTemplate.FontColor = System.Drawing.Color.Black
+            FormTemplate.BackgroundColor = Color.White
+            FormTemplate.TextFieldColor = Color.White
+            FormTemplate.TitleBarColor = Color.Gray
+            FormTemplate.FontColor = Color.Black
         End Sub
 
         ''' <summary>
         ''' Setzt das farbige Design für das Benachrichtigungsformular.
         ''' </summary>
         Private Shared Sub SetFormDesignColorful()
-            FormTemplate.BackgroundColor = System.Drawing.Color.LightBlue
-            FormTemplate.TextFieldColor = System.Drawing.Color.LightBlue
-            FormTemplate.TitleBarColor = System.Drawing.Color.LightSeaGreen
-            FormTemplate.FontColor = System.Drawing.Color.White
+            FormTemplate.BackgroundColor = Color.LightBlue
+            FormTemplate.TextFieldColor = Color.LightBlue
+            FormTemplate.TitleBarColor = Color.LightSeaGreen
+            FormTemplate.FontColor = Color.White
         End Sub
 
         ''' <summary>
         ''' Setzt das dunkle Design für das Benachrichtigungsformular.
         ''' </summary>
         Private Shared Sub SetFormDesignDark()
-            FormTemplate.BackgroundColor = System.Drawing.Color.FromArgb(83, 79, 75)
-            FormTemplate.TextFieldColor = System.Drawing.Color.FromArgb(83, 79, 75)
-            FormTemplate.TitleBarColor = System.Drawing.Color.FromArgb(60, 57, 54)
-            FormTemplate.FontColor = System.Drawing.Color.White
+            FormTemplate.BackgroundColor = Color.FromArgb(83, 79, 75)
+            FormTemplate.TextFieldColor = Color.FromArgb(83, 79, 75)
+            FormTemplate.TitleBarColor = Color.FromArgb(60, 57, 54)
+            FormTemplate.FontColor = Color.White
         End Sub
 
         ''' <summary>
@@ -205,8 +207,8 @@ Namespace NotifyFormControl
         ''' <returns>
         ''' Ein Bild aus den Ressourcen, das dem aktuell gewählten <see cref="Style"/> entspricht.
         ''' </returns>
-        Private Function SetFormImage() As System.Drawing.Image
-            Dim result As System.Drawing.Bitmap = Nothing
+        Private Function SetFormImage() As Image
+            Dim result As Bitmap = Nothing
             Select Case Me.Style
             ' Ordnet den ausgewählten Stil dem passenden Ressourcensymbol zu.
                 Case NotifyFormStyle.CriticalError : result = My.Resources.NotifyFormControl_CriticalError

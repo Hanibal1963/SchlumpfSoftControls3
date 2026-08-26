@@ -4,12 +4,15 @@
 ' Datum: 06.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+
 Namespace NotifyFormControl
 
     ''' <summary>
     ''' Definiert die verfügbaren Symboltypen des Benachrichtigungsfensters.
     ''' </summary>
-    Public Enum NotifyFormStyle As System.Int32
+    Public Enum NotifyFormStyle As Int32
 
         ''' <summary>
         ''' Informationssymbol.

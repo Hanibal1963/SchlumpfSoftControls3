@@ -4,12 +4,15 @@
 ' Datum: 06.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+
 Namespace NotifyFormControl
 
     ''' <summary>
     ''' Definiert die verfügbaren Farbschemata des Benachrichtigungsfensters.
     ''' </summary>
-    Public Enum NotifyFormDesign As System.Int32
+    Public Enum NotifyFormDesign As Int32
 
         ''' <summary>
         ''' Helles Design mit neutralen Farben.
