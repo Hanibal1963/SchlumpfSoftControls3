@@ -5,6 +5,10 @@
 ' --------------------------------------------------------------------------------------------------------
 
 Imports System
+Imports System.ComponentModel
+Imports System.Windows.Forms
+Imports System.Drawing
+Imports System.Security.Cryptography
 
 Namespace PasswordControl
 
@@ -14,17 +18,17 @@ Namespace PasswordControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Ein Control zur Eingabe und Vergleich von Passwörtern.")>
     <ToolboxItem(True)>
-    <Drawing.ToolboxBitmap(GetType(Password), "PasswordControl.Password.bmp")>
+    <ToolboxBitmap(GetType(Password), "PasswordControl.Password.bmp")>
     Public Class Password
 
-#Region "Definition der Variablen"
+#Region "Variablen"
 
         Private _showpasswort As Boolean
         Private ReadOnly _security As New SecurityService()
 
 #End Region
 
-#Region "Definition der Ereignisse"
+#Region "Ereignisse"
 
         ''' <summary>
         ''' Tritt ein, wenn aus dem eingegebenen Passwort ein neuer Code erzeugt wurde.
@@ -39,14 +43,14 @@ Namespace PasswordControl
 #Region "Öffentliche Methoden"
 
         ''' <summary>
-        ''' Initialisiert eine neue Instanz des <see cref="Password" />-Steuerelements.
+        ''' Initialisiert eine neue Instanz des <see cref="Password" /> -Steuerelements.
         ''' </summary>
         Public Sub New()
             Me.InitializeComponent()
             ' Legt eine Mindestgröße fest, damit Textfeld und Symbol stets sichtbar bleiben.
-            Me.MinimumSize = New Drawing.Size(100, 20)
+            Me.MinimumSize = New Size(100, 20)
             ' Setzt die Standardgröße des Steuerelements beim Einfügen in den Designer.
-            Me.Size = New Drawing.Size(100, 20)
+            Me.Size = New Size(100, 20)
             ' Zeigt beim Start das Symbol zum Ausblenden des Passworts an.
             Me.PB.Image = My.Resources.PasswordControl_noshow
             ' Aktiviert die maskierte Eingabe als Standardverhalten.
@@ -56,11 +60,22 @@ Namespace PasswordControl
         ''' <summary>
         ''' Prüft, ob das aktuell eingegebene Passwort zu einem zuvor erzeugten Passwort-Code passt.
         ''' </summary>
-        ''' <param name="PasswordCode">Der geschützte Passwort-Code, der einen gespeicherten Passwort-Hash enthält.</param>
-        ''' <returns>True, wenn das aktuell eingegebene Passwort mit dem übergebenen Passwort-Code übereinstimmt; andernfalls False.</returns>
-        ''' <exception cref="ArgumentException">Wenn der übergebene Passwort-Code oder das aktuell eingegebene Passwort leer ist.</exception>
-        ''' <exception cref="FormatException">Wenn der übergebene Passwort-Code kein gültiger Base64-Text ist.</exception>
-        ''' <exception cref="Security.Cryptography.CryptographicException">Wenn der übergebene Passwort-Code nicht für den aktuellen Benutzer entschlüsselt werden kann.</exception>
+        ''' <param name="PasswordCode">
+        ''' Der geschützte Passwort-Code, der einen gespeicherten Passwort-Hash enthält.
+        ''' </param>
+        ''' <returns>
+        ''' True, wenn das aktuell eingegebene Passwort mit dem übergebenen Passwort-Code übereinstimmt; andernfalls
+        ''' False.
+        ''' </returns>
+        ''' <exception cref="ArgumentException">
+        ''' Wenn der übergebene Passwort-Code oder das aktuell eingegebene Passwort leer ist.
+        ''' </exception>
+        ''' <exception cref="FormatException">
+        ''' Wenn der übergebene Passwort-Code kein gültiger Base64-Text ist.
+        ''' </exception>
+        ''' <exception cref="CryptographicException">
+        ''' Wenn der übergebene Passwort-Code nicht für den aktuellen Benutzer entschlüsselt werden kann.
+        ''' </exception>
         Public Function VerifyPasswordCode(PasswordCode As String) As Boolean
             ' Hebt zuerst den Schutz des übergebenen Passwort-Codes auf, um den darin enthaltenen Hash wiederherzustellen.
             Dim pwhash As String = Me._security.UnprotectSecret(PasswordCode)
@@ -114,9 +129,9 @@ Namespace PasswordControl
             End If
         End Sub
 
-        Private Sub TB_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles TB.KeyDown
+        Private Sub TB_KeyDown(sender As Object, e As KeyEventArgs) Handles TB.KeyDown
             ' Löst die Hashbildung direkt bei Bestätigung mit der Eingabetaste aus.
-            If e.KeyCode = System.Windows.Forms.Keys.Enter Then Me.CheckTBText()
+            If e.KeyCode = Keys.Enter Then Me.CheckTBText()
         End Sub
 
 #End Region

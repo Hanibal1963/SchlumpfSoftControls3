@@ -4,6 +4,8 @@
 ' Datum: 24.07.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+
 Namespace PasswordControl
 
     ''' <summary>
@@ -11,7 +13,7 @@ Namespace PasswordControl
     ''' </summary>
     Public Class PasswordChangedEventArgs
 
-        Inherits System.EventArgs
+        Inherits EventArgs
 
         ''' <summary>
         ''' Gibt den erzeugten Code des Passwortes zurück.
