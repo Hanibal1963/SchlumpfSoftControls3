@@ -4,6 +4,11 @@
 ' Datum: 06.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Windows.Forms
+Imports System.Drawing
+
 Namespace SevenSegmentControl
 
     ''' <summary>
@@ -13,27 +18,27 @@ Namespace SevenSegmentControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Dieses Steuerelement stellt ein einzelnes Siebensegment-LED-Display dar, das eine Ziffer oder einen Buchstaben anzeigt.")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(SingleDigit), "SevenSegmentControl.SingleDigit.bmp")>
+    <ToolboxBitmap(GetType(SingleDigit), "SevenSegmentControl.SingleDigit.bmp")>
     Public Class SingleDigit
 
-        Inherits System.Windows.Forms.Control
+        Inherits Control
 
 #Region "Definition der Variablen"
 
-        Private ReadOnly _SegmentPoints As System.Drawing.Point()()  ' Sammlung der Eckpunkte für jedes der 7 Segmente (jedes Segment als Polygon mit 6 Punkten).
-        Private ReadOnly _DigitHeight As System.Int32 = 80 ' Interne, fixe Höhe (virtuell) der Ziffer für die Berechnung der Segmentkoordinaten.
-        Private ReadOnly _DigitWidth As System.Int32 = 48 ' Interne, fixe Breite (virtuell) der Ziffer für die Berechnung der Segmentkoordinaten.
-        Private _SegmentWidth As System.Int32 = 10 ' Aktuelle Segmentbreite (Dicke der LED-Balken) in Pixeln.
+        Private ReadOnly _SegmentPoints As Point()()  ' Sammlung der Eckpunkte für jedes der 7 Segmente (jedes Segment als Polygon mit 6 Punkten).
+        Private ReadOnly _DigitHeight As Int32 = 80 ' Interne, fixe Höhe (virtuell) der Ziffer für die Berechnung der Segmentkoordinaten.
+        Private ReadOnly _DigitWidth As Int32 = 48 ' Interne, fixe Breite (virtuell) der Ziffer für die Berechnung der Segmentkoordinaten.
+        Private _SegmentWidth As Int32 = 10 ' Aktuelle Segmentbreite (Dicke der LED-Balken) in Pixeln.
         Private _ItalicFactor As Single = -0.1F ' Scherfaktor zur Erzeugung einer kursiven Darstellung (negativ neigt nach links).
-        Private _BackgroundColor As System.Drawing.Color = System.Drawing.SystemColors.Control ' Zwischengespeicherte Hintergrundfarbe des Steuerelements.
-        Private _InactiveColor As System.Drawing.Color = System.Drawing.Color.DarkGray ' Farbe für inaktive (nicht leuchtende) Segmente.
-        Private _ForeColor As System.Drawing.Color = System.Drawing.Color.DarkGreen  ' Vordergrundfarbe für aktive (leuchtende) Segmente.
+        Private _BackgroundColor As Color = SystemColors.Control ' Zwischengespeicherte Hintergrundfarbe des Steuerelements.
+        Private _InactiveColor As Color = Color.DarkGray ' Farbe für inaktive (nicht leuchtende) Segmente.
+        Private _ForeColor As Color = Color.DarkGreen  ' Vordergrundfarbe für aktive (leuchtende) Segmente.
         Private _DigitValue As String = Nothing ' Zu darstellender Zeichenwert (Ziffer/Buchstabe/Sonderzeichen) als String.
         Private _ShowDecimalPoint As Boolean = True ' Steuert, ob der Dezimalpunkt gezeichnet wird.
         Private _DecimalPointActive As Boolean = False ' Status des Dezimalpunktes (aktiv = leuchtend).
         Private _ShowColon As Boolean = False ' Steuert, ob der Doppelpunkt (zwei Punkte) gezeichnet wird.
         Private _ColonActive As Boolean = False  ' Status des Doppelpunkts (aktiv = beide Punkte leuchten).
-        Private _CustomBitPattern As System.Int32 = 0 ' Bitmaske für die 7 Segmente (Bit0..Bit6); ermöglicht benutzerdefinierte Muster.
+        Private _CustomBitPattern As Int32 = 0 ' Bitmaske für die 7 Segmente (Bit0..Bit6); ermöglicht benutzerdefinierte Muster.
 
 #End Region
 
@@ -44,11 +49,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Category("Appearance")>
         <Description("Legt die Farbe inaktiver Segmente fest oder gibt diese zurück.")>
-        Public Property InactiveColor As System.Drawing.Color
+        Public Property InactiveColor As Color
             Get
                 Return Me._InactiveColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 Me._InactiveColor = value
                 Me.Invalidate()
             End Set
@@ -59,11 +64,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Category("Appearance")>
         <Description("Legt die Breite der LED-Segmente fest oder gibt diese zurück.")>
-        Public Property SegmentWidth As System.Int32
+        Public Property SegmentWidth As Int32
             Get
                 Return Me._SegmentWidth
             End Get
-            Set(value As System.Int32)
+            Set(value As Int32)
                 Me._SegmentWidth = value
                 Me.CalculatePoints(Me._SegmentPoints, Me._DigitHeight, Me._DigitWidth, Me._SegmentWidth)
                 Me.Invalidate()
@@ -107,8 +112,8 @@ Namespace SevenSegmentControl
                 If Equals(value, Nothing) OrElse value.Length = 0 Then
                     Return
                 End If
-                Dim tempValue As System.Int32
-                If System.Int32.TryParse(value, tempValue) Then
+                Dim tempValue As Int32
+                If Int32.TryParse(value, tempValue) Then
                     If tempValue > 9 Then tempValue = 9
                     If tempValue < 0 Then tempValue = 0
                     'ist es eine ganze Zahl?
@@ -175,11 +180,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Category("Appearance")>
         <Description("Legt ein benutzerdefiniertes Bitmuster fest, das in den sieben Segmenten angezeigt werden soll.")>
-        Public Property CustomBitPattern As System.Int32
+        Public Property CustomBitPattern As Int32
             Get
                 Return Me._CustomBitPattern
             End Get
-            Set(value As System.Int32)
+            Set(value As Int32)
                 Me._CustomBitPattern = value
                 Me.Invalidate()
             End Set
@@ -251,11 +256,11 @@ Namespace SevenSegmentControl
         ''' <returns>Aktuelle Hintergrundfarbe.</returns>
         <Category("Appearance")>
         <Description("Legt die Hintergrundfarbe des Controls fest oder gibt diese zurück.")>
-        Public Overrides Property BackColor As System.Drawing.Color
+        Public Overrides Property BackColor As Color
             Get
                 Return Me._BackgroundColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 Me._BackgroundColor = value
                 Me.Invalidate()
             End Set
@@ -267,11 +272,11 @@ Namespace SevenSegmentControl
         ''' <returns>Aktuelle Segment-Vordergrundfarbe.</returns>
         <Category("Appearance")>
         <Description("Legt die Vordergrundfarbe der Segmente des Controls fest oder gibt diese zurück.")>
-        Public Overrides Property ForeColor As System.Drawing.Color
+        Public Overrides Property ForeColor As Color
             Get
                 Return Me._ForeColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 Me._ForeColor = value
                 Me.Invalidate()
             End Set
@@ -282,11 +287,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property BackgroundImage As System.Drawing.Image
+        Public Overrides Property BackgroundImage As Image
             Get
                 Return MyBase.BackgroundImage
             End Get
-            Set(value As System.Drawing.Image)
+            Set(value As Image)
                 MyBase.BackgroundImage = value
             End Set
         End Property
@@ -296,11 +301,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property BackgroundImageLayout As System.Windows.Forms.ImageLayout
+        Public Overrides Property BackgroundImageLayout As ImageLayout
             Get
                 Return MyBase.BackgroundImageLayout
             End Get
-            Set(value As System.Windows.Forms.ImageLayout)
+            Set(value As ImageLayout)
                 MyBase.BackgroundImageLayout = value
             End Set
         End Property
@@ -310,11 +315,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property Font As System.Drawing.Font
+        Public Overrides Property Font As Font
             Get
                 Return MyBase.Font
             End Get
-            Set(value As System.Drawing.Font)
+            Set(value As Font)
                 MyBase.Font = value
             End Set
         End Property
@@ -338,11 +343,11 @@ Namespace SevenSegmentControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property RightToLeft As System.Windows.Forms.RightToLeft
+        Public Overrides Property RightToLeft As RightToLeft
             Get
                 Return MyBase.RightToLeft
             End Get
-            Set(value As System.Windows.Forms.RightToLeft)
+            Set(value As RightToLeft)
                 MyBase.RightToLeft = value
             End Set
         End Property
@@ -358,13 +363,13 @@ Namespace SevenSegmentControl
             Me.InitializeComponent()
             Me.SuspendLayout()
             Me.Name = "SevSegSingleDigit"
-            Me.Size = New System.Drawing.Size(32, 64)
+            Me.Size = New Size(32, 64)
             Me.TabStop = False
-            Me.Padding = New System.Windows.Forms.Padding(10, 4, 10, 4)
+            Me.Padding = New Padding(10, 4, 10, 4)
             MyBase.DoubleBuffered = True
-            Me._SegmentPoints = New System.Drawing.Point(6)() {}
+            Me._SegmentPoints = New Point(6)() {}
             For i = 0 To 6
-                Me._SegmentPoints(i) = New System.Drawing.Point(5) {}
+                Me._SegmentPoints(i) = New Point(5) {}
             Next
             Me.CalculatePoints(Me._SegmentPoints, Me._DigitHeight, Me._DigitWidth, Me._SegmentWidth)
             Me.ResumeLayout(False)
@@ -379,24 +384,24 @@ Namespace SevenSegmentControl
         ''' </summary>
         ''' <param name="sender">Quelle des Paint-Ereignisses.</param>
         ''' <param name="e">Paint-Ereignisdaten mit Grafikobjekt.</param>
-        Private Sub SevSegsingleDigit_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+        Private Sub SevSegsingleDigit_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
             Dim useValue = Me._CustomBitPattern
-            Dim brushLight As System.Drawing.Brush = New System.Drawing.SolidBrush(Me._ForeColor)
-            Dim brushDark As System.Drawing.Brush = New System.Drawing.SolidBrush(Me._InactiveColor)
+            Dim brushLight As Brush = New SolidBrush(Me._ForeColor)
+            Dim brushDark As Brush = New SolidBrush(Me._InactiveColor)
             ' Definiert den Quellbereich für das virtuelle Koordinatensystem.
-            Dim srcRect As System.Drawing.RectangleF
-            Dim colonWidth As System.Int32 = CInt(Me._DigitWidth / 4)
+            Dim srcRect As RectangleF
+            Dim colonWidth As Int32 = CInt(Me._DigitWidth / 4)
             srcRect = If(Me._ShowColon,
-                    New System.Drawing.RectangleF(0.0F, 0.0F, Me._DigitWidth + colonWidth, Me._DigitHeight),
-                    New System.Drawing.RectangleF(0.0F, 0.0F, Me._DigitWidth, Me._DigitHeight))
-            Dim destRect As New System.Drawing.RectangleF(Me.Padding.Left, Me.Padding.Top, Me.Width - Me.Padding.Left - Me.Padding.Right, Me.Height - Me.Padding.Top - Me.Padding.Bottom)
+                    New RectangleF(0.0F, 0.0F, Me._DigitWidth + colonWidth, Me._DigitHeight),
+                    New RectangleF(0.0F, 0.0F, Me._DigitWidth, Me._DigitHeight))
+            Dim destRect As New RectangleF(Me.Padding.Left, Me.Padding.Top, Me.Width - Me.Padding.Left - Me.Padding.Right, Me.Height - Me.Padding.Top - Me.Padding.Bottom)
             ' Grafikcontainer, der die virtuellen Koordinaten auf den verfügbaren Zielbereich abbildet.
-            Dim containerState = e.Graphics.BeginContainer(destRect, srcRect, System.Drawing.GraphicsUnit.Pixel)
-            Dim trans As New System.Drawing.Drawing2D.Matrix()
+            Dim containerState = e.Graphics.BeginContainer(destRect, srcRect, GraphicsUnit.Pixel)
+            Dim trans As New Drawing2D.Matrix()
             trans.Shear(Me._ItalicFactor, 0.0F)
             e.Graphics.Transform = trans
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias
-            e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default
+            e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+            e.Graphics.PixelOffsetMode = Drawing2D.PixelOffsetMode.Default
             ' Segmente entsprechend der Bitmaske zeichnen.
             Me.PaintSegments(e, useValue, brushLight, brushDark, Me._SegmentPoints)
             If Me._ShowDecimalPoint Then
@@ -417,7 +422,7 @@ Namespace SevenSegmentControl
         ''' <param name="BrushLight">Pinsel für aktive Segmente.</param>
         ''' <param name="BrushDark">Pinsel für inaktive Segmente.</param>
         ''' <param name="SegmentPoints">Polygonpunkte für alle Segmente.</param>
-        Private Sub PaintSegments(e As System.Windows.Forms.PaintEventArgs, BitPattern As System.Int32, BrushLight As System.Drawing.Brush, BrushDark As System.Drawing.Brush, ByRef SegmentPoints As System.Drawing.Point()())
+        Private Sub PaintSegments(e As PaintEventArgs, BitPattern As Int32, BrushLight As Brush, BrushDark As Brush, ByRef SegmentPoints As Point()())
             e.Graphics.FillPolygon(If((BitPattern And &H1) = &H1, BrushLight, BrushDark), SegmentPoints(0))
             e.Graphics.FillPolygon(If((BitPattern And &H2) = &H2, BrushLight, BrushDark), SegmentPoints(1))
             e.Graphics.FillPolygon(If((BitPattern And &H4) = &H4, BrushLight, BrushDark), SegmentPoints(2))
@@ -434,9 +439,9 @@ Namespace SevenSegmentControl
         ''' <param name="DigitHeight">Virtuelle Höhe der Anzeige.</param>
         ''' <param name="DigitWidth">Virtuelle Breite der Anzeige.</param>
         ''' <param name="SegmentWidth">Dicke der einzelnen Segmente.</param>
-        Private Sub CalculatePoints(ByRef SegmentCornerPoints As System.Drawing.Point()(), DigitHeight As System.Int32, DigitWidth As System.Int32, SegmentWidth As System.Int32)
-            Dim halfHeight As System.Int32 = CInt(DigitHeight / 2)
-            Dim halfWidth As System.Int32 = CInt(SegmentWidth / 2)
+        Private Sub CalculatePoints(ByRef SegmentCornerPoints As Point()(), DigitHeight As Int32, DigitWidth As Int32, SegmentWidth As Int32)
+            Dim halfHeight As Int32 = CInt(DigitHeight / 2)
+            Dim halfWidth As Int32 = CInt(SegmentWidth / 2)
             Dim p = 0
             ' Segment 0 (oben)
             SegmentCornerPoints(p)(0).X = SegmentWidth + 1
@@ -542,7 +547,7 @@ Namespace SevenSegmentControl
         ''' </summary>
         ''' <param name="sender">Quelle des Ereignisses.</param>
         ''' <param name="e">Ereignisdaten der Größenänderung.</param>
-        Private Sub SevSegSingleDigit_Resize(sender As Object, e As System.EventArgs) Handles Me.Resize
+        Private Sub SevSegSingleDigit_Resize(sender As Object, e As EventArgs) Handles Me.Resize
             Me.Invalidate()
         End Sub
 
@@ -550,7 +555,7 @@ Namespace SevenSegmentControl
         ''' Reagiert auf Änderungen des Innenabstands und fordert ein Neuzeichnen an.
         ''' </summary>
         ''' <param name="e">Ereignisdaten der Padding-Änderung.</param>
-        Protected Overrides Sub OnPaddingChanged(e As System.EventArgs)
+        Protected Overrides Sub OnPaddingChanged(e As EventArgs)
             MyBase.OnPaddingChanged(e)
             Me.Invalidate()
         End Sub
@@ -559,7 +564,7 @@ Namespace SevenSegmentControl
         ''' Zeichnet den Hintergrund in der konfigurierten Hintergrundfarbe.
         ''' </summary>
         ''' <param name="e">Paint-Ereignisdaten für das Hintergrundzeichnen.</param>
-        Protected Overrides Sub OnPaintBackground(e As System.Windows.Forms.PaintEventArgs)
+        Protected Overrides Sub OnPaintBackground(e As PaintEventArgs)
             'MyBase.OnPaintBackground(e)
             e.Graphics.Clear(Me._BackgroundColor)
         End Sub
