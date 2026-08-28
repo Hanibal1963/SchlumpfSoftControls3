@@ -4,6 +4,11 @@
 ' Datum: 05.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
+
 Namespace ShapeControl
 
     ''' <summary>
@@ -12,27 +17,25 @@ Namespace ShapeControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Steuerelement zum Darstellen von Linien, Rechtecken und Ellipsen (gefüllt oder ungefüllt).")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(Shape), "ShapeControl.Shape.bmp")>
-    Public Class Shape
+    <ToolboxBitmap(GetType(Shape), "ShapeControl.Shape.bmp")>
+    Public Class Shape : Inherits Control
 
-        Inherits System.Windows.Forms.Control
-
-#Region "Definition der Variablen"
+#Region "Variablen"
 
         ' Speichert den aktuell gesetzten Modus (Formtyp), der gezeichnet werden soll.
         Private _ShapeModus As ShapeModes
         ' Speichert die Linienbreite für Linie oder Rahmen.
         Private _LineWidth As Single
         ' Speichert die Farbe der Linie oder Rahmenlinie.
-        Private _LineColor As System.Drawing.Color
+        Private _LineColor As Color
         ' Speichert die Füllfarbe für Rechteck oder Ellipse, sofern gefüllte Formen gewählt wurden.
-        Private _FillColor As System.Drawing.Color
+        Private _FillColor As Color
         ' Speichert die Richtung der diagonalen Linie.
         Private _DiagonalLineModus As DiagonalLineModes
 
 #End Region
 
-#Region "Definition der öffentlichen Eigenschaften"
+#Region "Öffentliche Eigenschaften"
 
         ''' <summary>
         ''' Legt die anzuzeigende Form fest oder gibt diese zurück.
@@ -91,16 +94,16 @@ Namespace ShapeControl
         ''' Legt die Farbe der Linie oder Rahmenlinie fest oder gibt diese zurück.
         ''' </summary>
         ''' <value>
-        ''' Eine <see cref="System.Drawing.Color"/> Instanz für die Linienfarbe.
+        ''' Eine <see cref="Color"/> Instanz für die Linienfarbe.
         ''' </value>
         <Browsable(True)>
         <Category("Appearance")>
         <Description("Legt die Farbe der Linie oder Rahmenlinie fest oder gibt diese zurück.")>
-        Public Property LineColor() As System.Drawing.Color
+        Public Property LineColor() As Color
             Get
                 Return Me._LineColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 If Me._LineColor = value Then
                     Return
                 End If
@@ -114,16 +117,16 @@ Namespace ShapeControl
         ''' Legt die Füllfarbe für die Form fest oder gibt diese zurück.
         ''' </summary>
         ''' <value>
-        ''' Eine <see cref="System.Drawing.Color"/> Instanz für die Füllung.
+        ''' Eine <see cref="Color"/> Instanz für die Füllung.
         ''' </value>
         <Browsable(True)>
         <Category("Appearance")>
         <Description("Legt die Füllfarbe für die Form fest oder gibt diese zurück.")>
-        Public Property FillColor() As System.Drawing.Color
+        Public Property FillColor() As Color
             Get
                 Return Me._FillColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 If Me._FillColor = value Then
                     Return
                 End If
@@ -134,8 +137,8 @@ Namespace ShapeControl
         End Property
 
         ''' <summary>
-        ''' Legt fest, ob eine diagonale Linie von links oben nach rechts unten oder umgekehrt verläuft, oder gibt diesen
-        ''' Wert zurück.
+        ''' Legt fest, ob eine diagonale Linie von links oben nach rechts unten oder umgekehrt verläuft, oder gibt
+        ''' diesen Wert zurück.
         ''' </summary>
         ''' <value>
         ''' Ein Wert aus <see cref="DiagonalLineModes"/> zur Bestimmung der Richtung.
@@ -162,11 +165,11 @@ Namespace ShapeControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property BackColor As System.Drawing.Color
+        Public Overrides Property BackColor As Color
             Get
                 Return MyBase.BackColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 MyBase.BackColor = value
             End Set
         End Property
@@ -176,11 +179,11 @@ Namespace ShapeControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property BackgroundImage As System.Drawing.Image
+        Public Overrides Property BackgroundImage As Image
             Get
                 Return MyBase.BackgroundImage
             End Get
-            Set(value As System.Drawing.Image)
+            Set(value As Image)
                 MyBase.BackgroundImage = value
             End Set
         End Property
@@ -190,11 +193,11 @@ Namespace ShapeControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property BackgroundImageLayout As System.Windows.Forms.ImageLayout
+        Public Overrides Property BackgroundImageLayout As ImageLayout
             Get
                 Return MyBase.BackgroundImageLayout
             End Get
-            Set(value As System.Windows.Forms.ImageLayout)
+            Set(value As ImageLayout)
                 MyBase.BackgroundImageLayout = value
             End Set
         End Property
@@ -204,11 +207,11 @@ Namespace ShapeControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property Font As System.Drawing.Font
+        Public Overrides Property Font As Font
             Get
                 Return MyBase.Font
             End Get
-            Set(value As System.Drawing.Font)
+            Set(value As Font)
                 MyBase.Font = value
             End Set
         End Property
@@ -218,11 +221,11 @@ Namespace ShapeControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property ForeColor As System.Drawing.Color
+        Public Overrides Property ForeColor As Color
             Get
                 Return MyBase.ForeColor
             End Get
-            Set(value As System.Drawing.Color)
+            Set(value As Color)
                 MyBase.ForeColor = value
             End Set
         End Property
@@ -232,11 +235,11 @@ Namespace ShapeControl
         ''' </summary>
         <Browsable(False)>
         <EditorBrowsable(EditorBrowsableState.Never)>
-        Public Overrides Property RightToLeft As System.Windows.Forms.RightToLeft
+        Public Overrides Property RightToLeft As RightToLeft
             Get
                 Return MyBase.RightToLeft
             End Get
-            Set(value As System.Windows.Forms.RightToLeft)
+            Set(value As RightToLeft)
                 MyBase.RightToLeft = value
             End Set
         End Property
@@ -257,7 +260,7 @@ Namespace ShapeControl
 
 #End Region
 
-#Region "Definition der öffentlichen Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz von <see cref="Shape"/>.
@@ -275,7 +278,7 @@ Namespace ShapeControl
 
 #End Region
 
-#Region "Definition der internen Methoden"
+#Region "Interne Methoden"
 
         ''' <summary>
         ''' Initialisiert die Standardwerte des Steuerelements.
@@ -284,9 +287,9 @@ Namespace ShapeControl
 
             Me._ShapeModus = ShapeModes.HorizontalLine ' Standardform: horizontale Linie
             Me._DiagonalLineModus = DiagonalLineModes.TopLeftToBottomRight ' Standardrichtung der diagonalen Linie
-            Me._LineColor = System.Drawing.Color.Black ' Standardfarbe für Linien und Rahmen
+            Me._LineColor = Color.Black ' Standardfarbe für Linien und Rahmen
             Me._LineWidth = 2 ' Standard-Linienbreite in Pixeln
-            Me._FillColor = System.Drawing.Color.Gray ' Standardfüllung für gefüllte Formen
+            Me._FillColor = Color.Gray ' Standardfüllung für gefüllte Formen
 
         End Sub
 
@@ -295,8 +298,8 @@ Namespace ShapeControl
         ''' </summary>
         Private Sub InitializeStyles()
 
-            Me.SetStyle(System.Windows.Forms.ControlStyles.Opaque, True) ' Steuerung übernimmt die komplette Hintergrund-/Vordergrunddarstellung
-            Me.SetStyle(System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer, False) ' Kein DoubleBuffer wegen Transparenzverhalten (WS_EX_TRANSPARENT)
+            Me.SetStyle(ControlStyles.Opaque, True) ' Steuerung übernimmt die komplette Hintergrund-/Vordergrunddarstellung
+            Me.SetStyle(ControlStyles.OptimizedDoubleBuffer, False) ' Kein DoubleBuffer wegen Transparenzverhalten (WS_EX_TRANSPARENT)
 
         End Sub
 
@@ -304,21 +307,21 @@ Namespace ShapeControl
         ''' Zeichnet die aktuell gewählte Form anhand der gesetzten Eigenschaften.
         ''' </summary>
         ''' <param name="e">Enthält die Grafikoberfläche und Zustandsinformationen für den Zeichenvorgang.</param>
-        Protected Overrides Sub OnPaint(e As System.Windows.Forms.PaintEventArgs)
+        Protected Overrides Sub OnPaint(e As PaintEventArgs)
 
             MyBase.OnPaint(e)
-            Dim g As System.Drawing.Graphics = e.Graphics ' Zeichenoberfläche des Steuerelements
+            Dim g As Graphics = e.Graphics ' Zeichenoberfläche des Steuerelements
 
             ' Maße werden mit Max(0) abgesichert, damit bei kleinen Control-Größen keine negativen Werte entstehen.
             Dim halfLineWidth As Single = Me._LineWidth / 2.0F ' Halbierte Linienbreite für zentrierte Rahmenzeichnung
-            Dim rectWidth As Single = System.Math.Max(0.0F, Me.Width - Me._LineWidth) ' Außenmaß für Rahmen
-            Dim rectHeight As Single = System.Math.Max(0.0F, Me.Height - Me._LineWidth) ' Außenmaß für Rahmen
-            Dim fillWidth As Single = System.Math.Max(0.0F, Me.Width - (2.0F * Me._LineWidth)) ' Innenmaß für Füllung
-            Dim fillHeight As Single = System.Math.Max(0.0F, Me.Height - (2.0F * Me._LineWidth)) ' Innenmaß für Füllung
+            Dim rectWidth As Single = Math.Max(0.0F, Me.Width - Me._LineWidth) ' Außenmaß für Rahmen
+            Dim rectHeight As Single = Math.Max(0.0F, Me.Height - Me._LineWidth) ' Außenmaß für Rahmen
+            Dim fillWidth As Single = Math.Max(0.0F, Me.Width - (2.0F * Me._LineWidth)) ' Innenmaß für Füllung
+            Dim fillHeight As Single = Math.Max(0.0F, Me.Height - (2.0F * Me._LineWidth)) ' Innenmaß für Füllung
 
-            Using pen As New System.Drawing.Pen(Me._LineColor, Me._LineWidth) ' Für Linien und Umrandungen
+            Using pen As New Pen(Me._LineColor, Me._LineWidth) ' Für Linien und Umrandungen
 
-                Using brush As New System.Drawing.SolidBrush(Me._FillColor) ' Für gefüllte Formen
+                Using brush As New SolidBrush(Me._FillColor) ' Für gefüllte Formen
 
                     Select Case Me._ShapeModus
                         Case ShapeModes.HorizontalLine  ' horizontale Linie zeichnen (mittig im Rahmen des Controls)
@@ -364,18 +367,20 @@ Namespace ShapeControl
         ''' Legt spezielle Parameter für das ShapeControl fest.
         ''' </summary>
         ''' <remarks>
+        '''
         ''' <para>Das Setzen von <c>WS_EX_TRANSPARENT</c> sorgt dafür, dass der Hintergrund des Eltern-Steuerelements
         ''' durchscheint.</para>
+        '''
         ''' <para>Weitere Informationen:
         ''' <see href="https://stackoverflow.com/questions/511320/transparent-control-backgrounds-on-a-vb-net-gradient-filled-form"/>
         ''' und <see href="https://learn.microsoft.com/de-de/windows/win32/winmsg/extended-window-styles"/> .</para>
         ''' </remarks>
         ''' <value>
-        ''' Ein <see cref="System.Windows.Forms.CreateParams"/> Objekt mit erweiterten Stil-Flags.
+        ''' Ein <see cref="CreateParams"/> Objekt mit erweiterten Stil-Flags.
         ''' </value>
-        Protected Overrides ReadOnly Property CreateParams() As System.Windows.Forms.CreateParams
+        Protected Overrides ReadOnly Property CreateParams() As CreateParams
             Get
-                Dim cp As System.Windows.Forms.CreateParams = MyBase.CreateParams
+                Dim cp As CreateParams = MyBase.CreateParams
                 ' Aktiviert den erweiterten Fenstilstil WS_EX_TRANSPARENT.
                 cp.ExStyle = cp.ExStyle Or &H20
                 Return cp

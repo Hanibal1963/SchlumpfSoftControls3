@@ -4,6 +4,8 @@
 ' Datum: 05.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System.ComponentModel
+
 Namespace ShapeControl
 
     ''' <summary>
@@ -14,12 +16,18 @@ Namespace ShapeControl
         ''' <summary>
         ''' Zeichnet die diagonale Linie von links oben nach rechts unten.
         ''' </summary>
-        TopLeftToBottomRight = 0 ' Startpunkt: obere linke Ecke, Endpunkt: untere rechte Ecke
+        ''' <remarks>
+        ''' Die Linie verläuft von der oberen linken Ecke des Steuerelements zur unteren rechten Ecke.
+        ''' </remarks>
+        TopLeftToBottomRight = 0
 
         ''' <summary>
         ''' Zeichnet die diagonale Linie von links unten nach rechts oben.
         ''' </summary>
-        BottomLeftToTopRight = 1 ' Startpunkt: untere linke Ecke, Endpunkt: obere rechte Ecke
+        ''' <remarks>
+        ''' Die Linie verläuft von der unteren linken Ecke des Steuerelements zur oberen rechten Ecke.
+        ''' </remarks>
+        BottomLeftToTopRight = 1
 
     End Enum
 
