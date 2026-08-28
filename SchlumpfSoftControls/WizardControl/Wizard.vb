@@ -4,6 +4,11 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+Imports System.ComponentModel
+Imports System.Drawing
+
 Namespace WizardControl
 
     ''' <summary>
@@ -12,69 +17,70 @@ Namespace WizardControl
     <ProvideToolboxControl("SchlumpfSoft Controls", False)>
     <Description("Ein Control zum erstellen eines Assistenen")>
     <ToolboxItem(True)>
-    <System.Drawing.ToolboxBitmap(GetType(Wizard), "WizardControl.Wizard.bmp")>
+    <ToolboxBitmap(GetType(Wizard), "WizardControl.Wizard.bmp")>
     <Designer(GetType(WizardDesigner))>
-    Public Class Wizard
+    Public Class Wizard : Inherits UserControl
 
-        Inherits System.Windows.Forms.UserControl
-
-        Friend _ImageHeader As System.Drawing.Image               ' Bild, das in der Kopfzeile von Standardseiten angezeigt wird
-        Friend _ImageWelcome As System.Drawing.Image              ' Bild, das auf Begrüßungs- und Abschlussseiten angezeigt wird
-        Friend _WelcomeFont As System.Drawing.Font                ' Schriftart für die Beschreibung auf Begrüßungs- und Abschlussseiten (optional, fällt sonst auf Font zurück)
-        Friend _WelcomeTitleFont As System.Drawing.Font           ' Schriftart für den Titel auf Begrüßungs- und Abschlussseiten (optional; Standard: größer und fett)
-        Friend _HeaderFont As System.Drawing.Font                 ' Schriftart für die Beschreibung in der Kopfzeile von Standardseiten (optional, fällt sonst auf Font zurück)
-        Friend _HeaderTitleFont As System.Drawing.Font            ' Schriftart für den Titel in der Kopfzeile von Standardseiten (optional; Standard: +2pt, fett)
+        Friend _ImageHeader As Image               ' Bild, das in der Kopfzeile von Standardseiten angezeigt wird
+        Friend _ImageWelcome As Image              ' Bild, das auf Begrüßungs- und Abschlussseiten angezeigt wird
+        Friend _WelcomeFont As Font                ' Schriftart für die Beschreibung auf Begrüßungs- und Abschlussseiten (optional, fällt sonst auf Font zurück)
+        Friend _WelcomeTitleFont As Font           ' Schriftart für den Titel auf Begrüßungs- und Abschlussseiten (optional; Standard: größer und fett)
+        Friend _HeaderFont As Font                 ' Schriftart für die Beschreibung in der Kopfzeile von Standardseiten (optional, fällt sonst auf Font zurück)
+        Friend _HeaderTitleFont As Font            ' Schriftart für den Titel in der Kopfzeile von Standardseiten (optional; Standard: +2pt, fett)
         Friend _SelectedPage As WizardPage                        ' Aktuell aktive Assistentenseite
         Friend _Pages As PagesCollection                          ' Sammlung aller Assistentenseiten
         Friend _ButtonHelpVisible As Boolean                      ' Steuert die Sichtbarkeit der Hilfeschaltfläche
-        Friend ReadOnly _OffsetCancel As New System.Drawing.Point(84, 36) ' Abstand für Positionierung der Abbrechen/Beenden-Schaltfläche (X- und Y-Offset)
-        Friend ReadOnly _OffsetNext As New System.Drawing.Point(164, 36)  ' Abstand für Positionierung der Weiter-Schaltfläche (X- und Y-Offset)
-        Friend ReadOnly _OffsetBack As New System.Drawing.Point(244, 36)  ' Abstand für Positionierung der Zurück-Schaltfläche (X- und Y-Offset)
-        Friend WithEvents ButtonHelp As System.Windows.Forms.Button
-        Friend WithEvents ButtonBack As System.Windows.Forms.Button
-        Friend WithEvents ButtonNext As System.Windows.Forms.Button
-        Friend WithEvents ButtonCancel As System.Windows.Forms.Button
+        Friend ReadOnly _OffsetCancel As New Point(84, 36) ' Abstand für Positionierung der Abbrechen/Beenden-Schaltfläche (X- und Y-Offset)
+        Friend ReadOnly _OffsetNext As New Point(164, 36)  ' Abstand für Positionierung der Weiter-Schaltfläche (X- und Y-Offset)
+        Friend ReadOnly _OffsetBack As New Point(244, 36)  ' Abstand für Positionierung der Zurück-Schaltfläche (X- und Y-Offset)
+        Friend WithEvents ButtonHelp As Button
+        Friend WithEvents ButtonBack As Button
+        Friend WithEvents ButtonNext As Button
+        Friend WithEvents ButtonCancel As Button
         Private ReadOnly components As IContainer ' Erforderlich für den Windows Form Designer
 
         ''' <summary>
-        ''' Delegattyp für das Ereignis, das vor dem Wechsel der Assistentenseiten ausgelöst
-        ''' wird. Ermöglicht Validierung und das ggf. Verhindern des Seitenwechsels.
+        ''' Delegattyp für das Ereignis, das vor dem Wechsel der Assistentenseiten ausgelöst wird. Ermöglicht
+        ''' Validierung und das ggf. Verhindern des Seitenwechsels.
         ''' </summary>
         ''' <remarks>
         ''' Setzen Sie <c>e.Cancel = True</c>, um den Seitenwechsel zu verhindern.
         ''' </remarks>
-        ''' <param name="sender">Das auslösende Objekt (typischerweise die <see
-        ''' cref="Wizard"/>-Instanz).</param>
-        ''' <param name="e">Ein <see cref="BeforeSwitchPagesEventArgs"/>, das
-        ''' die Ereignisdaten enthält (Alter/Neuer Index, Abbruchflag).</param>
+        ''' <param name="sender">
+        ''' Das auslösende Objekt (typischerweise die <see cref="Wizard"/> -Instanz).
+        ''' </param>
+        ''' <param name="e">
+        ''' Ein <see cref="BeforeSwitchPagesEventArgs"/>, das die Ereignisdaten enthält (Alter/Neuer Index,
+        ''' Abbruchflag).
+        ''' </param>
         Public Delegate Sub BeforeSwitchPagesEventHandler(sender As Object, e As BeforeSwitchPagesEventArgs)
 
         ''' <summary>
-        ''' Delegattyp für das Ereignis, das nach dem Wechsel der Assistentenseiten
-        ''' ausgelöst wird. Ermöglicht das Initialisieren und Aktualisieren der neu aktiven
-        ''' Seite.
+        ''' Delegattyp für das Ereignis, das nach dem Wechsel der Assistentenseiten ausgelöst wird. Ermöglicht das
+        ''' Initialisieren und Aktualisieren der neu aktiven Seite.
         ''' </summary>
         ''' <remarks>
-        ''' Verwenden Sie dieses Ereignis, um Fokus zu setzen, Daten zu laden oder
-        ''' UI-Elemente anzupassen.
+        ''' Verwenden Sie dieses Ereignis, um Fokus zu setzen, Daten zu laden oder UI-Elemente anzupassen.
         ''' </remarks>
-        ''' <param name="sender">Das auslösende Objekt (typischerweise die <see
-        ''' cref="Wizard"/>-Instanz).</param>
-        ''' <param name="e">Ein <see cref="AfterSwitchPagesEventArgs"/>, das
-        ''' die Ereignisdaten enthält (Alter/Neuer Index).</param>
+        ''' <param name="sender">
+        ''' Das auslösende Objekt (typischerweise die <see cref="Wizard"/> -Instanz).
+        ''' </param>
+        ''' <param name="e">
+        ''' Ein <see cref="AfterSwitchPagesEventArgs"/>, das die Ereignisdaten enthält (Alter/Neuer Index).
+        ''' </param>
         Public Delegate Sub AfterSwitchPagesEventHandler(sender As Object, e As AfterSwitchPagesEventArgs)
 
         ''' <summary>
-        ''' Tritt auf, bevor die Seiten des Assistenten gewechselt werden, um dem Benutzer
-        ''' die Möglichkeit zur Validierung zu geben.
+        ''' Tritt auf, bevor die Seiten des Assistenten gewechselt werden, um dem Benutzer die Möglichkeit zur
+        ''' Validierung zu geben.
         ''' </summary>
         <Category("Behavior")>
         <Description("Tritt auf, bevor die Seiten des Assistenten gewechselt werden, um dem Benutzer die Möglichkeit zur Validierung zu geben.")>
         Public Event BeforeSwitchPages As BeforeSwitchPagesEventHandler
 
         ''' <summary>
-        ''' Tritt auf, nachdem die Seiten des Assistenten gewechselt wurden, und gibt dem
-        ''' Benutzer die Möglichkeit, die neue Seite einzurichten.
+        ''' Tritt auf, nachdem die Seiten des Assistenten gewechselt wurden, und gibt dem Benutzer die Möglichkeit, die
+        ''' neue Seite einzurichten.
         ''' </summary>
         <Category("Behavior")>
         <Description("Tritt auf, nachdem die Seiten des Assistenten gewechselt wurden, und gibt dem Benutzer die Möglichkeit, die neue Seite einzurichten.")>
@@ -88,19 +94,19 @@ Namespace WizardControl
         Public Event Cancel As CancelEventHandler
 
         ''' <summary>
-        ''' Tritt auf, wenn der Assistent abgeschlossen ist, und gibt dem Benutzer die
-        ''' Möglichkeit, zusätzliche Aufgaben zu erledigen.
+        ''' Tritt auf, wenn der Assistent abgeschlossen ist, und gibt dem Benutzer die Möglichkeit, zusätzliche Aufgaben
+        ''' zu erledigen.
         ''' </summary>
         <Category("Behavior")>
         <Description("Tritt auf, wenn der Assistent abgeschlossen ist, und gibt dem Benutzer die Möglichkeit, zusätzliche Aufgaben zu erledigen.")>
-        Public Event Finish As System.EventHandler
+        Public Event Finish As EventHandler
 
         ''' <summary>
         ''' Tritt auf, wenn der Benutzer auf die Hilfeschaltfläche klickt.
         ''' </summary>
         <Category("Behavior")>
         <Description("Tritt auf, wenn der Benutzer auf die Hilfeschaltfläche klickt.")>
-        Public Event Help As System.EventHandler
+        Public Event Help As EventHandler
 
         ''' <summary>
         ''' Ruft die Sichtbarkeit Status der Hilfeschaltfläche ab oder legt diesen fest.
@@ -119,7 +125,7 @@ Namespace WizardControl
             Set(value As Boolean)
                 Me._ButtonHelpVisible = value
                 Try
-                    Dim e As System.EventArgs = Nothing
+                    Dim e As EventArgs = Nothing
                     If Not Me._ButtonHelpVisible Then
                         Me.Controls.Remove(Me.ButtonHelp)
                         Me.OnResize(e)
@@ -133,8 +139,7 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft die Auflistung der Assistentenseiten in diesem Registerkartensteuerelement
-        ''' ab.
+        ''' Ruft die Auflistung der Assistentenseiten in diesem Registerkartensteuerelement ab.
         ''' </summary>
         ''' <value>
         ''' Die Auflistung der Seiten als <see cref="PagesCollection"/>.
@@ -142,7 +147,7 @@ Namespace WizardControl
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
         <Category("Design")>
         <Description("Ruft die Auflistung der Assistentenseiten in diesem Registerkartensteuerelement ab.")>
-        <Editor(GetType(PagesCollectionEditor), GetType(System.Drawing.Design.UITypeEditor))>
+        <Editor(GetType(PagesCollectionEditor), GetType(Design.UITypeEditor))>
         Public ReadOnly Property Pages As PagesCollection
             Get
                 Return Me._Pages
@@ -150,8 +155,7 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft das in der Kopfzeile der Standardseiten angezeigte Bild ab oder legt dieses
-        ''' fest.
+        ''' Ruft das in der Kopfzeile der Standardseiten angezeigte Bild ab oder legt dieses fest.
         ''' </summary>
         ''' <value>
         ''' Das Bild für die Kopfzeile.
@@ -159,11 +163,11 @@ Namespace WizardControl
         <Browsable(True)>
         <Category("Design")>
         <Description("Ruft das in der Kopfzeile der Standardseiten angezeigte Bild ab oder legt dieses fest.")>
-        Public Property ImageHeader As System.Drawing.Image
+        Public Property ImageHeader As Image
             Get
                 Return Me._ImageHeader
             End Get
-            Set(value As System.Drawing.Image)
+            Set(value As Image)
                 If Me._ImageHeader IsNot value Then
                     Me._ImageHeader = value
                     Me.Invalidate()
@@ -172,17 +176,16 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft das auf den Begrüßungs- und Abschlussseiten angezeigte Bild ab oder legt es
-        ''' fest.
+        ''' Ruft das auf den Begrüßungs- und Abschlussseiten angezeigte Bild ab oder legt es fest.
         ''' </summary>
         <Browsable(True)>
         <Category("Design")>
         <Description("Ruft das auf den Begrüßungs- und Abschlussseiten angezeigte Bild ab oder legt es fest.")>
-        Public Property ImageWelcome As System.Drawing.Image
+        Public Property ImageWelcome As Image
             Get
                 Return Me._ImageWelcome
             End Get
-            Set(value As System.Drawing.Image)
+            Set(value As Image)
                 If Me._ImageWelcome IsNot value Then
                     Me._ImageWelcome = value
                     Me.Invalidate()
@@ -191,17 +194,16 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft ab oder legt fest, an welcher Kante des übergeordneten Containers ein
-        ''' Steuerelement angedockt ist.
+        ''' Ruft ab oder legt fest, an welcher Kante des übergeordneten Containers ein Steuerelement angedockt ist.
         ''' </summary>
         <Category("Layout")>
         <Description("Ruft ab oder legt fest, an welcher Kante des übergeordneten Containers ein Steuerelement angedockt ist.")>
-        <DefaultValue(System.Windows.Forms.DockStyle.Fill)>
-        Public Overloads Property Dock As System.Windows.Forms.DockStyle
+        <DefaultValue(DockStyle.Fill)>
+        Public Overloads Property Dock As DockStyle
             Get
                 Return MyBase.Dock
             End Get
-            Set(value As System.Windows.Forms.DockStyle)
+            Set(value As DockStyle)
                 MyBase.Dock = value
             End Set
         End Property
@@ -219,33 +221,33 @@ Namespace WizardControl
 
         <Browsable(False)>
         <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
-        Friend Property SelectedIndex As System.Int32
+        Friend Property SelectedIndex As Int32
             Get
                 Return Me._Pages.IndexOf(Me._SelectedPage)
             End Get
-            Set(value As System.Int32)
+            Set(value As Int32)
                 If Me._Pages.Count = 0 Then
                     Me.ActivatePage(-1)
                     Return
                 End If
                 If value < -1 OrElse value >= Me._Pages.Count Then
-                    Throw New System.ArgumentOutOfRangeException($"SelectedIndex", value, $"Der Seitenindex muss zwischen 0 und {Me._Pages.Count - 1} liegen ")
+                    Throw New ArgumentOutOfRangeException($"SelectedIndex", value, $"Der Seitenindex muss zwischen 0 und {Me._Pages.Count - 1} liegen ")
                 End If
                 Me.ActivatePage(value)
             End Set
         End Property
 
         ''' <summary>
-        ''' Ruft die Schriftart ab, die zum Anzeigen der Beschreibung einer Standardseite
-        ''' verwendet wird, oder legt diese fest.
+        ''' Ruft die Schriftart ab, die zum Anzeigen der Beschreibung einer Standardseite verwendet wird, oder legt
+        ''' diese fest.
         ''' </summary>
         <Category("Appearance")>
         <Description("Ruft die Schriftart ab, die zum Anzeigen der Beschreibung einer Standardseite verwendet wird, oder legt diese fest.")>
-        Public Property HeaderFont As System.Drawing.Font
+        Public Property HeaderFont As Font
             Get
                 Return If(Me._HeaderFont, MyBase.Font)
             End Get
-            Set(value As System.Drawing.Font)
+            Set(value As Font)
                 If Me._HeaderFont IsNot value Then
                     Me._HeaderFont = value
                     Me.Invalidate()
@@ -254,19 +256,19 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft die Schriftart ab, die zum Anzeigen des Titels einer Standardseite verwendet wird, 
-        ''' oder legt diese fest.
+        ''' Ruft die Schriftart ab, die zum Anzeigen des Titels einer Standardseite verwendet wird, oder legt diese
+        ''' fest.
         ''' </summary>
         ''' <returns></returns>
         <Category("Appearance")>
         <Description("Ruft die Schriftart ab, die zum Anzeigen des Titels einer Standardseite verwendet wird, oder legt diese fest.")>
-        Public Property HeaderTitleFont As System.Drawing.Font
+        Public Property HeaderTitleFont As Font
             Get
                 Return If(
                     Me._HeaderTitleFont,
-                    New System.Drawing.Font(MyBase.Font.FontFamily, MyBase.Font.Size + 2.0F, System.Drawing.FontStyle.Bold))
+                    New Font(MyBase.Font.FontFamily, MyBase.Font.Size + 2.0F, FontStyle.Bold))
             End Get
-            Set(value As System.Drawing.Font)
+            Set(value As Font)
                 If Me._HeaderTitleFont IsNot value Then
                     Me._HeaderTitleFont = value
                     Me.Invalidate()
@@ -275,17 +277,17 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft die Schriftart ab, die zum Anzeigen der Beschreibung einer Begrüßungs- oder 
-        ''' Abschlussseite verwendet wird, oder legt diese fest.
+        ''' Ruft die Schriftart ab, die zum Anzeigen der Beschreibung einer Begrüßungs- oder Abschlussseite verwendet
+        ''' wird, oder legt diese fest.
         ''' </summary>
         ''' <returns></returns>
         <Category("Appearance")>
         <Description("Ruft die Schriftart ab, die zum Anzeigen der Beschreibung einer Begrüßungs- oder Abschlussseite verwendet wird, oder legt diese fest.")>
-        Public Property WelcomeFont As System.Drawing.Font
+        Public Property WelcomeFont As Font
             Get
                 Return If(Me._WelcomeFont, MyBase.Font)
             End Get
-            Set(value As System.Drawing.Font)
+            Set(value As Font)
                 If Me._WelcomeFont IsNot value Then
                     Me._WelcomeFont = value
                     Me.Invalidate()
@@ -294,19 +296,19 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Ruft die Schriftart ab, die zum Anzeigen des Titels einer Begrüßungs- oder Abschlussseite 
-        ''' verwendet wird, oder legt diese fest.
+        ''' Ruft die Schriftart ab, die zum Anzeigen des Titels einer Begrüßungs- oder Abschlussseite verwendet wird,
+        ''' oder legt diese fest.
         ''' </summary>
         ''' <returns></returns>
         <Category("Appearance")>
         <Description("Ruft die Schriftart ab, die zum Anzeigen des Titels einer Begrüßungs- oder Abschlussseite verwendet wird, oder legt diese fest.")>
-        Public Property WelcomeTitleFont As System.Drawing.Font
+        Public Property WelcomeTitleFont As Font
             Get
                 Return If(
                     Me._WelcomeTitleFont,
-                    New System.Drawing.Font(MyBase.Font.FontFamily, MyBase.Font.Size + 10.0F, System.Drawing.FontStyle.Bold))
+                    New Font(MyBase.Font.FontFamily, MyBase.Font.Size + 10.0F, FontStyle.Bold))
             End Get
-            Set(value As System.Drawing.Font)
+            Set(value As Font)
                 If Me._WelcomeTitleFont IsNot value Then
                     Me._WelcomeTitleFont = value
                     Me.Invalidate()
@@ -384,7 +386,7 @@ Namespace WizardControl
             Me.InitializeComponent()
             Me.InitializeVariables()
             Me.InitializeStyles()
-            MyBase.Dock = System.Windows.Forms.DockStyle.Fill
+            MyBase.Dock = DockStyle.Fill
             Me._Pages = New PagesCollection(Me)
         End Sub
 
@@ -401,10 +403,10 @@ Namespace WizardControl
         End Sub
 
         Private Sub InitializeStyles()
-            Me.SetStyle(System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, True)
-            Me.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, True)
-            Me.SetStyle(System.Windows.Forms.ControlStyles.ResizeRedraw, True)
-            Me.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, True)
+            Me.SetStyle(ControlStyles.AllPaintingInWmPaint, True)
+            Me.SetStyle(ControlStyles.DoubleBuffer, True)
+            Me.SetStyle(ControlStyles.ResizeRedraw, True)
+            Me.SetStyle(ControlStyles.UserPaint, True)
         End Sub
 
         ''' <summary>
@@ -432,7 +434,7 @@ Namespace WizardControl
         ''' <summary>
         ''' Setzt den Index der aktuellen Seite
         ''' </summary>
-        Private Sub ActivatePage(index As System.Int32)
+        Private Sub ActivatePage(index As Int32)
             If index >= 0 AndAlso index < Me._Pages.Count Then
                 Dim page As WizardPage = Me._Pages(index)
                 Me.ActivatePage(page)
@@ -440,7 +442,7 @@ Namespace WizardControl
         End Sub
 
         ''' <summary>
-        ''' setzt eine Wizardseite als aktuelle Seite 
+        ''' setzt eine Wizardseite als aktuelle Seite
         ''' </summary>
         Private Sub ActivatePage(page As WizardPage)
             If Not Me._Pages.Contains(page) Then
@@ -458,19 +460,19 @@ Namespace WizardControl
                 Select Case Me._SelectedPage.Style
                     Case PageStyle.Finish
                         Me.ButtonCancel.Text = $"Beenden"
-                        Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.OK
+                        Me.ButtonCancel.DialogResult = DialogResult.OK
                     Case Else
                         Me.ButtonCancel.Text = $"Abbruch"
-                        Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+                        Me.ButtonCancel.DialogResult = DialogResult.Cancel
                 End Select
                 If Me._SelectedPage.Style = PageStyle.Custom And Me._SelectedPage Is Me._Pages(Me._Pages.Count - 1) Then
                     Me.ButtonCancel.Text = $"Weiter"
-                    Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.OK
+                    Me.ButtonCancel.DialogResult = DialogResult.OK
                 End If
                 Me._SelectedPage.SetBounds(0, 0, Me.Width, Me.Height - 48)
                 Me._SelectedPage.Visible = True
                 Me._SelectedPage.BringToFront()
-                Me.FocusFirstTabIndex(Me._SelectedPage)
+                FocusFirstTabIndex(Me._SelectedPage)
             End If
             Me.ButtonBack.Enabled = Me.SelectedIndex > 0
             If Me.SelectedIndex < Me._Pages.Count - 1 Then
@@ -487,9 +489,9 @@ Namespace WizardControl
             End If
         End Sub
 
-        Private Sub FocusFirstTabIndex(container As System.Windows.Forms.Control)
-            Dim control As System.Windows.Forms.Control = Nothing
-            For Each control2 As System.Windows.Forms.Control In container.Controls
+        Private Shared Sub FocusFirstTabIndex(container As Control)
+            Dim control As Control = Nothing
+            For Each control2 As Control In container.Controls
                 If control2.CanFocus AndAlso (control Is Nothing OrElse control2.TabIndex < control.TabIndex) Then
                     control = control2
                 End If
@@ -516,47 +518,47 @@ Namespace WizardControl
         Protected Overridable Sub OnCancel(e As CancelEventArgs)
             RaiseEvent Cancel(Me, e)
             If e.Cancel Then
-                Me.ParentForm.DialogResult = System.Windows.Forms.DialogResult.None
+                Me.ParentForm.DialogResult = DialogResult.None
             Else
                 Me.ParentForm.Close()
             End If
         End Sub
 
-        Protected Overridable Sub OnFinish(e As System.EventArgs)
+        Protected Overridable Sub OnFinish(e As EventArgs)
             RaiseEvent Finish(Me, e)
             Me.ParentForm.Close()
         End Sub
 
-        Protected Overridable Sub OnHelp(e As System.EventArgs)
+        Protected Overridable Sub OnHelp(e As EventArgs)
             RaiseEvent Help(Me, e)
         End Sub
 
-        Protected Overrides Sub OnLoad(e As System.EventArgs)
+        Protected Overrides Sub OnLoad(e As EventArgs)
             MyBase.OnLoad(e)
             If Me._Pages.Count > 0 Then
                 Me.ActivatePage(0)
             End If
         End Sub
 
-        Protected Overrides Sub OnResize(e As System.EventArgs)
+        Protected Overrides Sub OnResize(e As EventArgs)
             MyBase.OnResize(e)
             Me._SelectedPage?.SetBounds(0, 0, Me.Width, Me.Height - 48)
-            Me.ButtonHelp.Location = New System.Drawing.Point(Me.ButtonHelp.Location.X, Me.Height - Me._OffsetBack.Y)
-            Me.ButtonBack.Location = New System.Drawing.Point(Me.Width - Me._OffsetBack.X, Me.Height - Me._OffsetBack.Y)
-            Me.ButtonNext.Location = New System.Drawing.Point(Me.Width - Me._OffsetNext.X, Me.Height - Me._OffsetNext.Y)
-            Me.ButtonCancel.Location = New System.Drawing.Point(Me.Width - Me._OffsetCancel.X, Me.Height - Me._OffsetCancel.Y)
+            Me.ButtonHelp.Location = New Point(Me.ButtonHelp.Location.X, Me.Height - Me._OffsetBack.Y)
+            Me.ButtonBack.Location = New Point(Me.Width - Me._OffsetBack.X, Me.Height - Me._OffsetBack.Y)
+            Me.ButtonNext.Location = New Point(Me.Width - Me._OffsetNext.X, Me.Height - Me._OffsetNext.Y)
+            Me.ButtonCancel.Location = New Point(Me.Width - Me._OffsetCancel.X, Me.Height - Me._OffsetCancel.Y)
             MyBase.Refresh()
         End Sub
 
-        Protected Overrides Sub OnPaint(e As System.Windows.Forms.PaintEventArgs)
+        Protected Overrides Sub OnPaint(e As PaintEventArgs)
             MyBase.OnPaint(e)
             Dim clientRectangle = MyBase.ClientRectangle
             clientRectangle.Y = Me.Height - 48
             clientRectangle.Height = 48
-            System.Windows.Forms.ControlPaint.DrawBorder3D(e.Graphics, clientRectangle, System.Windows.Forms.Border3DStyle.Etched, System.Windows.Forms.Border3DSide.Top)
+            ControlPaint.DrawBorder3D(e.Graphics, clientRectangle, Border3DStyle.Etched, Border3DSide.Top)
         End Sub
 
-        Protected Overrides Sub OnControlAdded(e As System.Windows.Forms.ControlEventArgs)
+        Protected Overrides Sub OnControlAdded(e As ControlEventArgs)
             If Not (TypeOf e.Control Is WizardPage) AndAlso e.Control IsNot Me.ButtonCancel AndAlso e.Control IsNot Me.ButtonNext AndAlso e.Control IsNot Me.ButtonBack Then
                 Me._SelectedPage?.Controls.Add(e.Control)
             Else
@@ -564,23 +566,23 @@ Namespace WizardControl
             End If
         End Sub
 
-        Private Sub ButtonHelp_Click(sender As Object, e As System.EventArgs) Handles ButtonHelp.Click
-            Me.OnHelp(System.EventArgs.Empty)
+        Private Sub ButtonHelp_Click(sender As Object, e As EventArgs) Handles ButtonHelp.Click
+            Me.OnHelp(EventArgs.Empty)
         End Sub
 
-        Private Sub ButtonBack_Click(sender As Object, e As System.EventArgs) Handles ButtonBack.Click
+        Private Sub ButtonBack_Click(sender As Object, e As EventArgs) Handles ButtonBack.Click
             Me.Back()
         End Sub
 
-        Private Sub ButtonNext_Click(sender As Object, e As System.EventArgs) Handles ButtonNext.Click
+        Private Sub ButtonNext_Click(sender As Object, e As EventArgs) Handles ButtonNext.Click
             Me.Next()
         End Sub
 
-        Private Sub ButtonCancel_Click(sender As Object, e As System.EventArgs) Handles ButtonCancel.Click
+        Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
             If Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel Then
                 Me.OnCancel(New CancelEventArgs())
             ElseIf Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.OK Then
-                Me.OnFinish(System.EventArgs.Empty)
+                Me.OnFinish(EventArgs.Empty)
             End If
         End Sub
 
@@ -601,50 +603,50 @@ Namespace WizardControl
         'Ändern Sie es nicht mit dem Code-Editor.
         <DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Me.ButtonHelp = New System.Windows.Forms.Button()
-            Me.ButtonBack = New System.Windows.Forms.Button()
-            Me.ButtonNext = New System.Windows.Forms.Button()
-            Me.ButtonCancel = New System.Windows.Forms.Button()
+            Me.ButtonHelp = New Button()
+            Me.ButtonBack = New Button()
+            Me.ButtonNext = New Button()
+            Me.ButtonCancel = New Button()
             Me.SuspendLayout()
             '
             'ButtonHelp
             '
-            Me.ButtonHelp.Anchor = CType(System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left, System.Windows.Forms.AnchorStyles)
-            Me.ButtonHelp.FlatStyle = System.Windows.Forms.FlatStyle.System
-            Me.ButtonHelp.Location = New System.Drawing.Point(8, 188)
+            Me.ButtonHelp.Anchor = CType(AnchorStyles.Bottom Or AnchorStyles.Left, AnchorStyles)
+            Me.ButtonHelp.FlatStyle = FlatStyle.System
+            Me.ButtonHelp.Location = New Point(8, 188)
             Me.ButtonHelp.Name = "ButtonHelp"
-            Me.ButtonHelp.Size = New System.Drawing.Size(75, 23)
+            Me.ButtonHelp.Size = New Size(75, 23)
             Me.ButtonHelp.TabIndex = 9
             Me.ButtonHelp.Text = "&Hilfe"
             '
             'ButtonBack
             '
-            Me.ButtonBack.Anchor = CType(System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-            Me.ButtonBack.FlatStyle = System.Windows.Forms.FlatStyle.System
-            Me.ButtonBack.Location = New System.Drawing.Point(130, 188)
+            Me.ButtonBack.Anchor = CType(AnchorStyles.Bottom Or AnchorStyles.Right, AnchorStyles)
+            Me.ButtonBack.FlatStyle = FlatStyle.System
+            Me.ButtonBack.Location = New Point(130, 188)
             Me.ButtonBack.Name = "ButtonBack"
-            Me.ButtonBack.Size = New System.Drawing.Size(75, 23)
+            Me.ButtonBack.Size = New Size(75, 23)
             Me.ButtonBack.TabIndex = 6
             Me.ButtonBack.Text = "< &Zurück"
             '
             'ButtonNext
             '
-            Me.ButtonNext.Anchor = CType(System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-            Me.ButtonNext.FlatStyle = System.Windows.Forms.FlatStyle.System
-            Me.ButtonNext.Location = New System.Drawing.Point(210, 188)
+            Me.ButtonNext.Anchor = CType(AnchorStyles.Bottom Or AnchorStyles.Right, AnchorStyles)
+            Me.ButtonNext.FlatStyle = FlatStyle.System
+            Me.ButtonNext.Location = New Point(210, 188)
             Me.ButtonNext.Name = "ButtonNext"
-            Me.ButtonNext.Size = New System.Drawing.Size(75, 23)
+            Me.ButtonNext.Size = New Size(75, 23)
             Me.ButtonNext.TabIndex = 7
             Me.ButtonNext.Text = "&Weiter >"
             '
             'ButtonCancel
             '
-            Me.ButtonCancel.Anchor = CType(System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-            Me.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-            Me.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.System
-            Me.ButtonCancel.Location = New System.Drawing.Point(290, 188)
+            Me.ButtonCancel.Anchor = CType(AnchorStyles.Bottom Or AnchorStyles.Right, AnchorStyles)
+            Me.ButtonCancel.DialogResult = DialogResult.Cancel
+            Me.ButtonCancel.FlatStyle = FlatStyle.System
+            Me.ButtonCancel.Location = New Point(290, 188)
             Me.ButtonCancel.Name = "ButtonCancel"
-            Me.ButtonCancel.Size = New System.Drawing.Size(75, 23)
+            Me.ButtonCancel.Size = New Size(75, 23)
             Me.ButtonCancel.TabIndex = 8
             Me.ButtonCancel.Text = "Abbruch"
             '
@@ -655,7 +657,7 @@ Namespace WizardControl
             Me.Controls.Add(Me.ButtonNext)
             Me.Controls.Add(Me.ButtonCancel)
             Me.Name = "Wizard"
-            Me.Size = New System.Drawing.Size(374, 220)
+            Me.Size = New Size(374, 220)
             Me.ResumeLayout(False)
 
         End Sub

@@ -4,19 +4,21 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+Imports System.ComponentModel
+Imports System.Drawing
+
 Namespace WizardControl
 
     ''' <summary>
     ''' Definiert eine Seite des Controls.
     ''' </summary>
     ''' <remarks>
-    ''' Eine Assistentenseite stellt Titel, Beschreibung und einen Darstellungsstil
-    ''' bereit.
+    ''' Eine Assistentenseite stellt Titel, Beschreibung und einen Darstellungsstil bereit.
     ''' </remarks>
     <ToolboxItem(False)>
-    Public Class WizardPage
-
-        Inherits System.Windows.Forms.Panel
+    Public Class WizardPage : Inherits Panel
 
         Private _Style As PageStyle = PageStyle.Standard  ' Privates Feld: Darstellungsstil der Seite
         Private _Title As String = String.Empty  ' Privates Feld: Titel der Seite
@@ -108,8 +110,7 @@ Namespace WizardControl
         End Property
 
         ''' <summary>
-        ''' Initialisiert eine neue Instanz der Klasse <see
-        ''' cref="WizardPage"/>.
+        ''' Initialisiert eine neue Instanz der Klasse <see cref="WizardPage"/>.
         ''' </summary>
         ''' <remarks>
         ''' Setzt ControlStyles für flackerfreies Zeichnen.
@@ -120,87 +121,110 @@ Namespace WizardControl
 
         ' Initialisiert Zeichen- und Puffer-Styles.
         Private Sub InitializeStyles()
-            Me.SetStyle(System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, True)
-            Me.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, True)
-            Me.SetStyle(System.Windows.Forms.ControlStyles.ResizeRedraw, True)
-            Me.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, True)
+            Me.SetStyle(ControlStyles.AllPaintingInWmPaint, True)
+            Me.SetStyle(ControlStyles.DoubleBuffer, True)
+            Me.SetStyle(ControlStyles.ResizeRedraw, True)
+            Me.SetStyle(ControlStyles.UserPaint, True)
         End Sub
 
         ' Zeichnet die Seite abhängig vom Stil. Geschützter Override für benutzerdefiniertes Rendern.
-        Protected Overrides Sub OnPaint(e As System.Windows.Forms.PaintEventArgs)
+        Protected Overrides Sub OnPaint(e As PaintEventArgs)
             MyBase.OnPaint(e)
             If Me._Style = PageStyle.Custom Then Return
+
             Dim clientRectangle = MyBase.ClientRectangle
-            Dim empty = System.Drawing.Rectangle.Empty
-            Dim empty2 = System.Drawing.Rectangle.Empty
-            Dim empty3 = System.Drawing.Rectangle.Empty
-            Dim genericDefault = System.Drawing.StringFormat.GenericDefault
-            genericDefault.LineAlignment = System.Drawing.StringAlignment.Near
-            genericDefault.Alignment = System.Drawing.StringAlignment.Near
-            genericDefault.Trimming = System.Drawing.StringTrimming.EllipsisCharacter
+            Dim empty = Rectangle.Empty
+            Dim empty2 = Rectangle.Empty
+            Dim empty3 = Rectangle.Empty
+            Dim genericDefault = StringFormat.GenericDefault
+
+            genericDefault.LineAlignment = StringAlignment.Near
+            genericDefault.Alignment = StringAlignment.Near
+            genericDefault.Trimming = StringTrimming.EllipsisCharacter
+
             Select Case Me.Style
+
                 Case PageStyle.Standard
                     clientRectangle.Height = 64
-                    System.Windows.Forms.ControlPaint.DrawBorder3D(e.Graphics, clientRectangle, System.Windows.Forms.Border3DStyle.Etched, System.Windows.Forms.Border3DSide.Bottom)
-                    clientRectangle.Height -= System.Windows.Forms.SystemInformation.Border3DSize.Height
-                    e.Graphics.FillRectangle(System.Drawing.SystemBrushes.Window, clientRectangle)
-                    Dim num2 As System.Int32 = CInt(System.Math.Floor(8.0))
-                    empty.Location = New System.Drawing.Point(Me.Width - 48 - num2, num2)
-                    empty.Size = New System.Drawing.Size(48, 48)
-                    Dim image2 As System.Drawing.Image = Nothing
+                    ControlPaint.DrawBorder3D(e.Graphics, clientRectangle, Border3DStyle.Etched, Border3DSide.Bottom)
+                    clientRectangle.Height -= SystemInformation.Border3DSize.Height
+                    e.Graphics.FillRectangle(SystemBrushes.Window, clientRectangle)
+                    Dim num2 As Int32 = CInt(Math.Floor(8.0))
+                    empty.Location = New Point(Me.Width - 48 - num2, num2)
+                    empty.Size = New Size(48, 48)
+
+                    Dim image2 As Image = Nothing
                     Dim font3 = MyBase.Font
                     Dim font4 = MyBase.Font
+
                     If Me.Parent IsNot Nothing AndAlso TypeOf Me.Parent Is Wizard Then
                         Dim wizard2 As Wizard = CType(Me.Parent, Wizard)
                         image2 = wizard2.ImageHeader
                         If image2 Is Nothing Then
-                            empty.Size = New System.Drawing.Size(0, 0)
+                            empty.Size = New Size(0, 0)
                         End If
                         font3 = wizard2.HeaderFont
                         font4 = wizard2.HeaderTitleFont
                     End If
+
                     If image2 Is Nothing Then
-                        System.Windows.Forms.ControlPaint.DrawFocusRectangle(e.Graphics, empty)
+                        ControlPaint.DrawFocusRectangle(e.Graphics, empty)
                     Else
                         e.Graphics.DrawImage(image2, empty)
                     End If
-                    Dim num3 As System.Int32 = CInt(System.Math.Ceiling(e.Graphics.MeasureString(Me._Title, font4, 0, genericDefault).Height))
-                    empty2.Location = New System.Drawing.Point(8, 8)
-                    empty2.Size = New System.Drawing.Size(empty.Left - 8, num3)
+
+                    Dim num3 As Int32 = CInt(Math.Ceiling(e.Graphics.MeasureString(Me._Title, font4, 0, genericDefault).Height))
+
+                    empty2.Location = New Point(8, 8)
+                    empty2.Size = New Size(empty.Left - 8, num3)
                     empty3.Location = empty2.Location
                     empty3.Y += num3 + 4
-                    empty3.Size = New System.Drawing.Size(empty2.Width, 64 - empty3.Y)
-                    e.Graphics.DrawString(Me._Title, font4, System.Drawing.SystemBrushes.WindowText, empty2, genericDefault)
-                    e.Graphics.DrawString(Me._Description, font3, System.Drawing.SystemBrushes.WindowText, empty3, genericDefault)
+                    empty3.Size = New Size(empty2.Width, 64 - empty3.Y)
+
+                    e.Graphics.DrawString(Me._Title, font4, SystemBrushes.WindowText, empty2, genericDefault)
+                    e.Graphics.DrawString(Me._Description, font3, SystemBrushes.WindowText, empty3, genericDefault)
+
                     Exit Select
+
                 Case PageStyle.Welcome, PageStyle.Finish
-                    e.Graphics.FillRectangle(System.Drawing.SystemBrushes.Window, clientRectangle)
-                    empty.Location = System.Drawing.Point.Empty
-                    empty.Size = New System.Drawing.Size(164, Me.Height)
-                    Dim image As System.Drawing.Image = Nothing
+                    e.Graphics.FillRectangle(SystemBrushes.Window, clientRectangle)
+
+                    empty.Location = Point.Empty
+                    empty.Size = New Size(164, Me.Height)
+
+                    Dim image As Image = Nothing
                     Dim font = MyBase.Font
                     Dim font2 = MyBase.Font
+
                     If Me.Parent IsNot Nothing AndAlso TypeOf Me.Parent Is Wizard Then
                         Dim wizard As Wizard = CType(Me.Parent, Wizard)
                         image = wizard.ImageWelcome
                         font = wizard.WelcomeFont
                         font2 = wizard.WelcomeTitleFont
                     End If
+
                     If image Is Nothing Then
-                        System.Windows.Forms.ControlPaint.DrawFocusRectangle(e.Graphics, empty)
+                        ControlPaint.DrawFocusRectangle(e.Graphics, empty)
                     Else
                         e.Graphics.DrawImage(image, empty)
                     End If
-                    empty2.Location = New System.Drawing.Point(172, 8)
+
+                    empty2.Location = New Point(172, 8)
                     empty2.Width = Me.Width - empty2.Left - 8
-                    Dim num As System.Int32 = CInt(System.Math.Ceiling(e.Graphics.MeasureString(Me._Title, font2, empty2.Width, genericDefault).Height))
+
+                    Dim num As Int32 = CInt(Math.Ceiling(e.Graphics.MeasureString(Me._Title, font2, empty2.Width, genericDefault).Height))
+
                     empty3.Location = empty2.Location
                     empty3.Y += num + 8
-                    empty3.Size = New System.Drawing.Size(Me.Width - empty3.Left - 8, Me.Height - empty3.Y)
-                    e.Graphics.DrawString(Me._Title, font2, System.Drawing.SystemBrushes.WindowText, empty2, genericDefault)
-                    e.Graphics.DrawString(Me._Description, font, System.Drawing.SystemBrushes.WindowText, empty3, genericDefault)
+                    empty3.Size = New Size(Me.Width - empty3.Left - 8, Me.Height - empty3.Y)
+
+                    e.Graphics.DrawString(Me._Title, font2, SystemBrushes.WindowText, empty2, genericDefault)
+                    e.Graphics.DrawString(Me._Description, font, SystemBrushes.WindowText, empty3, genericDefault)
+
                     Exit Select
+
             End Select
+
         End Sub
 
     End Class

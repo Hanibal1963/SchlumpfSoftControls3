@@ -14,9 +14,7 @@ Namespace WizardControl
     ''' zusammenzufassen oder eine Bestätigung bereitzustellen.
     ''' </remarks>
     <ToolboxItem(False)>
-    Public Class PageFinish
-
-        Inherits WizardPage
+    Public Class PageFinish : Inherits WizardPage
 
         ' Privates Feld zur Speicherung des Seitenstils.
         Private _Style As PageStyle = PageStyle.Finish

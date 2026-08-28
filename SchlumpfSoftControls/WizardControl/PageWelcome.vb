@@ -14,9 +14,7 @@ Namespace WizardControl
     ''' cref="PageStyle.Welcome"/>.
     ''' </remarks>
     <ToolboxItem(False)>
-    Public Class PageWelcome
-
-        Inherits WizardPage
+    Public Class PageWelcome : Inherits WizardPage
 
         ' Privates Feld zur Speicherung des Seitenstils.
         Private _Style As PageStyle = PageStyle.Welcome

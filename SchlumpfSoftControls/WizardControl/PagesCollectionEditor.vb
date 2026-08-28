@@ -9,9 +9,7 @@ Namespace WizardControl
     ''' <summary>
     ''' Dient zum anzeigen der Seitenstile im Seitendesigner
     ''' </summary>
-    Friend Class PagesCollectionEditor
-
-        Inherits CollectionEditor
+    Friend Class PagesCollectionEditor : Inherits CollectionEditor
 
         Private ReadOnly _PageTypes As System.Type()
 

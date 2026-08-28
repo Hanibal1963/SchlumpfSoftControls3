@@ -4,6 +4,10 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+Imports System.ComponentModel
+
 Namespace WizardControl
 
     ''' <summary>

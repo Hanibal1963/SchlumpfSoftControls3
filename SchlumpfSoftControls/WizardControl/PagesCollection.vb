@@ -4,18 +4,21 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Collections
+Imports System.Windows.Forms
+Imports System.ComponentModel
+
 Namespace WizardControl
 
     ''' <summary>
     ''' Definiert die Auflistung der Seiten des Assistenten
     ''' </summary>
-    Public Class PagesCollection
-
-        Inherits System.Collections.CollectionBase
+    Public Class PagesCollection : Inherits CollectionBase
 
         Private ReadOnly _Owner As Wizard = Nothing
 
-        Default Public Property Item(Index As System.Int32) As WizardPage
+        Default Public Property Item(Index As Int32) As WizardPage
             Get
                 Return CType(Me.List(Index), WizardPage)
             End Get
@@ -28,7 +31,7 @@ Namespace WizardControl
             Me._Owner = Owner
         End Sub
 
-        Public Function Add(Page As WizardPage) As System.Int32
+        Public Function Add(Page As WizardPage) As Int32
             Return Me.List.Add(Page)
         End Function
 
@@ -38,11 +41,11 @@ Namespace WizardControl
             Next
         End Sub
 
-        Public Function IndexOf(Page As WizardPage) As System.Int32
+        Public Function IndexOf(Page As WizardPage) As Int32
             Return Me.List.IndexOf(Page)
         End Function
 
-        Public Sub Insert(Index As System.Int32, Page As WizardPage)
+        Public Sub Insert(Index As Int32, Page As WizardPage)
             Me.List.Insert(Index, Page)
         End Sub
 
@@ -54,20 +57,15 @@ Namespace WizardControl
             Return Me.List.Contains(Page)
         End Function
 
-        Protected Overrides Sub OnInsertComplete(Index As System.Int32, Value As Object)
+        Protected Overrides Sub OnInsertComplete(Index As Int32, Value As Object)
             MyBase.OnInsertComplete(Index, Value)
             Me._Owner.SelectedIndex = Index
         End Sub
 
-        <CodeAnalysis.SuppressMessage("Style", "IDE0045:In bedingten Ausdruck konvertieren", Justification:="<Ausstehend>")>
-        Protected Overrides Sub OnRemoveComplete(Index As System.Int32, Value As Object)
+        Protected Overrides Sub OnRemoveComplete(Index As Int32, Value As Object)
             MyBase.OnRemoveComplete(Index, Value)
             If Me._Owner.SelectedIndex = Index Then
-                If Index < Me.InnerList.Count Then
-                    Me._Owner.SelectedIndex = Index
-                Else
-                    Me._Owner.SelectedIndex = Me.InnerList.Count - 1
-                End If
+                Me._Owner.SelectedIndex = If(Index < Me.InnerList.Count, Index, Me.InnerList.Count - 1)
             End If
         End Sub
 

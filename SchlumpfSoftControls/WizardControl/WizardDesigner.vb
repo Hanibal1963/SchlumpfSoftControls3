@@ -4,14 +4,17 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+Imports System.Windows.Forms.Design
+Imports System.ComponentModel
+
 Namespace WizardControl
 
     ''' <summary>
     ''' Designer für dieses Control
     ''' </summary>
-    Friend Class WizardDesigner
-
-        Inherits System.Windows.Forms.Design.ParentControlDesigner
+    Friend Class WizardDesigner : Inherits ParentControlDesigner
 
         Protected Overrides Property DrawGrid As Boolean
             Get
@@ -22,14 +25,14 @@ Namespace WizardControl
             End Set
         End Property
 
-        Protected Overrides Sub WndProc(ByRef msg As System.Windows.Forms.Message)
+        Protected Overrides Sub WndProc(ByRef msg As Message)
             If msg.Msg = 513 OrElse msg.Msg = 515 Then
                 Dim selectionService = CType(MyBase.GetService(GetType(ISelectionService)), ISelectionService)
                 Dim wizard As Wizard = TryCast(selectionService.PrimarySelection, Wizard)
                 If wizard IsNot Nothing Then
-                    Dim x As System.Int32 = CShort(CInt(msg.LParam) And &HFFFF)
-                    Dim y As System.Int32 = CShort(CUInt(CInt(msg.LParam) And -65536) >> 16)
-                    Dim pt As New System.Drawing.Point(x, y)
+                    Dim x As Int32 = CShort(CInt(msg.LParam) And &HFFFF)
+                    Dim y As Int32 = CShort(CUInt(CInt(msg.LParam) And -65536) >> 16)
+                    Dim pt As New Drawing.Point(x, y)
                     If msg.HWnd = wizard.ButtonNext.Handle Then
                         If wizard.ButtonNext.Enabled AndAlso wizard.ButtonNext.ClientRectangle.Contains(pt) Then
                             wizard.Next()

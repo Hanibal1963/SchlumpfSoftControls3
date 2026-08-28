@@ -4,6 +4,10 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+Imports System.ComponentModel
+
 Namespace WizardControl
 
     ''' <summary>
@@ -13,9 +17,7 @@ Namespace WizardControl
     ''' Diese Seite verwendet standardmäßig den Stil <see cref="PageStyle.Standard"/>.
     ''' </remarks>
     <ToolboxItem(False)>
-    Public Class PageStandard
-
-        Inherits WizardPage
+    Public Class PageStandard : Inherits WizardPage
 
         ' Privates Feld zur Speicherung des Seitenstils.
         Private _Style As PageStyle = PageStyle.Standard

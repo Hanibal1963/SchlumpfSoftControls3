@@ -4,15 +4,18 @@
 ' Datum: 25.05.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports System
+Imports System.Windows.Forms
+Imports System.Windows.Forms.Design
+Imports System.ComponentModel
+
 Namespace WizardControl
 
-    Friend Class PageDesigner
+    Friend Class PageDesigner : Inherits ParentControlDesigner
 
-        Inherits System.Windows.Forms.Design.ParentControlDesigner
-
-        Public Overrides ReadOnly Property SelectionRules As System.Windows.Forms.Design.SelectionRules
+        Public Overrides ReadOnly Property SelectionRules As SelectionRules
             Get
-                Return System.Windows.Forms.Design.SelectionRules.Locked Or System.Windows.Forms.Design.SelectionRules.Visible
+                Return SelectionRules.Locked Or SelectionRules.Visible
             End Get
         End Property
 
