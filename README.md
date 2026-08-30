@@ -8,9 +8,13 @@ Es wurden gegenüber der vorherigen Versionen einige Änderungen vorgenommen und n
 
 > &#x26A0; **Hinweis**
 >
-> *Die 1. Version ist mittlerweile nicht mehr im Marketplace verfügbar. [Der Code ist archiviert.](https://github.com/Hanibal1963/SchlumpfSoftControls)*
+> *Die beiden ersten Versionen sind mittlerweile nicht mehr im Marketplace verfügbar.*
 >
-> *Die Version 2 ist noch im [Marketplace](https://marketplace.visualstudio.com/items?itemName=AndreasSauer.SchlumpfSoftControls2) verfügbar. [Der Code ist archiviert.](https://github.com/Hanibal1963/SchlumpfSoftControls2)*
+> *Die Codes wurden archiviert:*
+>
+> [Version 1.](https://github.com/Hanibal1963/SchlumpfSoftControls)
+>
+> [Version 2.](https://github.com/Hanibal1963/SchlumpfSoftControls2)
 >
 
 ---
