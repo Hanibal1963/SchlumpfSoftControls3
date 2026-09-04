@@ -6,6 +6,7 @@
 
 Imports System.Windows.Forms
 Imports System
+Imports Microsoft.VisualBasic
 
 Namespace DriveWatcherControl
 
@@ -316,8 +317,7 @@ Namespace DriveWatcherControl
         Private Function DriveFromMask(mask As Int32) As Char
 
             ' Standardwert für den Fall, dass kein Bit gesetzt ist.
-            Dim result As Char = CChar(String.Empty)
-
+            Dim result As Char = ControlChars.NullChar
             ' Jedes Bit der Maske steht für einen Buchstaben:
             ' Bit 0 = A, Bit 1 = B, ..., Bit 25 = Z.
             For b As Int32 = 0 To 25
