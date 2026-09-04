@@ -178,7 +178,7 @@ Namespace IniFileControl
                 $"LogDatei = logs / app.log{vbCrLf}"
 
             ' Zeilenpuffer erzeugen und direkt in die internen Strukturen einlesen.
-            Me._FileContent = content.Split(CChar(vbCrLf))
+            Me._FileContent = content.Split({vbCrLf}, StringSplitOptions.None)
             Me.ParseFileContent()
 
             ' Neue Datei wurde erzeugt, aber noch nicht persistiert.

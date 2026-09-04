@@ -7,7 +7,7 @@ Das Set beinhaltet die folgenden Controls:
 - **IniFile** - Eine Komponente zum laden und bearbeiten von INI - Dateien.
 - **ContentView** - Ein Control zum Anzeigen des Inhaltes einer INI - Datei.
 - **CommentEdit** - Ein Control zum bearbeiten des Datei- oder Abschnittskommentars.
-- **ListEdit** - Ein Control zum auswählen, hinzufügen,  umbenennen oder löschen von Abschnitten oder Einträgen.
+- **ListEdit** - Ein Control zum auswÃ¤hlen, hinzufÃ¼gen,  umbenennen oder lÃ¶schen von Abschnitten oder EintrÃ¤gen.
 - **EntryValueEdit** - Ein Control zum bearbeiten des Wertes eines Eintrages.
 
 ---
@@ -17,59 +17,59 @@ Das Set beinhaltet die folgenden Controls:
 ## Eigenschaften - IniFile
 
 - `FileSaved`: Gibt an, ob der aktuelle Zustand bereits gespeichert wurde.
-- `CommentPrefix`: Gibt das Prefixzeichen für Kommentare zurück oder legt es fest.
-- `FileName`: Gibt den aktuellen Dateinamen zurück oder legt ihn fest.
-- `FilePath`: Gibt den Pfad zur INI-Datei zurück oder legt ihn fest.
-- `AutoSave`: Legt fest, ob Änderungen automatisch gespeichert werden.
+- `CommentPrefix`: Gibt das Prefixzeichen fÃ¼r Kommentare zurÃ¼ck oder legt es fest.
+- `FileName`: Gibt den aktuellen Dateinamen zurÃ¼ck oder legt ihn fest.
+- `FilePath`: Gibt den Pfad zur INI-Datei zurÃ¼ck oder legt ihn fest.
+- `AutoSave`: Legt fest, ob Ã„nderungen automatisch gespeichert werden.
 
 ### Methoden - IniFile
 
 - `CreateNewFile()`: Erzeugt eine neue INI-Datei mit Beispielinhalt.
-- `CreateNewFile(CommentPrefix As Char)`: Erzeugt eine neue INI-Datei mit Beispielinhalt und definierbarem Kommentar-Präfix.
-- `LoadFile(FilePathAndName As String)`: Lädt eine INI-Datei über den vollständigen Pfad.
-- `LoadFile()`: Lädt die Datei aus `FilePath` und `FileName`.
-- `SaveFileAs(FilePathAndName As String)`: Speichert den aktuellen Inhalt unter einem vollständigen Zielpfad.
+- `CreateNewFile(CommentPrefix As Char)`: Erzeugt eine neue INI-Datei mit Beispielinhalt und definierbarem Kommentar-PrÃ¤fix.
+- `LoadFile(FilePathAndName As String)`: LÃ¤dt eine INI-Datei Ã¼ber den vollstÃ¤ndigen Pfad.
+- `LoadFile()`: LÃ¤dt die Datei aus `FilePath` und `FileName`.
+- `SaveFileAs(FilePathAndName As String)`: Speichert den aktuellen Inhalt unter einem vollstÃ¤ndigen Zielpfad.
 - `SaveFile()`: Speichert den aktuellen Inhalt nach `FilePath` und `FileName`.
-- `GetFileContent() As String()`: Gibt den aktuellen Dateiinhalt als Zeilenarray zurück.
-- `GetFileComment() As String()`: Gibt die Kommentarzeilen im Dateikopf zurück.
-- `SetFileComment(CommentLines() As String)`: Ersetzt den Dateikopf-Kommentar vollständig.
-- `GetSectionNames() As String()`: Gibt alle Abschnittsnamen zurück.
-- `GetEntryNames(SectionName As String) As String()`: Gibt alle Eintragsnamen eines Abschnitts zurück.
-- `AddSection(Name As String)`: Fügt einen neuen Abschnitt hinzu.
-- `AddEntry(Section As String, Name As String)`: Fügt einen neuen Eintrag in einem Abschnitt hinzu.
+- `GetFileContent() As String()`: Gibt den aktuellen Dateiinhalt als Zeilenarray zurÃ¼ck.
+- `GetFileComment() As String()`: Gibt die Kommentarzeilen im Dateikopf zurÃ¼ck.
+- `SetFileComment(CommentLines() As String)`: Ersetzt den Dateikopf-Kommentar vollstÃ¤ndig.
+- `GetSectionNames() As String()`: Gibt alle Abschnittsnamen zurÃ¼ck.
+- `GetEntryNames(SectionName As String) As String()`: Gibt alle Eintragsnamen eines Abschnitts zurÃ¼ck.
+- `AddSection(Name As String)`: FÃ¼gt einen neuen Abschnitt hinzu.
+- `AddEntry(Section As String, Name As String)`: FÃ¼gt einen neuen Eintrag in einem Abschnitt hinzu.
 - `RenameSection(OldName As String, NewName As String)`: Benennt einen Abschnitt um.
 - `RenameEntry(Section As String, OldName As String, NewName As String)`: Benennt einen Eintrag um.
-- `DeleteSection(Name As String)`: Löscht einen Abschnitt samt zugehörigem Kommentar.
-- `DeleteEntry(Section As String, Entry As String)`: Löscht einen Eintrag aus einem Abschnitt.
-- `GetSectionComment(SectionName As String) As String()`: Gibt die Kommentarzeilen eines Abschnitts zurück.
-- `GetEntryValue(Section As String, Entry As String) As String`: Gibt den Wert eines Eintrags zurück.
-- `SetSectionComment(Name As String, CommentLines() As String)`: Ersetzt den Kommentar eines Abschnitts vollständig.
+- `DeleteSection(Name As String)`: LÃ¶scht einen Abschnitt samt zugehÃ¶rigem Kommentar.
+- `DeleteEntry(Section As String, Entry As String)`: LÃ¶scht einen Eintrag aus einem Abschnitt.
+- `GetSectionComment(SectionName As String) As String()`: Gibt die Kommentarzeilen eines Abschnitts zurÃ¼ck.
+- `GetEntryValue(Section As String, Entry As String) As String`: Gibt den Wert eines Eintrags zurÃ¼ck.
+- `SetSectionComment(Name As String, CommentLines() As String)`: Ersetzt den Kommentar eines Abschnitts vollstÃ¤ndig.
 - `SetEntryValue(Section As String, Entry As String, Value As String)`: Setzt den Wert eines Eintrags.
 
 ### Ereignisse - IniFile
 
-- `FileContentChanged`: Wird ausgelöst, wenn sich der Dateiinhalt geändert hat.
-- `SectionNameExist`: Wird ausgelöst, wenn ein Abschnittsname bereits vorhanden ist.
-- `EntryNameExist`: Wird ausgelöst, wenn ein Eintragsname bereits vorhanden ist.
+- `FileContentChanged`: Wird ausgelÃ¶st, wenn sich der Dateiinhalt geÃ¤ndert hat.
+- `SectionNameExist`: Wird ausgelÃ¶st, wenn ein Abschnittsname bereits vorhanden ist.
+- `EntryNameExist`: Wird ausgelÃ¶st, wenn ein Eintragsname bereits vorhanden ist.
 
 ### Eigenschaften - ContentView
 
-- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
-- `Lines`: Gibt den angezeigten Inhalt als Zeilenarray zurück oder legt ihn fest.
+- `TitelText`: Gibt den Titeltext der GroupBox zurÃ¼ck oder legt ihn fest.
+- `Lines`: Gibt den angezeigten Inhalt als Zeilenarray zurÃ¼ck oder legt ihn fest.
 
 ### Methoden - ContentView
 
-- `New()`: Initialisiert das Control und übernimmt den initialen Titel.
+- `New()`: Initialisiert das Control und Ã¼bernimmt den initialen Titel.
 
 ### Ereignisse - ContentView
 
-- Keine öffentlichen Ereignisse.
+- Keine Ã¶ffentlichen Ereignisse.
 
 ### Eigenschaften - CommentEdit
 
-- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
-- `Comment`: Gibt den Kommentar als Zeilenarray zurück oder legt ihn fest.
-- `SectionName`: Gibt den Namen des aktuell bearbeiteten Abschnitts zurück oder legt ihn fest.
+- `TitelText`: Gibt den Titeltext der GroupBox zurÃ¼ck oder legt ihn fest.
+- `Comment`: Gibt den Kommentar als Zeilenarray zurÃ¼ck oder legt ihn fest.
+- `SectionName`: Gibt den Namen des aktuell bearbeiteten Abschnitts zurÃ¼ck oder legt ihn fest.
 
 ### Methoden - CommentEdit
 
@@ -77,36 +77,36 @@ Das Set beinhaltet die folgenden Controls:
 
 ### Ereignisse - CommentEdit
 
-- `CommentChanged`: Wird ausgelöst, wenn der bearbeitete Kommentar übernommen wurde.
+- `CommentChanged`: Wird ausgelÃ¶st, wenn der bearbeitete Kommentar Ã¼bernommen wurde.
 
 ### Eigenschaften - ListEdit
 
-- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
-- `ListItems`: Gibt die anzuzeigenden Listeneinträge zurück oder ersetzt diese.
-- `SelectedElement`: Gibt das aktuell ausgewählte Element zurück.
+- `TitelText`: Gibt den Titeltext der GroupBox zurÃ¼ck oder legt ihn fest.
+- `ListItems`: Gibt die anzuzeigenden ListeneintrÃ¤ge zurÃ¼ck oder ersetzt diese.
+- `SelectedElement`: Gibt das aktuell ausgewÃ¤hlte Element zurÃ¼ck.
 
 ### Methoden - ListEdit
 
-- `New()`: Initialisiert das Control und übernimmt den Starttitel.
+- `New()`: Initialisiert das Control und Ã¼bernimmt den Starttitel.
 
 ### Ereignisse - ListEdit
 
-- `ItemAdd`: Wird ausgelöst, wenn ein neuer Eintrag angefordert wurde.
-- `ItemRename`: Wird ausgelöst, wenn ein Eintrag umbenannt werden soll.
-- `ItemRemove`: Wird ausgelöst, wenn ein Eintrag gelöscht werden soll.
-- `SelectedItemChanged`: Wird ausgelöst, wenn sich die Auswahl geändert hat.
+- `ItemAdd`: Wird ausgelÃ¶st, wenn ein neuer Eintrag angefordert wurde.
+- `ItemRename`: Wird ausgelÃ¶st, wenn ein Eintrag umbenannt werden soll.
+- `ItemRemove`: Wird ausgelÃ¶st, wenn ein Eintrag gelÃ¶scht werden soll.
+- `SelectedItemChanged`: Wird ausgelÃ¶st, wenn sich die Auswahl geÃ¤ndert hat.
 
 ### Eigenschaften - EntryValueEdit
 
-- `TitelText`: Gibt den Titeltext der GroupBox zurück oder legt ihn fest.
-- `SelectedSection`: Gibt den aktuell ausgewählten Abschnitt zurück oder legt ihn fest.
-- `SelectedEntry`: Gibt den aktuell ausgewählten Eintrag zurück oder legt ihn fest.
-- `Value`: Gibt den aktuell bearbeiteten Eintragswert zurück oder legt ihn fest.
+- `TitelText`: Gibt den Titeltext der GroupBox zurÃ¼ck oder legt ihn fest.
+- `SelectedSection`: Gibt den aktuell ausgewÃ¤hlten Abschnitt zurÃ¼ck oder legt ihn fest.
+- `SelectedEntry`: Gibt den aktuell ausgewÃ¤hlten Eintrag zurÃ¼ck oder legt ihn fest.
+- `Value`: Gibt den aktuell bearbeiteten Eintragswert zurÃ¼ck oder legt ihn fest.
 
 ### Methoden - EntryValueEdit
 
-- `New()`: Initialisiert das Control und übernimmt den Starttitel.
+- `New()`: Initialisiert das Control und Ã¼bernimmt den Starttitel.
 
 ### Ereignisse - EntryValueEdit
 
-- `ValueChanged`: Wird ausgelöst, wenn ein bearbeiteter Wert übernommen wurde.
+- `ValueChanged`: Wird ausgelÃ¶st, wenn ein bearbeiteter Wert Ã¼bernommen wurde.
