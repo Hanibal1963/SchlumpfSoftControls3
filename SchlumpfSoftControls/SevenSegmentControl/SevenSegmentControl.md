@@ -1,13 +1,13 @@
 # SevenSegment Control
 
-Diese Bibliothek enthält zwei Controls:
+Diese Bibliothek enthÃ¤lt zwei Controls:
 
 - **SevenSegmentSingleDigit:** Ein Control, das eine einzelne Ziffer von 0 bis 9 anzeigt.
 - **MultiDigitSevenSegment:** Ein Control, das mehrere Ziffern anzeigt und damit ganze Zahlen darstellen kann.
 
-Ich habe für ein anderes Projekt versucht eine 7-Segmentanzeige zu programmieren.
+Ich habe fÃ¼r ein anderes Projekt versucht eine 7-Segmentanzeige zu programmieren.
 
-Nach einigen Fehlversuchen und einer intensive Internetrecherche, bin ich auf GitHub fündig geworden.
+Nach einigen Fehlversuchen und einer intensive Internetrecherche, bin ich auf GitHub fÃ¼ndig geworden.
 ([SevenSegment von Dimitry Brant](https://github.com/dbrant/SevenSegment))
 
 Ich habe mich entschlossen den Code in VisualBasic neu zu erstellen da ich mit C# keinerlei Erfahrung habe.
@@ -16,17 +16,17 @@ Ich habe mich entschlossen den Code in VisualBasic neu zu erstellen da ich mit C
 
 ### Eigenschaften - SevenSegmentSingleDigit
 
-- `InactiveColor`: Legt die Farbe inaktiver Segmente fest oder gibt diese zurück.
-- `SegmentWidth`: Legt die Breite der LED-Segmente fest oder gibt diese zurück.
-- `ItalicFactor`: Scherkoeffizient für die Kursivschrift der Anzeige.
-- `DigitValue`: Legt das anzuzeigende Zeichen fest oder gibt dieses zurück.
-- `CustomBitPattern`: Legt ein benutzerdefiniertes Bitmuster für die sieben Segmente fest.
+- `InactiveColor`: Legt die Farbe inaktiver Segmente fest oder gibt diese zurÃ¼ck.
+- `SegmentWidth`: Legt die Breite der LED-Segmente fest oder gibt diese zurÃ¼ck.
+- `ItalicFactor`: Scherkoeffizient fÃ¼r die Kursivschrift der Anzeige.
+- `DigitValue`: Legt das anzuzeigende Zeichen fest oder gibt dieses zurÃ¼ck.
+- `CustomBitPattern`: Legt ein benutzerdefiniertes Bitmuster fÃ¼r die sieben Segmente fest.
 - `ShowDecimalPoint`: Gibt an, ob die Dezimalpunkt-LED angezeigt wird.
 - `DecimalPointActive`: Gibt an, ob die Dezimalpunkt-LED aktiv ist.
 - `ShowColon`: Gibt an, ob die Doppelpunkt-LEDs angezeigt werden.
 - `ColonActive`: Gibt an, ob die Doppelpunkt-LEDs aktiv sind.
-- `BackColor`: Legt die Hintergrundfarbe des Controls fest oder gibt diese zurück.
-- `ForeColor`: Legt die Vordergrundfarbe der Segmente des Controls fest oder gibt diese zurück.
+- `BackColor`: Legt die Hintergrundfarbe des Controls fest oder gibt diese zurÃ¼ck.
+- `ForeColor`: Legt die Vordergrundfarbe der Segmente des Controls fest oder gibt diese zurÃ¼ck.
 
 ### Methoden - SevenSegmentSingleDigit
 
@@ -34,19 +34,19 @@ Ich habe mich entschlossen den Code in VisualBasic neu zu erstellen da ich mit C
 
 ### Ereignisse - SevenSegmentSingleDigit
 
-- Keine eigenen öffentlichen Ereignisse.
+- Keine eigenen Ã¶ffentlichen Ereignisse.
 
 ### Eigenschaften - MultiDigitSevenSegment
 
-- `InactiveColor`: Legt die Farbe inaktiver Segmente fest oder gibt diese zurück.
-- `SegmentWidth`: Legt die Breite der LED-Segmente fest oder gibt diese zurück.
-- `ItalicFactor`: Scherkoeffizient für die Kursivschrift der Anzeige.
+- `InactiveColor`: Legt die Farbe inaktiver Segmente fest oder gibt diese zurÃ¼ck.
+- `SegmentWidth`: Legt die Breite der LED-Segmente fest oder gibt diese zurÃ¼ck.
+- `ItalicFactor`: Scherkoeffizient fÃ¼r die Kursivschrift der Anzeige.
 - `ShowDecimalPoint`: Gibt an, ob die Dezimalpunkt-LED angezeigt wird.
 - `DigitCount`: Anzahl der Digits in diesem Control.
-- `DigitPadding`: Auffüllung, die für jedes Digit im Control gilt.
+- `DigitPadding`: AuffÃ¼llung, die fÃ¼r jedes Digit im Control gilt.
 - `Value`: Der auf dem Control anzuzeigende Wert.
-- `BackColor`: Legt die Hintergrundfarbe des Controls fest oder gibt diese zurück.
-- `ForeColor`: Legt die Vordergrundfarbe der Segmente des Controls fest oder gibt diese zurück.
+- `BackColor`: Legt die Hintergrundfarbe des Controls fest oder gibt diese zurÃ¼ck.
+- `ForeColor`: Legt die Vordergrundfarbe der Segmente des Controls fest oder gibt diese zurÃ¼ck.
 
 ### Methoden - MultiDigitSevenSegment
 
@@ -54,5 +54,5 @@ Ich habe mich entschlossen den Code in VisualBasic neu zu erstellen da ich mit C
 
 ### Ereignisse - MultiDigitSevenSegment
 
-- Keine eigenen öffentlichen Ereignisse.
+- Keine eigenen Ã¶ffentlichen Ereignisse.
 

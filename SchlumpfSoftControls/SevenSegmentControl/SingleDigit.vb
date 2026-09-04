@@ -23,7 +23,7 @@ Namespace SevenSegmentControl
 
         Inherits Control
 
-#Region "Definition der Variablen"
+#Region "Variablen"
 
         Private ReadOnly _SegmentPoints As Point()()  ' Sammlung der Eckpunkte für jedes der 7 Segmente (jedes Segment als Polygon mit 6 Punkten).
         Private ReadOnly _DigitHeight As Int32 = 80 ' Interne, fixe Höhe (virtuell) der Ziffer für die Berechnung der Segmentkoordinaten.
@@ -42,7 +42,7 @@ Namespace SevenSegmentControl
 
 #End Region
 
-#Region "Definition der Eigenschaften"
+#Region "Eigenschaften"
 
         ''' <summary>
         ''' Legt die Farbe inaktiver Segmente fest oder gibt diese zurück.
@@ -126,8 +126,6 @@ Namespace SevenSegmentControl
                         Case 5 : Me._CustomBitPattern = CharacterPattern.Five
                         Case 6 : Me._CustomBitPattern = CharacterPattern.Six
                         Case 7 : Me._CustomBitPattern = CharacterPattern.Seven
-                        Case 8 : Me._CustomBitPattern = CharacterPattern.Eight
-                        Case 9 : Me._CustomBitPattern = CharacterPattern.Nine
                         Case 8 : Me._CustomBitPattern = CharacterPattern.Eight
                         Case 9 : Me._CustomBitPattern = CharacterPattern.Nine
                     End Select
@@ -354,7 +352,7 @@ Namespace SevenSegmentControl
 
 #End Region
 
-#Region "Definition der öffentlichen Methoden"
+#Region "Öffentliche Methoden"
 
         ''' <summary>
         ''' Initialisiert eine neue Instanz der <see cref="SingleDigit"/> -Klasse.
@@ -377,7 +375,7 @@ Namespace SevenSegmentControl
 
 #End Region
 
-#Region "Definition der internen Methoden"
+#Region "Interne Methoden"
 
         ''' <summary>
         ''' Rendert das gesamte Siebensegment-Digit inklusive Segmenten, optionalem Dezimalpunkt und optionalem Doppelpunkt.
