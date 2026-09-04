@@ -20,6 +20,7 @@ Anregungen zu diesem Control hatte ich durch folgende Webseiten:
 ## Methoden ImageComboBox
 
 - `New()`: Initialisiert eine neue Instanz der Klasse `ImageComboBox`.
+- `CreateControlsInstance() As ControlCollection`: Erstellt die Steuerelementsammlung und stellt sicher, dass die Elementekollektion initialisiert ist.
 
 ## Ereignisse ImageComboBox
 
@@ -58,3 +59,17 @@ Anregungen zu diesem Control hatte ich durch folgende Webseiten:
 ### Ereignisse - ImageComboBoxCollection
 
 - `UpdateItems`: Tritt auf, wenn sich die Elemente der Kollektion geändert haben.
+
+### Eigenschaften - ImageComboBoxCollectionEditor
+
+- Keine öffentlichen oder geschützten Eigenschaften in `ImageComboBoxCollectionEditor` dokumentiert.
+
+### Methoden - ImageComboBoxCollectionEditor
+
+- `New()`: Initialisiert eine neue Instanz der Klasse `ImageComboBoxCollectionEditor`.
+- `CreateCollectionItemType() As Type`: Gibt den Typ der bearbeitbaren Sammlungselemente zurück.
+- `CreateNewItemTypes() As Type()`: Gibt die im Collection-Editor zulässigen neuen Elementtypen zurück.
+
+### Ereignisse - ImageComboBoxCollectionEditor
+
+- Keine öffentlichen Ereignisse in `ImageComboBoxCollectionEditor` dokumentiert.

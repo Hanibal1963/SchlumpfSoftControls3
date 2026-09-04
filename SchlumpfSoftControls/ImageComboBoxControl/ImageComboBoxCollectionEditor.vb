@@ -7,7 +7,7 @@
 Namespace ImageComboBoxControl
 
     ''' <summary>
-    ''' Stellt den Designer-Editor für die <see cref="ImageComboBoxCollection(Of TComboBoxItem)"/> bereit.
+    ''' Stellt den Designer-Editor fÃ¼r die <see cref="ImageComboBoxCollection(Of TComboBoxItem)"/> bereit.
     ''' </summary>
     Public Class ImageComboBoxCollectionEditor : Inherits CollectionEditor
 
@@ -19,7 +19,7 @@ Namespace ImageComboBoxControl
         End Sub
 
         ''' <summary>
-        ''' Gibt den Typ der bearbeitbaren Sammlungselemente zurück.
+        ''' Gibt den Typ der bearbeitbaren Sammlungselemente zurÃ¼ck.
         ''' </summary>
         ''' <returns>
         ''' Den Typ <see cref="ImageComboBoxItem"/>.
@@ -29,7 +29,7 @@ Namespace ImageComboBoxControl
         End Function
 
         ''' <summary>
-        ''' Gibt die im Collection-Editor zulässigen neuen Elementtypen zurück.
+        ''' Gibt die im Collection-Editor zulÃ¤ssigen neuen Elementtypen zurÃ¼ck.
         ''' </summary>
         ''' <returns>
         ''' Ein Array mit dem Typ <see cref="ImageComboBoxItem"/>.

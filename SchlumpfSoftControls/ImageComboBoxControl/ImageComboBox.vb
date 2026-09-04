@@ -77,8 +77,11 @@ Namespace ImageComboBoxControl
         End Sub
 
         ''' <summary>
+        ''' Erstellt die Steuerelementsammlung und stellt sicher, dass die Elementekollektion initialisiert ist.
         ''' </summary>
-        ''' <returns></returns>
+        ''' <returns>
+        ''' Die neu erstellte <see cref="ControlCollection"/>.
+        ''' </returns>
         Protected Overrides Function CreateControlsInstance() As ControlCollection
 
             Dim result As ControlCollection = MyBase.CreateControlsInstance()
