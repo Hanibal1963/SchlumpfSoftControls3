@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Pr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plans", "Plans", "{C401C15F-F29D-468B-9EB5-3FCF94DE7D54}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SchlumpfSoftControlsDemo", "SchlumpfSoftControlsDemo\SchlumpfSoftControlsDemo.vbproj", "{E59A3648-35D4-4C2C-8098-A4518B64A134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{1B9F83D1-AA8D-4DF2-A51F-8A33A5424B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B9F83D1-AA8D-4DF2-A51F-8A33A5424B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B9F83D1-AA8D-4DF2-A51F-8A33A5424B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E59A3648-35D4-4C2C-8098-A4518B64A134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E59A3648-35D4-4C2C-8098-A4518B64A134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E59A3648-35D4-4C2C-8098-A4518B64A134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E59A3648-35D4-4C2C-8098-A4518B64A134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
