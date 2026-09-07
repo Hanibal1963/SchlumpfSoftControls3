@@ -76,6 +76,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormFileList.Designer.vb">
+      <DependentUpon>FormFileList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormFileList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormNotifyForm.Designer.vb">
       <DependentUpon>FormNotifyForm.vb</DependentUpon>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormFileList.resx">
+      <DependentUpon>FormFileList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNotifyForm.resx">
       <DependentUpon>FormNotifyForm.vb</DependentUpon>
     </EmbeddedResource>
