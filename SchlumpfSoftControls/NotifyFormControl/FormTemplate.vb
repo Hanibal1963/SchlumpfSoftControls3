@@ -7,6 +7,8 @@
 Imports System
 Imports System.Windows.Forms
 Imports System.Drawing
+Imports System.Threading
+Imports System.Threading.Tasks
 
 Namespace NotifyFormControl
 
@@ -31,7 +33,12 @@ Namespace NotifyFormControl
         Private ReadOnly PanelTitle As New Panel ' Panel für die Titelleiste, enthält Titel und Schließen-Label.
         Private ReadOnly PictureBoxImage As New PictureBox ' Bildanzeige für das Symbol.
         Private ReadOnly RichTextBoxMessage As New RichTextBox ' RichTextBox zur Anzeige der Nachricht.
-        Private CloseThread As Threading.Thread ' Hintergrundthread für das automatische Schließen.
+        ' Timer-basierte Animationen und Cancellation für Auto-Close
+        Private ReadOnly _slideTimer As New System.Windows.Forms.Timer()
+        Private ReadOnly _fadeOutTimer As New System.Windows.Forms.Timer()
+        Private ReadOnly _fadeInTimer As New System.Windows.Forms.Timer()
+        Private _slideTargetX As Integer
+        Private _autoCloseCts As Threading.CancellationTokenSource
 
 #End Region
 
@@ -111,11 +118,22 @@ Namespace NotifyFormControl
         ''' <summary>
         ''' Führt den automatischen Schließvorgang nach Ablauf der eingestellten Zeit aus.
         ''' </summary>
-        Private Sub AutoClose()
-            'Fenster nur automatisch schließen wenn Zeit > 0 ist.
+        ''' <summary>
+        ''' Startet asynchron den Auto-Close-Timer und führt nach Ablauf eine Ausblendung durch.
+        ''' </summary>
+        Private Async Sub StartAutoCloseAsync()
+            _autoCloseCts?.Cancel()
+            _autoCloseCts = New Threading.CancellationTokenSource()
+            Dim ct = _autoCloseCts.Token
             If ShowTime > 0 Then
-                Threading.Thread.Sleep(ShowTime)
-                Me.CloseForm()
+                Try
+                    Await Task.Delay(ShowTime, ct)
+                    If Not ct.IsCancellationRequested Then
+                        BeginFadeOut()
+                    End If
+                Catch ex As TaskCanceledException
+                    ' Abbruch gewünscht -> nichts tun
+                End Try
             End If
         End Sub
 
@@ -125,13 +143,14 @@ Namespace NotifyFormControl
         ''' <param name="sender">Das Objekt, das das Ereignis ausgelöst hat.</param>
         ''' <param name="e">Ereignisdaten für den Schließvorgang.</param>
         Private Sub Form_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-            ' Kurze Verzögerung vor dem Start der Ausblendanimation.
-            Threading.Thread.Sleep(150)
-            For iCount As Int32 = 90 To 10 Step -15
-                Me.Opacity = iCount / 110
-                Me.Refresh()
-                Threading.Thread.Sleep(60)
-            Next
+            ' Kein blockierendes Sleep oder Busy-Wait im Closing-Event.
+            ' Die Ausblendanimation wird über BeginFadeOut / _fadeOutTimer gesteuert.
+            ' Falls Close manuell aufgerufen wird, die Timer beenden und aufräumen.
+            Try
+                _slideTimer.Stop()
+                _fadeOutTimer.Stop()
+            Catch
+            End Try
         End Sub
 
         ''' <summary>
@@ -152,29 +171,84 @@ Namespace NotifyFormControl
                 .ActiveControl = .Controls.Item(1)
             End With
             'Ändern Sie die Position in die untere rechte Ecke
-            Dim x As Int32 = Screen.PrimaryScreen.WorkingArea.Width
             Dim y As Int32 = Screen.PrimaryScreen.WorkingArea.Height - Me.Height - 50
-            ' Schiebt das Fenster animiert von rechts in den sichtbaren Bereich.
-            Do Until x = Screen.PrimaryScreen.WorkingArea.Width - Me.Width
-                x -= 1
-                Me.Location = New Point(x, y)
-            Loop
+            ' Position zunächst außerhalb des sichtbaren Bereichs (rechts)
+            Me.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width, y)
             AddHandler Me.LabelClose.Click, AddressOf Me.Lbl_Close_Click
-            Me.FormFadeIn()
-            'Starte Thread für Autoclose-Popup.
-            Me.CloseThread = New Threading.Thread(AddressOf Me.AutoClose) With {.IsBackground = True}
-            Me.CloseThread.Start()
+
+            ' Start nicht-blockierende Animationen
+            StartSlideIn()
+            StartFadeIn()
+
+            ' Auto-Close asynchron starten
+            StartAutoCloseAsync()
         End Sub
 
         ''' <summary>
         ''' Führt die Einblendanimation des Formulars aus.
         ''' </summary>
         Private Sub FormFadeIn()
-            For iCount As Int32 = 10 To 100 Step +15
-                Me.Opacity = iCount / 100
-                Me.Refresh()
-                Threading.Thread.Sleep(60)
-            Next
+            ' Backward compatible stub: startet den Timer-basierten Fade-In
+            StartFadeIn()
+        End Sub
+
+        Private Sub StartFadeIn()
+            Me.Opacity = 0.1
+            _fadeInTimer.Interval = 40
+            AddHandler _fadeInTimer.Tick, AddressOf FadeInTimer_Tick
+            _fadeInTimer.Start()
+        End Sub
+
+        Private Sub FadeInTimer_Tick(sender As Object, e As EventArgs)
+            Try
+                Dim newOpacity = Math.Min(1.0, Me.Opacity + 0.1)
+                Me.Opacity = newOpacity
+                If Me.Opacity >= 1.0 Then
+                    _fadeInTimer.Stop()
+                    RemoveHandler _fadeInTimer.Tick, AddressOf FadeInTimer_Tick
+                End If
+            Catch
+            End Try
+        End Sub
+
+        Private Sub StartSlideIn()
+            _slideTargetX = Screen.PrimaryScreen.WorkingArea.Width - Me.Width
+            _slideTimer.Interval = 8
+            AddHandler _slideTimer.Tick, AddressOf SlideTimer_Tick
+            _slideTimer.Start()
+        End Sub
+
+        Private Sub SlideTimer_Tick(sender As Object, e As EventArgs)
+            Try
+                Dim stepSize As Integer = 20
+                Dim x As Integer = Me.Location.X - stepSize
+                If x <= _slideTargetX Then
+                    x = _slideTargetX
+                    _slideTimer.Stop()
+                    RemoveHandler _slideTimer.Tick, AddressOf SlideTimer_Tick
+                End If
+                Me.Location = New Point(x, Me.Location.Y)
+            Catch
+            End Try
+        End Sub
+
+        Private Sub BeginFadeOut()
+            _fadeOutTimer.Interval = 60
+            AddHandler _fadeOutTimer.Tick, AddressOf FadeOutTimer_Tick
+            _fadeOutTimer.Start()
+        End Sub
+
+        Private Sub FadeOutTimer_Tick(sender As Object, e As EventArgs)
+            Try
+                Dim newOpacity = Math.Max(0.0, Me.Opacity - 0.1)
+                Me.Opacity = newOpacity
+                If Me.Opacity <= 0.0 Then
+                    _fadeOutTimer.Stop()
+                    RemoveHandler _fadeOutTimer.Tick, AddressOf FadeOutTimer_Tick
+                    Me.Close()
+                End If
+            Catch
+            End Try
         End Sub
 
         ''' <summary>
@@ -183,7 +257,12 @@ Namespace NotifyFormControl
         ''' <param name="sender">Das Objekt, das das Ereignis ausgelöst hat.</param>
         ''' <param name="e">Ereignisdaten des Klickereignisses.</param>
         Private Sub Lbl_Close_Click(sender As Object, e As EventArgs)
-            Me.Close()
+            ' Bei manuellem Schließen: AutoClose abbrechen und Fade-Out starten
+            Try
+                _autoCloseCts?.Cancel()
+            Catch
+            End Try
+            BeginFadeOut()
         End Sub
 
         ''' <summary>
