@@ -8,6 +8,7 @@ Imports System.Linq
 Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.Drawing
+Imports System.Threading.Tasks
 
 Namespace FileListControl
 
@@ -620,72 +621,73 @@ Namespace FileListControl
         ''' </summary>
         Private Sub FileList_StartFolderChanged(sender As Object, e As System.EventArgs) Handles Me.StartFolderChanged
 
-            ' Pausiere Updates um die Leistung zu verbessern
-            Me.listViewEntries.BeginUpdate()
-            Try
-
-                ' Lösche alle vorhandenen Einträge
-                Me.listViewEntries.Items.Clear()
-
-                ' Prüfe, ob der Startordner gültig ist
-                If String.IsNullOrWhiteSpace(Me._startFolder) OrElse Not System.IO.Directory.Exists(Me._startFolder) Then
-                    Return
+            ' Prüfe, ob der Startordner gültig ist
+            If String.IsNullOrWhiteSpace(Me._startFolder) OrElse Not System.IO.Directory.Exists(Me._startFolder) Then
+                ' Leere UI auf UI-Thread
+                If Me.listViewEntries.InvokeRequired Then
+                    Me.listViewEntries.BeginInvoke(New MethodInvoker(Sub()
+                                                                         Me.listViewEntries.Items.Clear()
+                                                                     End Sub))
+                Else
+                    Me.listViewEntries.Items.Clear()
                 End If
+                Return
+            End If
 
-                ' Erstelle DirectoryInfo-Objekt für den Startordner
-                Dim directoryInfo As New System.IO.DirectoryInfo(Me._startFolder)
+            Dim directoryInfo As New System.IO.DirectoryInfo(Me._startFolder)
 
-                ' Hole alle Verzeichnisse und Dateien mit Fehlerbehandlung
-                Dim directories As System.IO.DirectoryInfo() = System.Array.Empty(Of System.IO.DirectoryInfo)()
-                Dim files As System.IO.FileInfo() = System.Array.Empty(Of System.IO.FileInfo)()
+            ' Enumeration im Hintergrund durchführen
+            Dim unused = Task.Run(Sub()
+                                      Dim directories As System.IO.DirectoryInfo() = System.Array.Empty(Of System.IO.DirectoryInfo)()
+                                      Dim files As System.IO.FileInfo() = System.Array.Empty(Of System.IO.FileInfo)()
+                                      Try
+                                          directories = directoryInfo.GetDirectories().OrderBy(Function(d) d.Name, System.StringComparer.CurrentCultureIgnoreCase).ToArray()
+                                      Catch
+                                      End Try
+                                      Try
+                                          files = directoryInfo.GetFiles().OrderBy(Function(f) f.Name, System.StringComparer.CurrentCultureIgnoreCase).ToArray()
+                                      Catch
+                                      End Try
 
-                Try
+                                      ' Bereite die Einträge vor (leichte Struktur, um UI-Thread zu entlasten)
+                                      Dim dirData = (From d In directories Select New With {Key .Name = d.Name, Key .Created = d.CreationTime, Key .LastAccess = d.LastAccessTime, Key .LastWrite = d.LastWriteTime, Key .Size = GetDirectorySizeSafe(d)}).ToArray()
+                                      Dim fileData = (From f In files Select New With {Key .Name = f.Name, Key .Created = f.CreationTime, Key .LastAccess = f.LastAccessTime, Key .LastWrite = f.LastWriteTime, Key .Size = f.Length, Key .Type = GetFileType(f), Key .ImageKey = Me.GetFileImageKey(f)}).ToArray()
 
-                    directories = directoryInfo.GetDirectories().OrderBy(Function(d) d.Name, System.StringComparer.CurrentCultureIgnoreCase).ToArray()
-
-                Catch
-                    ' Fehlerbehandlung - leeres Array bleibt
-                End Try
-
-                Try
-
-                    files = directoryInfo.GetFiles().OrderBy(Function(f) f.Name, System.StringComparer.CurrentCultureIgnoreCase).ToArray()
-
-                Catch
-                    ' Fehlerbehandlung - leeres Array bleibt
-                End Try
-
-                ' Füge alle Verzeichnisse hinzu
-                For Each directory In directories
-                    Dim directorySize As System.Int64 = GetDirectorySizeSafe(directory)
-                    Me.AddItem(
-                    directory.Name, directory.CreationTime, directory.LastAccessTime,
-                    directory.LastWriteTime, FormatSize(directorySize),
-                    "Ordner", FolderImageKey)
-                Next
-
-                ' Füge alle Dateien hinzu
-                For Each file In files
-                    Me.AddItem(
-                    file.Name,
-                    file.CreationTime, file.LastAccessTime, file.LastWriteTime,
-                    FormatSize(file.Length), GetFileType(file), Me.GetFileImageKey(file))
-                Next
-
-                ' Wende die aktuelle Sortierung an
-                Me.ApplyCurrentSort()
-
-                ' Passe die Spaltenbreiten an, wenn automatische Anpassung aktiviert ist
-                If Me._autoResizeColumnsEnabled Then
-                    Me.AdjustColumnWidths()
-                End If
-
-            Finally
-
-                ' Fortsetzen der Updates
-                Me.listViewEntries.EndUpdate()
-
-            End Try
+                                      ' Marshal zurück auf UI-Thread und aktualisiere ListView
+                                      If Me.InvokeRequired Then
+                                          Me.BeginInvoke(New MethodInvoker(Sub()
+                                                                               Me.listViewEntries.BeginUpdate()
+                                                                               Try
+                                                                                   Me.listViewEntries.Items.Clear()
+                                                                                   For Each d In dirData
+                                                                                       Me.AddItem(d.Name, d.Created, d.LastAccess, d.LastWrite, FormatSize(d.Size), "Ordner", FolderImageKey)
+                                                                                   Next
+                                                                                   For Each f In fileData
+                                                                                       Me.AddItem(f.Name, f.Created, f.LastAccess, f.LastWrite, FormatSize(f.Size), f.Type, f.ImageKey)
+                                                                                   Next
+                                                                                   Me.ApplyCurrentSort()
+                                                                                   If Me._autoResizeColumnsEnabled Then Me.AdjustColumnWidths()
+                                                                               Finally
+                                                                                   Me.listViewEntries.EndUpdate()
+                                                                               End Try
+                                                                           End Sub))
+                                      Else
+                                          Me.listViewEntries.BeginUpdate()
+                                          Try
+                                              Me.listViewEntries.Items.Clear()
+                                              For Each d In dirData
+                                                  Me.AddItem(d.Name, d.Created, d.LastAccess, d.LastWrite, FormatSize(d.Size), "Ordner", FolderImageKey)
+                                              Next
+                                              For Each f In fileData
+                                                  Me.AddItem(f.Name, f.Created, f.LastAccess, f.LastWrite, FormatSize(f.Size), f.Type, f.ImageKey)
+                                              Next
+                                              Me.ApplyCurrentSort()
+                                              If Me._autoResizeColumnsEnabled Then Me.AdjustColumnWidths()
+                                          Finally
+                                              Me.listViewEntries.EndUpdate()
+                                          End Try
+                                      End If
+                                  End Sub)
 
         End Sub
 

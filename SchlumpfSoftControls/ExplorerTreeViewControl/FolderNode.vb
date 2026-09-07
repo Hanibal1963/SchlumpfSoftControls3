@@ -56,26 +56,26 @@ Namespace ExplorerTreeViewControl
         Public Sub LoadSubfolders()
             ' Starte die Enumeration im Hintergrund, aktualisiere UI-thread-sicher
             Dim folderPath = Me.FullPath
-            Task.Run(Sub()
-                         Try
-                             Dim dirs() As String = Directory.GetDirectories(folderPath)
-                             If Me.TreeView IsNot Nothing AndAlso Me.TreeView.InvokeRequired Then
-                                 Me.TreeView.BeginInvoke(New MethodInvoker(Sub()
-                                                                               For Each dir As String In dirs
-                                                                                   Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
-                                                                               Next
-                                                                           End Sub))
-                             Else
-                                 For Each dir As String In dirs
-                                     Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
-                                 Next
-                             End If
-                         Catch ex As UnauthorizedAccessException
-                             ' Zugriff verweigert – Ordner wird übersprungen
-                         Catch
-                             ' Allgemeine Fehler ignorieren, verhindern dass Hintergrundtask abstürzt
-                         End Try
-                     End Sub)
+            Dim unused1 = Task.Run(Sub()
+                                       Try
+                                           Dim dirs() As String = Directory.GetDirectories(folderPath)
+                                           If Me.TreeView IsNot Nothing AndAlso Me.TreeView.InvokeRequired Then
+                                               Me.TreeView.BeginInvoke(New MethodInvoker(Sub()
+                                                                                             For Each dir As String In dirs
+                                                                                                 Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
+                                                                                             Next
+                                                                                         End Sub))
+                                           Else
+                                               For Each dir As String In dirs
+                                                   Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
+                                               Next
+                                           End If
+                                       Catch ex As UnauthorizedAccessException
+                                           ' Zugriff verweigert – Ordner wird übersprungen
+                                       Catch
+                                           ' Allgemeine Fehler ignorieren, verhindern dass Hintergrundtask abstürzt
+                                       End Try
+                                   End Sub)
         End Sub
 
     End Class
