@@ -152,7 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchlumpfSoftControls\SchlumpfSoftControls.vbproj">
-      <Project>{1B9F83D1-AA8D-4DF2-A51F-8A33A5424B68}</Project>
+      <Project>{1b9f83d1-aa8d-4df2-a51f-8a33a5424b68}</Project>
       <Name>SchlumpfSoftControls</Name>
     </ProjectReference>
   </ItemGroup>

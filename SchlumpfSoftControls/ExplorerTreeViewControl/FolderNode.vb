@@ -7,6 +7,7 @@
 Imports System
 Imports System.IO
 Imports System.Windows.Forms
+Imports System.Threading.Tasks
 
 Namespace ExplorerTreeViewControl
 
@@ -53,16 +54,28 @@ Namespace ExplorerTreeViewControl
         ''' Lädt die Unterordner des aktuellen Ordners und fügt sie als FolderNode-Knoten hinzu.
         ''' </summary>
         Public Sub LoadSubfolders()
-            Try
-                ' Durchlaufe alle Unterverzeichnisse des aktuellen Ordners
-                For Each dir As String In Directory.GetDirectories(Me.FullPath)
-                    ' Füge für jedes Unterverzeichnis einen neuen FolderNode hinzu
-                    Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
-                Next
-            Catch ex As UnauthorizedAccessException
-                ' Zugriff verweigert – Ordner wird übersprungen
-                ' Hier könnte optional Logging oder eine Benutzerbenachrichtigung erfolgen
-            End Try
+            ' Starte die Enumeration im Hintergrund, aktualisiere UI-thread-sicher
+            Dim folderPath = Me.FullPath
+            Task.Run(Sub()
+                         Try
+                             Dim dirs() As String = Directory.GetDirectories(folderPath)
+                             If Me.TreeView IsNot Nothing AndAlso Me.TreeView.InvokeRequired Then
+                                 Me.TreeView.BeginInvoke(New MethodInvoker(Sub()
+                                                                               For Each dir As String In dirs
+                                                                                   Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
+                                                                               Next
+                                                                           End Sub))
+                             Else
+                                 For Each dir As String In dirs
+                                     Dim unused = Me.Nodes.Add(New FolderNode(Path.GetFileName(dir), dir))
+                                 Next
+                             End If
+                         Catch ex As UnauthorizedAccessException
+                             ' Zugriff verweigert – Ordner wird übersprungen
+                         Catch
+                             ' Allgemeine Fehler ignorieren, verhindern dass Hintergrundtask abstürzt
+                         End Try
+                     End Sub)
         End Sub
 
     End Class
