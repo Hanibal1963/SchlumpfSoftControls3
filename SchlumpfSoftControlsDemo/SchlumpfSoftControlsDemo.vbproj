@@ -89,6 +89,12 @@
       <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormExplorerTreeView.Designer.vb">
+      <DependentUpon>FormExplorerTreeView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormExplorerTreeView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormSevenSegment.Designer.vb">
       <DependentUpon>FormSevenSegment.vb</DependentUpon>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExplorerTreeView.resx">
+      <DependentUpon>FormExplorerTreeView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSevenSegment.resx">
       <DependentUpon>FormSevenSegment.vb</DependentUpon>
