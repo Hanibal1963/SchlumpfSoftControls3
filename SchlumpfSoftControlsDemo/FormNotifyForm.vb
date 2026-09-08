@@ -4,6 +4,8 @@
 ' Datum: 06.09.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports SchlumpfSoft.Controls
+
 Public Class FormNotifyForm
 
     Public Sub New()
@@ -19,8 +21,8 @@ Public Class FormNotifyForm
         Me.NotifyForm.Title = Me.TextBox_Title.Text
         Me.NotifyForm.Message = Me.TextBox_Message.Text
         Me.NotifyForm.ShowTime = CInt(Me.NumericUpDown_ShowTime.Value * 1000)
-        Me.NotifyForm.Style = CType(Me.ComboBox_Style.SelectedIndex, SchlumpfSoft.Controls.NotifyFormControl.NotifyFormStyle)
-        Me.NotifyForm.Design = CType(Me.ComboBox_Design.SelectedIndex, SchlumpfSoft.Controls.NotifyFormControl.NotifyFormDesign)
+        Me.NotifyForm.Style = CType(Me.ComboBox_Style.SelectedIndex, NotifyFormControl.NotifyFormStyle)
+        Me.NotifyForm.Design = CType(Me.ComboBox_Design.SelectedIndex, NotifyFormControl.NotifyFormDesign)
         Me.NotifyForm.Show()
     End Sub
 
