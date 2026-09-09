@@ -4,6 +4,8 @@
 ' Datum: 09.09.2026
 ' --------------------------------------------------------------------------------------------------------
 
+Imports SchlumpfSoft.Controls
+
 Public Class FormPassword
 
     Public Sub New()
