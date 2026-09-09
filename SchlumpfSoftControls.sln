@@ -24,6 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Pr
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plans", "Plans", "{C401C15F-F29D-468B-9EB5-3FCF94DE7D54}"
+	ProjectSection(SolutionItems) = preProject
+		Plans\plan-optimierungsplne-fr-alle-controls-in-schlumpfsoftcontrols-(pr-ready,-.net-framew.md = Plans\plan-optimierungsplne-fr-alle-controls-in-schlumpfsoftcontrols-(pr-ready,-.net-framew.md
+	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SchlumpfSoftControlsDemo", "SchlumpfSoftControlsDemo\SchlumpfSoftControlsDemo.vbproj", "{E59A3648-35D4-4C2C-8098-A4518B64A134}"
 EndProject

@@ -1,0 +1,8 @@
+/* Visual Studio Settings File */
+{
+  "projectsAndSolutions.serviceDependencies.restore.autoGenerateProfileArmTemplates": false,
+  "environment.visualExperience.colorTheme": "light",
+  "environment.tabs.documentTabs.insertRight": true,
+  "environment.tabs.documentTabs.showInvisibleTabsInItalic": true,
+  "environment.tabs.documentTabs.multiRowTabs": true
+}
