@@ -1,0 +1,2 @@
+﻿Public Class FormColorProgressBar
+End Class

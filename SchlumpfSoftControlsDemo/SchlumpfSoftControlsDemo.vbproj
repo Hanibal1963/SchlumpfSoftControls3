@@ -76,6 +76,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormDriveWatcher.Designer.vb">
+      <DependentUpon>FormDriveWatcher.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormDriveWatcher.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormFileList.Designer.vb">
       <DependentUpon>FormFileList.vb</DependentUpon>
     </Compile>
@@ -107,6 +113,60 @@
     <Compile Include="FormSevenSegment.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormAniGif.Designer.vb">
+      <DependentUpon>FormAniGif.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormAniGif.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransparentLabel.Designer.vb">
+      <DependentUpon>FormTransparentLabel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransparentLabel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShape.Designer.vb">
+      <DependentUpon>FormShape.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormShape.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPassword.Designer.vb">
+      <DependentUpon>FormPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIniFile.Designer.vb">
+      <DependentUpon>FormIniFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormIniFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImageComboBox.Designer.vb">
+      <DependentUpon>FormImageComboBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormImageComboBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormColorProgressBar.Designer.vb">
+      <DependentUpon>FormColorProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormColorProgressBar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExtendedRTF.Designer.vb">
+      <DependentUpon>FormExtendedRTF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormExtendedRTF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWizard.Designer.vb">
+      <DependentUpon>FormWizard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormWizard.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -125,6 +185,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormDriveWatcher.resx">
+      <DependentUpon>FormDriveWatcher.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFileList.resx">
       <DependentUpon>FormFileList.vb</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +202,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSevenSegment.resx">
       <DependentUpon>FormSevenSegment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAniGif.resx">
+      <DependentUpon>FormAniGif.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransparentLabel.resx">
+      <DependentUpon>FormTransparentLabel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShape.resx">
+      <DependentUpon>FormShape.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPassword.resx">
+      <DependentUpon>FormPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormIniFile.resx">
+      <DependentUpon>FormIniFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImageComboBox.resx">
+      <DependentUpon>FormImageComboBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormColorProgressBar.resx">
+      <DependentUpon>FormColorProgressBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExtendedRTF.resx">
+      <DependentUpon>FormExtendedRTF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWizard.resx">
+      <DependentUpon>FormWizard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

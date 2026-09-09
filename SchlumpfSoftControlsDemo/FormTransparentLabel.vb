@@ -1,0 +1,2 @@
+﻿Public Class FormTransparentlabel
+End Class
