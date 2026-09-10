@@ -255,5 +255,28 @@
       <Name>SchlumpfSoftControls</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Anim100.gif" />
+    <Content Include="Resources\Anim101.gif" />
+    <Content Include="Resources\Anim102.gif" />
+    <Content Include="Resources\Anim103.gif" />
+    <Content Include="Resources\Anim104.gif" />
+    <Content Include="Resources\Anim105.gif" />
+    <Content Include="Resources\Anim106.gif" />
+    <Content Include="Resources\Anim107.gif" />
+    <Content Include="Resources\Anim108.gif" />
+    <Content Include="Resources\Anim109.gif" />
+    <Content Include="Resources\Anim110.gif" />
+    <Content Include="Resources\Anim111.gif" />
+    <Content Include="Resources\Anim112.gif" />
+    <Content Include="Resources\Anim113.gif" />
+    <Content Include="Resources\Anim114.gif" />
+    <Content Include="Resources\Anim115.gif" />
+    <Content Include="Resources\Anim116.gif" />
+    <Content Include="Resources\Anim117.gif" />
+    <Content Include="Resources\Anim118.gif" />
+    <Content Include="Resources\Anim119.gif" />
+    <Content Include="Resources\Anim120.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
