@@ -271,6 +271,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property DriveWatcher_Information() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("DriveWatcher_Information", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Lege einen der folgenden Datenträger ein oder erstelle einen und beobachte die Reaktion.
         '''
         '''- USB-Stick
@@ -512,16 +522,6 @@ Namespace My.Resources
         Friend ReadOnly Property ImagecomboBox_Warning() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("ImagecomboBox_Warning", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Information() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Information", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
