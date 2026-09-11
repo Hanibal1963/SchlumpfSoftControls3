@@ -277,6 +277,7 @@
     <Content Include="Resources\Anim118.gif" />
     <Content Include="Resources\Anim119.gif" />
     <Content Include="Resources\Anim120.gif" />
+    <Content Include="Resources\Information.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

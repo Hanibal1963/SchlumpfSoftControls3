@@ -269,5 +269,30 @@ Namespace My.Resources
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Lege einen der folgenden Datenträger ein oder erstelle einen und beobachte die Reaktion.
+        '''
+        '''- USB-Stick
+        '''- CD oder DVD Laufwerk fest verbaut oder über USB-Adapter
+        '''- Festplatten über USB-Adapter
+        '''- USB-Floppylaufwerk
+        '''- Virtuelle Festplatte ähnelt.
+        '''</summary>
+        Friend ReadOnly Property DriveWatcherInfoText() As String
+            Get
+                Return ResourceManager.GetString("DriveWatcherInfoText", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Information() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Information", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
     End Module
 End Namespace
