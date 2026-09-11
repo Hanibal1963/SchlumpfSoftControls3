@@ -296,6 +296,10 @@
     <Content Include="Resources\ExtendedRTF_Textright.png" />
     <Content Include="Resources\ExtendedRTF_Togglebullets.png" />
     <Content Include="Resources\ExtendedRTF_Underline.png" />
+    <Content Include="Resources\ImagecomboBox_Error.png" />
+    <Content Include="Resources\ImagecomboBox_Help.png" />
+    <Content Include="Resources\ImagecomboBox_Info.png" />
+    <Content Include="Resources\ImagecomboBox_Warning.png" />
     <Content Include="Resources\Information.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
