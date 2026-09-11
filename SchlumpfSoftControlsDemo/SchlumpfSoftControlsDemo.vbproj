@@ -248,6 +248,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Resources\ExtendedRTF_Testdatei.rtf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchlumpfSoftControls\SchlumpfSoftControls.vbproj">
@@ -277,6 +278,24 @@
     <Content Include="Resources\Anim118.gif" />
     <Content Include="Resources\Anim119.gif" />
     <Content Include="Resources\Anim120.gif" />
+    <Content Include="Resources\ExtendedRTF_Backcolor.png" />
+    <Content Include="Resources\ExtendedRTF_Bold.png" />
+    <Content Include="Resources\ExtendedRTF_Delformat.png" />
+    <Content Include="Resources\ExtendedRTF_Fontdown.png" />
+    <Content Include="Resources\ExtendedRTF_Fontformat.png" />
+    <Content Include="Resources\ExtendedRTF_Fontup.png" />
+    <Content Include="Resources\ExtendedRTF_Forecolor.png" />
+    <Content Include="Resources\ExtendedRTF_Italic.png" />
+    <Content Include="Resources\ExtendedRTF_LeftIndentDown.png" />
+    <Content Include="Resources\ExtendedRTF_LeftIndentUp.png" />
+    <Content Include="Resources\ExtendedRTF_Setdown.png" />
+    <Content Include="Resources\ExtendedRTF_Setup.png" />
+    <Content Include="Resources\ExtendedRTF_Strikeout.png" />
+    <Content Include="Resources\ExtendedRTF_Textcenter.png" />
+    <Content Include="Resources\ExtendedRTF_Textleft.png" />
+    <Content Include="Resources\ExtendedRTF_Textright.png" />
+    <Content Include="Resources\ExtendedRTF_Togglebullets.png" />
+    <Content Include="Resources\ExtendedRTF_Underline.png" />
     <Content Include="Resources\Information.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

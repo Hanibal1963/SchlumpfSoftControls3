@@ -190,6 +190,63 @@
 - USB-Floppylaufwerk
 - Virtuelle Festplatte</value>
   </data>
+  <data name="ExtendedRTF_Backcolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Backcolor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Bold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Delformat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Delformat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Fontdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Fontdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Fontformat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Fontformat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Fontup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Fontup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Forecolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Forecolor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Italic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Italic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_LeftIndentDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_LeftIndentDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_LeftIndentUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_LeftIndentUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Setdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Setdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Setup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Setup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Strikeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Strikeout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Testdatei" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Testdatei.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ExtendedRTF_Textcenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Textcenter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Textleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Textleft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Textright" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Textright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Togglebullets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Togglebullets.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendedRTF_Underline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendedRTF_Underline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Information" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
