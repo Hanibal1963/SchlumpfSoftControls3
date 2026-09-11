@@ -118,9 +118,6 @@ Namespace NotifyFormControl
         ''' <summary>
         ''' Führt den automatischen Schließvorgang nach Ablauf der eingestellten Zeit aus.
         ''' </summary>
-        ''' <summary>
-        ''' Startet asynchron den Auto-Close-Timer und führt nach Ablauf eine Ausblendung durch.
-        ''' </summary>
         Private Async Sub StartAutoCloseAsync()
             _autoCloseCts?.Cancel()
             _autoCloseCts = New Threading.CancellationTokenSource()
