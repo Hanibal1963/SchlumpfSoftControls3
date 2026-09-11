@@ -1,4 +1,4 @@
-﻿' --------------------------------------------------------------------------------------------------------
+' --------------------------------------------------------------------------------------------------------
 ' Datei: AssemblyInfo.vb
 ' Author: Andreas Sauer
 ' Datum: 06.09.2026
@@ -20,3 +20,5 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyVersion("1.2026.0907.0")>
 <Assembly: AssemblyFileVersion("1.2026.0907.0")>
 <Assembly: NeutralResourcesLanguage("de-DE")>
+
+<assembly: AssemblyInformationalVersion("0.0.0.0")>

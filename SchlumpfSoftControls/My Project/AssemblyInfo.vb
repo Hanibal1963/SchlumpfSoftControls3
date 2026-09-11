@@ -23,3 +23,5 @@ Imports Microsoft.VisualBasic
 <Assembly: AssemblyFileVersion("3.2026.0907.2")>
 <Assembly: Guid("2f237cc7-d281-44e2-802c-7201c9028228")>
 <Assembly: NeutralResourcesLanguage("de-DE")>
+
+<assembly: AssemblyInformationalVersion("0.0.0.0")>
