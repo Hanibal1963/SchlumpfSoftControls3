@@ -36,6 +36,7 @@ Partial Class FormMain
         Me.BtnShape = New System.Windows.Forms.Button()
         Me.BtnTransparentLabel = New System.Windows.Forms.Button()
         Me.BtnWizard = New System.Windows.Forms.Button()
+        Me.BtnPassword = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,6 +54,7 @@ Partial Class FormMain
         Me.FlowLayoutPanel.Controls.Add(Me.BtnImageComboBox)
         Me.FlowLayoutPanel.Controls.Add(Me.BtnINIFile)
         Me.FlowLayoutPanel.Controls.Add(Me.BtnNotifyForm)
+        Me.FlowLayoutPanel.Controls.Add(Me.BtnPassword)
         Me.FlowLayoutPanel.Controls.Add(Me.BtnSevenSegment)
         Me.FlowLayoutPanel.Controls.Add(Me.BtnShape)
         Me.FlowLayoutPanel.Controls.Add(Me.BtnTransparentLabel)
@@ -60,7 +62,7 @@ Partial Class FormMain
         Me.FlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.FlowLayoutPanel.Location = New System.Drawing.Point(61, 12)
         Me.FlowLayoutPanel.Name = "FlowLayoutPanel"
-        Me.FlowLayoutPanel.Size = New System.Drawing.Size(176, 429)
+        Me.FlowLayoutPanel.Size = New System.Drawing.Size(176, 462)
         Me.FlowLayoutPanel.TabIndex = 0
         Me.FlowLayoutPanel.WrapContents = False
         '
@@ -147,7 +149,7 @@ Partial Class FormMain
         '
         'BtnSevenSegment
         '
-        Me.BtnSevenSegment.Location = New System.Drawing.Point(3, 300)
+        Me.BtnSevenSegment.Location = New System.Drawing.Point(3, 333)
         Me.BtnSevenSegment.Name = "BtnSevenSegment"
         Me.BtnSevenSegment.Size = New System.Drawing.Size(170, 27)
         Me.BtnSevenSegment.TabIndex = 9
@@ -156,7 +158,7 @@ Partial Class FormMain
         '
         'BtnShape
         '
-        Me.BtnShape.Location = New System.Drawing.Point(3, 333)
+        Me.BtnShape.Location = New System.Drawing.Point(3, 366)
         Me.BtnShape.Name = "BtnShape"
         Me.BtnShape.Size = New System.Drawing.Size(170, 27)
         Me.BtnShape.TabIndex = 10
@@ -165,7 +167,7 @@ Partial Class FormMain
         '
         'BtnTransparentLabel
         '
-        Me.BtnTransparentLabel.Location = New System.Drawing.Point(3, 366)
+        Me.BtnTransparentLabel.Location = New System.Drawing.Point(3, 399)
         Me.BtnTransparentLabel.Name = "BtnTransparentLabel"
         Me.BtnTransparentLabel.Size = New System.Drawing.Size(170, 27)
         Me.BtnTransparentLabel.TabIndex = 11
@@ -174,19 +176,28 @@ Partial Class FormMain
         '
         'BtnWizard
         '
-        Me.BtnWizard.Location = New System.Drawing.Point(3, 399)
+        Me.BtnWizard.Location = New System.Drawing.Point(3, 432)
         Me.BtnWizard.Name = "BtnWizard"
         Me.BtnWizard.Size = New System.Drawing.Size(170, 27)
         Me.BtnWizard.TabIndex = 12
         Me.BtnWizard.Text = "WizardControl"
         Me.BtnWizard.UseVisualStyleBackColor = True
         '
+        'BtnPassword
+        '
+        Me.BtnPassword.Location = New System.Drawing.Point(3, 300)
+        Me.BtnPassword.Name = "BtnPassword"
+        Me.BtnPassword.Size = New System.Drawing.Size(170, 27)
+        Me.BtnPassword.TabIndex = 13
+        Me.BtnPassword.Text = "PasswordControl"
+        Me.BtnPassword.UseVisualStyleBackColor = True
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(300, 459)
+        Me.ClientSize = New System.Drawing.Size(300, 483)
         Me.Controls.Add(Me.FlowLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -214,4 +225,5 @@ Partial Class FormMain
     Private WithEvents BtnShape As Button
     Private WithEvents BtnTransparentLabel As Button
     Private WithEvents BtnWizard As Button
+    Private WithEvents BtnPassword As Button
 End Class
