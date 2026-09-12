@@ -10,12 +10,9 @@ Beim Bestätigen der Eingabe wird aus dem Passwort ein PBKDF2-Hash erzeugt, zus�
 
 ## Enthaltene Dateien
 
-- `Password.vb`
-  Enthält das eigentliche Passwort-Steuerelement mit Anzeigeumschaltung, Größenlogik und Ereignisauslösung.
-- `PasswordChangedEventArgs.vb`
-  Definiert die Ereignisdaten für den erzeugten Passwort-Code.
-- `SecurityService.vb`
-  Kapselt das Erzeugen, Prüfen, Schützen und Entschützen von Passwortdaten.
+- `Password.vb` Enthält das eigentliche Passwort-Steuerelement mit Anzeigeumschaltung, Größenlogik und Ereignisauslösung.
+- `PasswordChangedEventArgs.vb` Definiert die Ereignisdaten für den erzeugten Passwort-Code.
+- `SecurityService.vb` Kapselt das Erzeugen, Prüfen, Schützen und Entschützen von Passwortdaten.
 
 ## Klasse `Password`
 
@@ -27,15 +24,13 @@ Zusätzlich kann die Maskierung des Passworts über ein Symbol ein- oder ausgesc
 
 ### Öffentliche Methoden
 
-- `New()`
-  Initialisiert das Steuerelement, setzt Mindest- und Standardgröße, aktiviert die Passwortmaskierung und lädt das Standardsymbol.
-- `VerifyPasswordCode(PasswordCode As String) As Boolean`
-  Entschützt einen zuvor erzeugten Passwort-Code und vergleicht ihn mit dem aktuell eingegebenen Passwort.
+- `New()` Initialisiert das Steuerelement, setzt Mindest- und Standardgröße, aktiviert die Passwortmaskierung und lädt das Standardsymbol.
+- `VerifyPasswordCode(PasswordCode As String) As Boolean` Entschlüsselt einen zuvor erzeugten Passwort-Code und vergleicht ihn mit dem aktuell eingegebenen Passwort.
+- `ClearPassword()` Löscht den Inhalt des Passwortfelds und setzt den Fokus auf das Steuerelement.
 
 ### Ereignisse
 
-- `PasswortChanged(sender As Object, e As PasswordChangedEventArgs)`
-  Tritt ein, wenn aus dem aktuell eingegebenen Passwort ein neuer geschützter Passwort-Code erzeugt wurde.
+- `PasswortChanged(sender As Object, e As PasswordChangedEventArgs)` Tritt ein, wenn aus dem aktuell eingegebenen Passwort ein neuer geschützter Passwort-Code erzeugt wurde.
 
 ### Interne Funktionsweise
 
@@ -53,13 +48,11 @@ Diese Klasse stellt die Daten für das Ereignis `PasswortChanged` bereit.
 
 ### Öffentliche Eigenschaften
 
-- `PasswordCode As String`
-  Enthält den geschützten Code des erzeugten Passwort-Hashs.
+- `PasswordCode As String` Enthält den geschützten Code des erzeugten Passwort-Hashs.
 
 ### Öffentliche Methoden
 
-- `New(Code As String)`
-  Erstellt die Ereignisdaten und speichert den übergebenen Passwort-Code.
+- `New(Code As String)` Erstellt die Ereignisdaten und speichert den übergebenen Passwort-Code.
 
 ## Klasse `SecurityService`
 
@@ -74,14 +67,10 @@ Die Klasse stellt keine öffentlichen Eigenschaften bereit.
 
 ### Methoden - SecurityService
 
-- `CreatePasswordHash(password As String) As String`
-  Erzeugt einen speicherbaren Passwort-Hash im Format `PBKDF2$Iterationen$Salt$Hash`.
-- `VerifyPassword(password As String, storedHash As String) As Boolean`
-  Validiert ein eingegebenes Passwort gegen einen gespeicherten PBKDF2-Hash.
-- `ProtectSecret(plainText As String) As String`
-  Verschlüsselt Daten benutzergebunden mit DPAPI und liefert einen Base64-kodierten Ciphertext zurück.
-- `UnprotectSecret(protectedBase64 As String) As String`
-  Entschlüsselt benutzergebundene DPAPI-Daten und liefert den ursprünglichen Klartext zurück.
+- `CreatePasswordHash(password As String) As String` Erzeugt einen speicherbaren Passwort-Hash im Format `PBKDF2$Iterationen$Salt$Hash`.
+- `VerifyPassword(password As String, storedHash As String) As Boolean` Validiert ein eingegebenes Passwort gegen einen gespeicherten PBKDF2-Hash.
+- `ProtectSecret(plainText As String) As String` Verschlüsselt Daten benutzergebunden mit DPAPI und liefert einen Base64-kodierten Ciphertext zurück.
+- `UnprotectSecret(protectedBase64 As String) As String` Entschlüsselt benutzergebundene DPAPI-Daten und liefert den ursprünglichen Klartext zurück.
 
 ### Ereignisse - SecurityService
 

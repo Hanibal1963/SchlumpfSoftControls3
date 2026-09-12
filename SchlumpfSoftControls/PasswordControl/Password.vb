@@ -83,6 +83,14 @@ Namespace PasswordControl
             Return Me._security.VerifyPassword(Me.TB.Text, pwhash)
         End Function
 
+        ''' <summary>
+        ''' Löscht den Inhalt des Passwortfeldes und setzt den Fokus darauf.
+        ''' </summary>
+        Public Sub ClearPassword()
+            Me.TB.Clear()
+            Me.TB.Focus()
+        End Sub
+
 #End Region
 
 #Region "Interne Methoden"
