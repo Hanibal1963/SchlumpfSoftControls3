@@ -63,9 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim100() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim100() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim100", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim100", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -73,9 +73,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim101() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim101() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim101", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim101", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -83,9 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim102() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim102() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim102", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim102", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -93,9 +93,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim103() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim103() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim103", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim103", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -103,9 +103,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim104() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim104() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim104", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim104", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -113,9 +113,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim105() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim105() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim105", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim105", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -123,9 +123,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim106() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim106() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim106", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim106", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -133,9 +133,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim107() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim107() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim107", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim107", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -143,9 +143,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim108() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim108() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim108", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim108", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -153,9 +153,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim109() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim109() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim109", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim109", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -163,9 +163,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim110() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim110() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim110", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim110", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -173,9 +173,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim111() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim111() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim111", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim111", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -183,9 +183,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim112() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim112() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim112", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim112", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -193,9 +193,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim113() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim113() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim113", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim113", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -203,9 +203,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim114() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim114() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim114", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim114", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -213,9 +213,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim115() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim115() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim115", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim115", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -223,9 +223,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim116() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim116() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim116", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim116", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -233,9 +233,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim117() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim117() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim117", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim117", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -243,9 +243,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim118() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim118() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim118", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim118", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -253,9 +253,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim119() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim119() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim119", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim119", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -263,9 +263,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Anim120() As System.Drawing.Bitmap
+        Friend ReadOnly Property AniGif_Anim120() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Anim120", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AniGif_Anim120", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

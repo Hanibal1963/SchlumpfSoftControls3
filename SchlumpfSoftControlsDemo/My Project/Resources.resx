@@ -117,70 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Anim100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim100.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim101" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim101.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim102" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim102.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim103" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim103.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim104" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim104.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim105" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim105.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim106" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim106.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim107" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim107.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim108" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim108.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim109" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim109.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim110" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim110.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim111" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim111.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim112" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim112.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim113" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim113.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim114" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim114.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim115" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim115.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim116" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim116.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim117" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim117.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim118" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim118.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim119" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim119.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Anim120" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anim120.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DriveWatcherInfoText" xml:space="preserve">
     <value>Lege einen der folgenden Datenträger ein oder erstelle einen und beobachte die Reaktion.
 
@@ -191,6 +127,7 @@
 - Virtuelle Festplatte</value>
     <comment>Beschreibungstext</comment>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Information" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     <comment>Hintergrund für Infoboxen</comment>
@@ -293,5 +230,68 @@
   <data name="PapaSchlumpf1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PapaSchlumpf1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     <comment>Beispielbild</comment>
+  </data>
+  <data name="AniGif_Anim100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim100.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim101" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim101.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim102" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim102.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim103" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim103.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim104" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim104.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim105" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim105.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim106" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim106.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim107" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim107.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim108" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim108.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim109" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim109.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim110" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim110.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim111" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim111.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim112" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim112.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim113" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim113.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim114" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim114.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim115" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim115.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim116" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim116.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim117" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim117.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim118" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim118.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim119" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim119.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AniGif_Anim120" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniGif_Anim120.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
