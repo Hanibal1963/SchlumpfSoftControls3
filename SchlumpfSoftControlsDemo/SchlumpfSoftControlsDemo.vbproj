@@ -205,11 +205,7 @@
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb" />
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -333,6 +329,7 @@
     <Content Include="Resources\ImagecomboBox_Info.png" />
     <Content Include="Resources\ImagecomboBox_Warning.png" />
     <Content Include="Resources\Information.png" />
+    <Content Include="Resources\PapaSchlumpf1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
