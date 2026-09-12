@@ -284,6 +284,6 @@
   <data name="Password_LabelInfoText2" xml:space="preserve">
     <value>1. Gib das von dir zuletzt eingegebene Passwort ein.
 2. Beim betätigen des Buttons "Passwort löschen" wird das Passwort gelöscht und das Fenster geschlossen, Bei einem erneuten öffnen des Fensters kannst du wieder ein Passwort festlegen.
-3. Beim betätigen des Buttons "OK" wird nur das fenster geschlossen und das gespeicherte Passwort bleibt erhalten.</value>
+3. Beim betätigen des Buttons "OK" wird nur das Fenster geschlossen und das gespeicherte Passwort bleibt erhalten.</value>
   </data>
 </root>

@@ -44,6 +44,8 @@ Public Class FormPassword
         Me.Panel1.Dock = DockStyle.Fill
         Me.Panel1.Visible = True
         Me.Panel2.Visible = False
+        Me.Password1.ClearPassword()
+        Me.Password2.ClearPassword()
         Me.Password2.Enabled = False
         Me.Label_2_PW.Enabled = False
     End Sub
@@ -52,6 +54,7 @@ Public Class FormPassword
         Me.Panel2.Dock = DockStyle.Fill
         Me.Panel1.Visible = False
         Me.Panel2.Visible = True
+        Me.Password3.ClearPassword()
         Me.pwspeicher = My.Settings.Password_PasswordCode
     End Sub
 

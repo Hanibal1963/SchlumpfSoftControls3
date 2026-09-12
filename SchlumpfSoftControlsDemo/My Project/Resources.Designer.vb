@@ -541,7 +541,7 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die 1. Gib das von dir zuletzt eingegebene Passwort ein.
         '''2. Beim betätigen des Buttons &quot;Passwort löschen&quot; wird das Passwort gelöscht und das Fenster geschlossen, Bei einem erneuten öffnen des Fensters kannst du wieder ein Passwort festlegen.
-        '''3. Beim betätigen des Buttons &quot;OK&quot; wird nur das fenster geschlossen und das gespeicherte Passwort bleibt erhalten. ähnelt.
+        '''3. Beim betätigen des Buttons &quot;OK&quot; wird nur das Fenster geschlossen und das gespeicherte Passwort bleibt erhalten. ähnelt.
         '''</summary>
         Friend ReadOnly Property Password_LabelInfoText2() As String
             Get
