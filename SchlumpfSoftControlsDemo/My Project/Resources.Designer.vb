@@ -271,16 +271,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property DriveWatcher_Information() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("DriveWatcher_Information", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die Lege einen der folgenden Datenträger ein oder erstelle einen und beobachte die Reaktion.
         '''
         '''- USB-Stick
@@ -523,6 +513,75 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("ImagecomboBox_Warning", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Information() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Information", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die 1. Gib ein Passwort ein und bestätige es mit der Eingabetaste.
+        '''2. Wiederhole die Eingabe des Passwots und bestätige mit der Eingabetaste.
+        '''3. Beim betätigen des Buttons &quot;Ok&quot; wird das Fenster geschlossen.
+        '''4. Öffne das Fenster erneut und gib das von dir festgelegte Passwort ein. ähnelt.
+        '''</summary>
+        Friend ReadOnly Property Password_LabelInfoText1() As String
+            Get
+                Return ResourceManager.GetString("Password_LabelInfoText1", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die 1. Gib das von dir zuletzt eingegebene Passwort ein.
+        '''2. Beim betätigen des Buttons &quot;Passwort löschen&quot; wird das Passwort gelöscht und das Fenster geschlossen, Bei einem erneuten öffnen des Fensters kannst du wieder ein Passwort festlegen.
+        '''3. Beim betätigen des Buttons &quot;OK&quot; wird nur das fenster geschlossen und das gespeicherte Passwort bleibt erhalten. ähnelt.
+        '''</summary>
+        Friend ReadOnly Property Password_LabelInfoText2() As String
+            Get
+                Return ResourceManager.GetString("Password_LabelInfoText2", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Das Passwort ist inkorrekt ähnelt.
+        '''</summary>
+        Friend ReadOnly Property Password_LabelMsg_Fail() As String
+            Get
+                Return ResourceManager.GetString("Password_LabelMsg_Fail", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Das Passwort korrekt ähnelt.
+        '''</summary>
+        Friend ReadOnly Property Password_LabelMsg_Ok() As String
+            Get
+                Return ResourceManager.GetString("Password_LabelMsg_Ok", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Bitte Passwort eingeben: ähnelt.
+        '''</summary>
+        Friend ReadOnly Property Password_LabelPwInput1Text() As String
+            Get
+                Return ResourceManager.GetString("Password_LabelPwInput1Text", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Bitte Passwort wiederholen: ähnelt.
+        '''</summary>
+        Friend ReadOnly Property Password_LabelPwInput2Text() As String
+            Get
+                Return ResourceManager.GetString("Password_LabelPwInput2Text", resourceCulture)
             End Get
         End Property
     End Module

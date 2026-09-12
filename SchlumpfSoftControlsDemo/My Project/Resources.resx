@@ -190,8 +190,9 @@
 - USB-Floppylaufwerk
 - Virtuelle Festplatte</value>
   </data>
-  <data name="DriveWatcher_Information" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DriveWatcher_Information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Hintergrund für Infoboxen</comment>
   </data>
   <data name="ExtendedRTF_Backcolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ExtendedRTF_Backcolor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -261,5 +262,28 @@
   </data>
   <data name="ImagecomboBox_Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ImagecomboBox_Warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Password_LabelInfoText1" xml:space="preserve">
+    <value>1. Gib ein Passwort ein und bestätige es mit der Eingabetaste.
+2. Wiederhole die Eingabe des Passwots und bestätige mit der Eingabetaste.
+3. Beim betätigen des Buttons "Ok" wird das Fenster geschlossen.
+4. Öffne das Fenster erneut und gib das von dir festgelegte Passwort ein.</value>
+  </data>
+  <data name="Password_LabelPwInput1Text" xml:space="preserve">
+    <value>Bitte Passwort eingeben:</value>
+  </data>
+  <data name="Password_LabelPwInput2Text" xml:space="preserve">
+    <value>Bitte Passwort wiederholen:</value>
+  </data>
+  <data name="Password_LabelMsg_Fail" xml:space="preserve">
+    <value>Das Passwort ist inkorrekt</value>
+  </data>
+  <data name="Password_LabelMsg_Ok" xml:space="preserve">
+    <value>Das Passwort korrekt</value>
+  </data>
+  <data name="Password_LabelInfoText2" xml:space="preserve">
+    <value>1. Gib das von dir zuletzt eingegebene Passwort ein.
+2. Beim betätigen des Buttons "Passwort löschen" wird das Passwort gelöscht und das Fenster geschlossen, Bei einem erneuten öffnen des Fensters kannst du wieder ein Passwort festlegen.
+3. Beim betätigen des Buttons "OK" wird nur das fenster geschlossen und das gespeicherte Passwort bleibt erhalten.</value>
   </data>
 </root>

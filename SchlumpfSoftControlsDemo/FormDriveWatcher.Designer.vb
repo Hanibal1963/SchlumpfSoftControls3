@@ -31,7 +31,7 @@ Partial Class FormDriveWatcher
         'Label_Info
         '
         Me.Label_Info.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label_Info.Image = Global.SchlumpfSoft.My.Resources.Resources.DriveWatcher_Information
+        Me.Label_Info.Image = Global.SchlumpfSoft.My.Resources.Resources.Information
         Me.Label_Info.Location = New System.Drawing.Point(12, 20)
         Me.Label_Info.Name = "Label_Info"
         Me.Label_Info.Size = New System.Drawing.Size(461, 131)

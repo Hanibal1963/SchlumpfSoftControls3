@@ -300,7 +300,7 @@
     <Content Include="Resources\ImagecomboBox_Help.png" />
     <Content Include="Resources\ImagecomboBox_Info.png" />
     <Content Include="Resources\ImagecomboBox_Warning.png" />
-    <Content Include="Resources\DriveWatcher_Information.png" />
+    <Content Include="Resources\Information.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
