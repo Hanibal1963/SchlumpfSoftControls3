@@ -334,6 +334,7 @@
     <Content Include="Resources\ImagecomboBox_Warning.png" />
     <Content Include="Resources\Information.png" />
     <Content Include="Resources\PapaSchlumpf1.png" />
+    <Content Include="Resources\PapaSchlumpf2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

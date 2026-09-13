@@ -537,6 +537,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property PapaSchlumpf2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("PapaSchlumpf2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die 1. Gib ein Passwort ein und bestätige es mit der Eingabetaste.
         '''2. Wiederhole die Eingabe des Passwots und bestätige mit der Eingabetaste.
         '''3. Beim betätigen des Buttons &quot;Ok&quot; wird das Fenster geschlossen.
